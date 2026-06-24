@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Experience Demo - Pilates Chat Booker</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    h1 {
+      color: white;
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 28px;
+    }
+    .subtitle {
+      color: rgba(255,255,255,0.9);
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 16px;
+    }
+    .platforms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+    .platform-box {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .platform-header {
+      background: #fff;
+      padding: 16px;
+      border-bottom: 1px solid #e5e5e5;
+      font-weight: 600;
+      color: #333;
+      text-align: center;
+      font-size: 14px;
+    }
+    .messenger-header { background: linear-gradient(135deg, #0084ff 0%, #0073e6 100%); color: white; }
+    .whatsapp-header { background: linear-gradient(135deg, #25d366 0%, #20ba58 100%); color: white; }
+    .instagram-header { background: linear-gradient(135deg, #E4405F 0%, #FD1D1D 37%, #833AB4 100%); color: white; }
+
+    .chat-window {
+      height: 600px;
+      background: white;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .message {
+      display: flex;
+      margin-bottom: 8px;
+      animation: slideIn 0.3s ease-out;
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .message.bot {
+      justify-content: flex-start;
+    }
+    .message.user {
+      justify-content: flex-end;
+    }
+    .message-bubble {
+      max-width: 70%;
+      padding: 10px 14px;
+      border-radius: 18px;
+      word-wrap: break-word;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    .message.bot .message-bubble {
+      background: #e5e5ea;
+      color: #000;
+    }
+    .message.user .message-bubble {
+      background: #0084ff;
+      color: white;
+    }
+    .whatsapp .message.user .message-bubble {
+      background: #dcf8c6;
+      color: #000;
+    }
+    .instagram .message.user .message-bubble {
+      background: #e5e5ea;
+      color: #000;
+    }
+
+    .card-response {
+      background: #f0f0f0;
+      border-radius: 12px;
+      padding: 12px;
+      margin: 10px 0;
+    }
+    .card-title {
+      font-weight: 600;
+      color: #000;
+      margin-bottom: 4px;
+    }
+    .card-description {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+    .card-button {
+      display: inline-block;
+      background: #0084ff;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      width: 100%;
+      text-align: center;
+      font-weight: 500;
+    }
+    .whatsapp .card-button {
+      background: #25d366;
+    }
+    .instagram .card-button {
+      background: #0084ff;
+    }
+
+    .button-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin: 8px 0;
+    }
+    .quick-reply-btn {
+      background: #f0f0f0;
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 13px;
+      cursor: pointer;
+      text-align: center;
+      color: #0084ff;
+      font-weight: 500;
+    }
+    .whatsapp .quick-reply-btn {
+      color: #25d366;
+    }
+    .instagram .quick-reply-btn {
+      color: #0084ff;
+    }
+
+    .flow-section {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .flow-section h2 {
+      color: #333;
+      margin-top: 0;
+      border-bottom: 2px solid #667eea;
+      padding-bottom: 10px;
+    }
+    .flow-step {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 20px;
+      margin-bottom: 25px;
+      padding-bottom: 25px;
+      border-bottom: 1px solid #e5e5e5;
+    }
+    .flow-step:last-child {
+      border-bottom: none;
+    }
+    .step-number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-radius: 50%;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .step-content h3 {
+      margin: 0 0 10px 0;
+      color: #333;
+    }
+    .step-content p {
+      margin: 0;
+      color: #666;
+      line-height: 1.6;
+    }
+    .code-block {
+      background: #f5f5f5;
+      border-left: 4px solid #667eea;
+      padding: 12px;
+      margin: 10px 0;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      overflow-x: auto;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .feature-card {
+      background: #f9f9f9;
+      padding: 15px;
+      border-radius: 8px;
+      border-left: 4px solid #667eea;
+    }
+    .feature-card h4 {
+      margin: 0 0 8px 0;
+      color: #333;
+    }
+    .feature-card p {
+      margin: 0;
+      font-size: 13px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🧘‍♀️ What Your Clients See</h1>
+    <p class="subtitle">Real conversations through Facebook Messenger, WhatsApp, and Instagram DMs</p>
+
+    <!-- Platforms -->
+    <div class="platforms-grid">
+      <!-- Facebook Messenger -->
+      <div class="platform-box messenger">
+        <div class="platform-header messenger-header">📱 Facebook Messenger</div>
+        <div class="chat-window">
+          <div class="chat-messages">
+            <div class="message bot">
+              <div class="message-bubble">Hi there! 👋 How can I help you with booking a Pilates class?</div>
+            </div>
+
+            <div class="message user">
+              <div class="message-bubble">Do you have classes available tomorrow?</div>
+            </div>
+
+            <div class="message bot">
+              <div class="message-bubble">Great! Here's what's available tomorrow:</div>
+            </div>
+
+            <div class="message bot">
+              <div class="message-bubble">
+                <div class="card-response">
+                  <div class="card-title">🧘 Mat Pilates - 9:00 AM</div>
+                  <div class="card-description">Beginner friendly • 5 spots available</div>
+                  <div class="button-group">
+                    <button class="card-button">Book 9:00 AM</button>
+                  </div>
+                </div>
+                <div class="card-response">
+                  <div class="card-title">💪 Reformer Intensive - 5:00 PM</div>
+                  <div class="card-description">Intermediate • 3 spots available</div>
+                  <div class="button-group">
+                    <button class="card-button">Book 5:00 PM</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="message user">
+              <div class="message-bubble">Book me for 5:00 PM</div>
+            </div>
+
+            <div class="message bot">
+              <div class="message-bubble">🎉 <strong>BOOKING CONFIRMED!</strong><br><br>Class: Reformer Intensive<br>Time: Tomorrow 5:00 PM<br>Confirmation: #BK-2026-062509<br><br>📧 Check your email for details<br>See you on the mat! 🧘‍♀️</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WhatsApp -->
+      <div class="platform-box whatsapp">
+        <div class="platform-header whatsapp-header">💬 WhatsApp</div>
+        <div class="chat-window">
+          <div class="chat-messages">
+            <div class="message bot">
+              <div class="message-bubble">Hi Sarah! 👋 What class are you looking for?</div>
+            </div>
+
+            <div class="message user">
+              <div class="message-bubble">Any reformer classes this week?</div>
+            </div>
+
+            <div class="message bot">
+              <div class="message-bubble">Perfect! I found several options:
+
+Tuesday: 5pm & 7pm
+Wednesday: 9am & 6pm
+Thursday: 12pm & 5pm
+
+Which day works best?</div>
+            </div>
+
+            <div class="message user">
+              <div class="message-bubble">Wednesday at 6pm</div>
+            </div>
+
+            <div class="message bot">
+              <div class="message-bubble">📋 Reformer Intensive
+🕕 Wednesday 6:00 PM
+👥 Spots available: 4
+
+Ready to book?</div>
+            </div>
+
+            <div class="message user">
+              <div class="message-bubble">Yes!</div>
+            </div>
+
+            <div class="message bot">
+              <div class="message-bubble">✅ BOOKED!
+
+Confirmation: CONF-WED-6PM-001
+Class: Reformer Intensive
+Time: Wed 6:00 PM
+Your Spot: Reserved
+
+See you there! 🎉</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Instagram DM -->
+      <div class="platform-box instagram">
+        <div class="platform-header instagram-header">📸 Instagram DM</div>
+        <div class="chat-window">
+          <div class="chat-messages">
+            <div class="message bot">
+              <div class="message-bubble">Hey! 👋 Interested in booking a class?</div>
+            </div>
+
+            <div class="message user">
+              <div class="message-bubble">Yeah, what's open today?</div>
+            </div>
+
+            <div class="message bot">
+              <div class="message-bubble">Today we have:</div>
+            </div>
+
+            <div class="message bot">
+              <div class="message-bubble">
+                <div class="card-response">
+                  <div class="card-title">🧘 Mat Pilates</div>
+                  <div class="card-description">9:00 AM • 6 spots</div>
+                  <button class="card-button">Select</button>
+                </div>
+                <div class="card-response">
+                  <div class="card-title">💪 Reformer</div>
+                  <div class="card-description">3:00 PM • 2 spots</div>
+                  <button class="card-button">Select</button>
+                </div>
+                <div class="card-response">
+                  <div class="card-title">🌙 Evening Flow</div>
+                  <div class="card-description">6:30 PM • 8 spots</div>
+                  <button class="card-button">Select</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="message user">
+              <div class="message-bubble">3 PM looks good</div>
+            </div>
+
+            <div class="message bot">
+              <div class="message-bubble">👤 What's your name?</div>
+            </div>
+
+            <div class="message user">
+              <div class="message-bubble">Jessica</div>
+            </div>
+
+            <div class="message bot">
+              <div class="message-bubble">✅ All set Jessica!
+
+📅 Today 3:00 PM
+🏫 Reformer Class
+🎫 Confirmation: INSTA-3PM-2026
+
+See you soon! 🧘‍♀️</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Complete Flow -->
+    <div class="flow-section">
+      <h2>📊 Complete Customer Journey</h2>
+
+      <div class="flow-step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>Student Finds You</h3>
+          <p>Student searches for your studio on Facebook, WhatsApp, or Instagram and finds your page.</p>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>Student Sends Message</h3>
+          <p>They message you directly: "Do you have any Pilates classes available?"</p>
+          <div class="code-block">Student: "Do you have Pilates tomorrow?"</div>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>System Checks Availability (Instant ⚡)</h3>
+          <p>Your AI reads the message, checks your studio system in real-time, and responds within 1 second.</p>
+          <div class="code-block">System → Your Studio (Mindbody/Arketa/etc.) → Check availability</div>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h3>System Shows Options</h3>
+          <p>AI responds with available classes, times, spots remaining, and instructor info. Student clicks to book.</p>
+          <div class="code-block">AI: "Here are 3 classes available tomorrow at 9am, 12pm, and 5pm"</div>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="step-number">5</div>
+        <div class="step-content">
+          <h3>Student Books Instantly</h3>
+          <p>Student selects their preferred time with one click. No forms. No calls. No waiting.</p>
+          <div class="code-block">Student clicks: "Book me for 5:00 PM"</div>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="step-number">6</div>
+        <div class="step-content">
+          <h3>Booking Created & Confirmed</h3>
+          <p>Your system creates the booking, student gets confirmation number, and an email confirmation is sent.</p>
+          <div class="code-block">System → Studio System → Create booking<br>Student gets: Confirmation email + Booking link</div>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="step-number">7</div>
+        <div class="step-content">
+          <h3>Student Shows Up (or Not)</h3>
+          <p>Student receives a reminder 24 hours before class. Can modify or cancel through chat if needed.</p>
+          <div class="code-block">Reminder sent: "Don't forget! Pilates tomorrow at 5pm"</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Key Features for Students -->
+    <div class="flow-section">
+      <h2>✨ What Students Love</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h4>⚡ Instant Response</h4>
+          <p>No waiting on hold or for email replies. Get answers in 1 second.</p>
+        </div>
+        <div class="feature-card">
+          <h4>📱 On Their Platform</h4>
+          <p>Book through Messenger, WhatsApp, or Instagram—where they already are.</p>
+        </div>
+        <div class="feature-card">
+          <h4>🎯 Real-Time Availability</h4>
+          <p>Always shows actual available spots—no overbooking surprises.</p>
+        </div>
+        <div class="feature-card">
+          <h4>✅ One-Click Booking</h4>
+          <p>No forms, no passwords, no confusion. Just click and book.</p>
+        </div>
+        <div class="feature-card">
+          <h4>📧 Instant Confirmation</h4>
+          <p>Get booking confirmation in chat AND email. Full details included.</p>
+        </div>
+        <div class="feature-card">
+          <h4>⏰ 24/7 Available</h4>
+          <p>Book at 2am if you want. System never sleeps.</p>
+        </div>
+        <div class="feature-card">
+          <h4>🧘 No Cancellation Fees</h4>
+          <p>All bookings sync to your studio system—you control policies.</p>
+        </div>
+        <div class="feature-card">
+          <h4>📍 Flexible Scheduling</h4>
+          <p>Works with any studio platform (Mindbody, Arketa, etc.)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Impact -->
+    <div class="flow-section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+      <h2 style="color: white; border-bottom-color: white;">📈 The Business Impact</h2>
+      <div class="feature-grid">
+        <div class="feature-card" style="background: rgba(255,255,255,0.1); border-left-color: white;">
+          <h4 style="color: white;">+60% Bookings</h4>
+          <p style="color: rgba(255,255,255,0.9);">Typical studios see 50-80% increase in bookings in first month</p>
+        </div>
+        <div class="feature-card" style="background: rgba(255,255,255,0.1); border-left-color: white;">
+          <h4 style="color: white;">-80% Cart Abandonment</h4>
+          <p style="color: rgba(255,255,255,0.9);">Instant booking vs waiting hours or days = way more conversions</p>
+        </div>
+        <div class="feature-card" style="background: rgba(255,255,255,0.1); border-left-color: white;">
+          <h4 style="color: white;">-60% No-Shows</h4>
+          <p style="color: rgba(255,255,255,0.9);">Instant confirmation = students more likely to actually show up</p>
+        </div>
+        <div class="feature-card" style="background: rgba(255,255,255,0.1); border-left-color: white;">
+          <h4 style="color: white;">$0 Admin Time</h4>
+          <p style="color: rgba(255,255,255,0.9);">Fully automated—no staff needed to handle booking requests</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
