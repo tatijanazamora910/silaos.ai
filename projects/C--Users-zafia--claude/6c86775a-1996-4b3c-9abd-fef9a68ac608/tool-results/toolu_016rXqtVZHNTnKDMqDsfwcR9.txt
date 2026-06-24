@@ -1,0 +1,239 @@
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-79-
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-80-      logger.info(`Checking WellnessLiving availability for ${classType} on ${date}`);
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-81-
+pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts:82:      // TODO: Implement session management
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-83-      // Call ensureSession() to authenticate or refresh session
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-84-
+pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts:85:      // TODO: Implement WellnessLiving API call to fetch class availability
+pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-86-      \ GET \API\class\availability with parameters:
+pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-87-      \ - classId: classType
+pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-88-      \ - date: date
+--
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-98-        },
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-99-      });
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-100-
+pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts:101:      // TODO: Parse WellnessLiving response and extract:
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-102-      // - maxCapacity (classlimit)
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-103-      // - currentEnrollment (enrolled)
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-104-      // - availableSpots
+--
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-144-
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-145-      logger.info(`Booking WellnessLiving slot ${slotId} for ${email}`);
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-146-
+pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts:147:      // TODO: Implement session management
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-148-      // Call ensureSession() before booking
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-149-
+pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts:150:      // TODO: Implement WellnessLiving API call to create booking
+pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-151-      \ POST \API\class\booking\create with parameters:
+pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-152-      \ - classId: slotId
+pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-153-      \ - client: { firstName, lastName, email, phone }
+--
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-173-        },
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-174-      });
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-175-
+pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts:176:      // TODO: Parse WellnessLiving booking response and extract:
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-177-      // - id or bookingId
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-178-      // - confirmationCode or code
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-179-      // - dt_start (class start time)
+--
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-206-    try {
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-207-      logger.info('Creating WellnessLiving session');
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-208-
+pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts:209:      // TODO: Implement WellnessLiving login
+pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-210-      \ POST \API\auth\login with parameters:
+pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-211-      \ - login: this.username
+pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-212-      \ - password: this.password
+--
+pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-216-        password: this.password,
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-217-      });
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-218-
+pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts:219:      // TODO: Extract session token from response (sid or sessionId field)
+pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts:220:      // TODO: Store session token and set expiry time
+pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts:221:      // TODO: Set X-Wellness-Session header for authenticated requests
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-222-
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-223-      this.session.authenticated = true;
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-224-      this.session.authenticatedAt = new Date().toISOString();
+--
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-240-   * Ensure session is valid, creating new if expired
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-241-   */
+pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-242-  async ensureSession(): Promise<boolean> {
+pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts:243:    // TODO: Check if session exists and is not expired
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-244-    // If expired or missing, call createSession()
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-245-
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-246-    if (this.session.authenticated && this.session.expiresAt) {
+--
+pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-284-    waitlistAvailable: boolean;
+pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-285-    waitlistCount?: number;
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-286-  } {
+pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts:287:    // TODO: Extract from WellnessLiving response structure
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-288-    // Handle alternate field names (classlimit, enrolled, waitlist, etc.)
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-289-
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-290-    return {
+--
+pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-306-    bookingId: string;
+pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-307-    confirmationNumber?: string;
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-308-  } {
+pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts:309:    // TODO: Extract from WellnessLiving booking response
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-310-    // Handle alternate field names (id, bookingId, confirmationCode, code, etc.)
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-311-
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\WellnessLivingAdapter.ts-312-    return {
+--
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\ArketaAdapter.ts-59-
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\ArketaAdapter.ts-60-      logger.info(`Checking Arketa availability for ${classType} on ${date}`);
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\ArketaAdapter.ts-61-
+pilates-chat-booker\src\services\adapters\ArketaAdapter.ts:62:      // TODO: Implement Arketa API call to fetch class availability
+pilates-chat-booker\src\services\adapters\ArketaAdapter.ts-63-      \ GET \classes or \schedule with parameters:
+pilates-chat-booker\src\services\adapters\ArketaAdapter.ts-64-      \ - date: date (ISO format)
+pilates-chat-booker\src\services\adapters\ArketaAdapter.ts-65-      \ - classType or classId: classType
+--
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\ArketaAdapter.ts-72-        },
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\ArketaAdapter.ts-73-      });
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\ArketaAdapter.ts-74-
+pilates-chat-booker\src\services\adapters\ArketaAdapter.ts:75:      // TODO: Parse Arketa response and extract:
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\ArketaAdapter.ts-76-      // - classId
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\ArketaAdapter.ts-77-      // - maxCapacity
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\ArketaAdapter.ts-78-      // - currentEnrollment (enrollments count)
+--
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\ArketaAdapter.ts-118-
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\ArketaAdapter.ts-119-      logger.info(`Booking Arketa slot ${slotId} for ${email}`);
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\ArketaAdapter.ts-120-
+pilates-chat-booker\src\services\adapters\ArketaAdapter.ts:121:      // TODO: Implement Arketa API call to create booking
+pilates-chat-booker\src\services\adapters\ArketaAdapter.ts-122-      \ POST \bookings or \enrollments with parameters:
+pilates-chat-booker\src\services\adapters\ArketaAdapter.ts-123-      \ - classId: slotId
+pilates-chat-booker\src\services\adapters\ArketaAdapter.ts-124-      \ - email: email
+--
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\ArketaAdapter.ts-135-
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\ArketaAdapter.ts-136-      const response = await this.client.post('/bookings', payload);
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\ArketaAdapter.ts-137-
+pilates-chat-booker\src\services\adapters\ArketaAdapter.ts:138:      // TODO: Parse Arketa booking response and extract:
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\ArketaAdapter.ts-139-      // - bookingId or enrollmentId
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\ArketaAdapter.ts-140-      // - confirmationCode
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\ArketaAdapter.ts-141-      // Arketa may return status field, ensure booking was successful
+--
+pilates-chat-booker\src\services\adapters\ArketaAdapter.ts-172-    waitlistAvailable: boolean;
+pilates-chat-booker\src\services\adapters\ArketaAdapter.ts-173-    waitlistCount?: number;
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\ArketaAdapter.ts-174-  } {
+pilates-chat-booker\src\services\adapters\ArketaAdapter.ts:175:    // TODO: Extract from Arketa response structure
+pilates-chat-booker\src\services\adapters\ArketaAdapter.ts-176-    \ Arketa response format: likely { events: [...] } or { classes: [...] }
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\ArketaAdapter.ts-177-    // Extract capacity and enrollment numbers
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\ArketaAdapter.ts-178-
+--
+pilates-chat-booker\src\services\adapters\ArketaAdapter.ts-195-    bookingId: string;
+pilates-chat-booker\src\services\adapters\ArketaAdapter.ts-196-    confirmationNumber?: string;
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\ArketaAdapter.ts-197-  } {
+pilates-chat-booker\src\services\adapters\ArketaAdapter.ts:198:    // TODO: Extract from Arketa booking response
+pilates-chat-booker\src\services\adapters\ArketaAdapter.ts-199-    \ Response should contain: enrollmentId, status, confirmationCode, etc.
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\ArketaAdapter.ts-200-
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\ArketaAdapter.ts-201-    return {
+--
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-66-
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-67-      logger.info(`Checking Momence availability for ${classType} on ${date}`);
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-68-
+pilates-chat-booker\src\services\adapters\MomenceAdapter.ts:69:      // TODO: Implement Momence API call to fetch class availability
+pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-70-      \ GET \classes with query parameters:
+pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-71-      \ - classId or classType: classType
+pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-72-      \ - date: date (ISO format YYYY-MM-DD)
+--
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-79-        },
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-80-      });
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-81-
+pilates-chat-booker\src\services\adapters\MomenceAdapter.ts:82:      // TODO: Parse Momence response and extract:
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-83-      // - maxCapacity
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-84-      // - currentEnrollment (bookings count)
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-85-      // - availableSpots calculation
+--
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-126-
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-127-      logger.info(`Booking Momence slot ${slotId} for ${email}`);
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-128-
+pilates-chat-booker\src\services\adapters\MomenceAdapter.ts:129:      // TODO: Implement Momence API call to create booking
+pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-130-      \ POST \bookings with payload:
+pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-131-      \ - classId: slotId
+pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-132-      \ - customer: {
+--
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-150-
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-151-      const response = await this.client.post('/bookings', payload);
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-152-
+pilates-chat-booker\src\services\adapters\MomenceAdapter.ts:153:      // TODO: Parse Momence booking response and extract:
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-154-      // - bookingId or id
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-155-      // - confirmationNumber or confirmationCode
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-156-      // - bookingUrl (direct link to booking confirmation)
+--
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-178-  /**
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-179-   * Parse Momence class availability response
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-180-   *
+pilates-chat-booker\src\services\adapters\MomenceAdapter.ts:181:   * TODO: Implement response parsing
+pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-182-   * Expected response structure:
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-183-   * {
+pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-184-   *   id: "class-123",
+--
+pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-200-    waitlistCount?: number;
+pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-201-    nextAvailableSlot?: string;
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-202-  } {
+pilates-chat-booker\src\services\adapters\MomenceAdapter.ts:203:    // TODO: Extract from Momence response
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-204-    // Handle both single class and array responses
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-205-
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-206-    return {
+--
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-215-  /**
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-216-   * Parse Momence booking response
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-217-   *
+pilates-chat-booker\src\services\adapters\MomenceAdapter.ts:218:   * TODO: Implement response parsing
+pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-219-   * Expected response structure:
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-220-   * {
+pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-221-   *   id: "booking-456",
+--
+pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-233-    confirmationNumber?: string;
+pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-234-    bookingUrl?: string;
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-235-  } {
+pilates-chat-booker\src\services\adapters\MomenceAdapter.ts:236:    // TODO: Extract from Momence booking response
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-237-    // Handle alternate field names
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-238-
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MomenceAdapter.ts-239-    return {
+--
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts-59-
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts-60-      logger.info(`Checking Mindbody availability for ${classType} on ${date}`);
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts-61-
+pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts:62:      // TODO: Implement Mindbody API call to fetch class availability
+pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts-63-      \ GET \class\classes with parameters:
+pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts-64-      \ - siteId: MINDBODY_SANDBOX_SITE_ID
+pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts-65-      \ - startDate: date
+--
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts-73-        },
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts-74-      });
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts-75-
+pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts:76:      // TODO: Parse Mindbody response and extract:
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts-77-      // - maxCapacity
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts-78-      // - currentEnrollment (bookings count)
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts-79-      // - availableSpots calculation
+--
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts-119-
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts-120-      logger.info(`Booking Mindbody slot ${slotId} for ${email}`);
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts-121-
+pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts:122:      // TODO: Implement Mindbody API call to create booking
+pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts-123-      \ POST \booking\addclient with parameters:
+pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts-124-      \ - siteId: MINDBODY_SANDBOX_SITE_ID
+pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts-125-      \ - classId: slotId
+--
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts-138-
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts-139-      const response = await this.client.post('/booking/addclient', payload);
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts-140-
+pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts:141:      // TODO: Parse Mindbody booking response and extract:
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts-142-      // - bookingId or confirmationCode
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts-143-      // - confirmationNumber
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts-144-
+--
+pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts-174-    waitlistAvailable: boolean;
+pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts-175-    waitlistCount?: number;
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts-176-  } {
+pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts:177:    // TODO: Extract from Mindbody response structure
+pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts-178-    \ Response format: { classes: [...] } or similar
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts-179-    // Extract fields from nested class object
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts-180-
+--
+pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts-197-    bookingId: string;
+pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts-198-    confirmationNumber?: string;
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts-199-  } {
+pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts:200:    // TODO: Extract from Mindbody booking response
+pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts-201-    \ Response may contain: confirmationCode, clientId, classId, etc.
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts-202-
+C:\Users\zafia\.claude\pilates-chat-booker\src\services\adapters\MindbodyAdapter.ts-203-    return {

@@ -1,0 +1,85 @@
+#!/bin/bash
+# Pre-commit hook to prevent committing hardcoded secrets
+#
+# Installation:
+#   chmod +x .githooks/pre-commit
+#   git config core.hooksPath .githooks
+#
+# Or manually:
+#   cp .githooks/pre-commit .git/hooks/pre-commit
+#   chmod +x .git/hooks/pre-commit
+
+set -e
+
+echo "🔒 Running pre-commit security check..."
+
+FOUND_SECRETS=0
+
+# Check for API key patterns (sk_live_, sk_test_, pk_live_, pk_test_)
+echo "  Checking for AWS/Stripe key patterns..."
+if git diff --cached --name-only -z | xargs -0 grep -l "sk_live_\|sk_test_\|pk_live_\|pk_test_" 2>/dev/null; then
+  echo "  ❌ ERROR: Found hardcoded AWS/Stripe key pattern"
+  FOUND_SECRETS=1
+fi
+
+# Check for MINDBODY_API_KEY with actual value
+echo "  Checking for hardcoded MINDBODY_API_KEY..."
+if git diff --cached -z | xargs -0 grep "MINDBODY_API_KEY\s*=" 2>/dev/null | grep -v "MINDBODY_API_KEY=$" | grep -v "MINDBODY_API_KEY=your_"; then
+  echo "  ❌ ERROR: Found hardcoded MINDBODY_API_KEY value"
+  FOUND_SECRETS=1
+fi
+
+# Check for ARKETA_API_KEY with actual value
+echo "  Checking for hardcoded ARKETA_API_KEY..."
+if git diff --cached -z | xargs -0 grep "ARKETA_API_KEY\s*=" 2>/dev/null | grep -v "ARKETA_API_KEY=$" | grep -v "ARKETA_API_KEY=your_"; then
+  echo "  ❌ ERROR: Found hardcoded ARKETA_API_KEY value"
+  FOUND_SECRETS=1
+fi
+
+# Check for MOMENCE_API_KEY with actual value
+echo "  Checking for hardcoded MOMENCE_API_KEY..."
+if git diff --cached -z | xargs -0 grep "MOMENCE_API_KEY\s*=" 2>/dev/null | grep -v "MOMENCE_API_KEY=$" | grep -v "MOMENCE_API_KEY=your_"; then
+  echo "  ❌ ERROR: Found hardcoded MOMENCE_API_KEY value"
+  FOUND_SECRETS=1
+fi
+
+# Check for WL_PASSWORD with actual value
+echo "  Checking for hardcoded WL_PASSWORD..."
+if git diff --cached -z | xargs -0 grep "WL_PASSWORD\s*=" 2>/dev/null | grep -v "WL_PASSWORD=$" | grep -v "WL_PASSWORD=your_"; then
+  echo "  ❌ ERROR: Found hardcoded WL_PASSWORD value"
+  FOUND_SECRETS=1
+fi
+
+# Check for environment variables in source code comments
+echo "  Checking for credentials in comments..."
+if git diff --cached -z | xargs -0 grep "// .*MINDBODY_API_KEY\|// .*sk_live_\|# .*MINDBODY_API_KEY" 2>/dev/null | grep -v "example\|template\|placeholder"; then
+  echo "  ❌ ERROR: Found credentials mentioned in comments"
+  FOUND_SECRETS=1
+fi
+
+# Check .env file is not being committed
+echo "  Checking .env file is ignored..."
+if git diff --cached --name-only | grep -E "^\.env$|^\.env\.local$"; then
+  echo "  ❌ ERROR: .env file is being committed"
+  echo "     Run: git reset HEAD .env"
+  FOUND_SECRETS=1
+fi
+
+if [ $FOUND_SECRETS -eq 1 ]; then
+  echo ""
+  echo "❌ Pre-commit check FAILED - Secrets detected"
+  echo ""
+  echo "NEVER commit hardcoded credentials!"
+  echo "See SECURITY_STANDARDS.md for details."
+  echo ""
+  echo "To fix:"
+  echo "  1. Remove the hardcoded secret from the file"
+  echo "  2. Use environment variable instead: process.env.API_KEY"
+  echo "  3. Add to .env (which is in .gitignore)"
+  echo "  4. Retry: git commit"
+  echo ""
+  exit 1
+fi
+
+echo "✅ Security check passed"
+echo ""
