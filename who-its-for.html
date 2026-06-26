@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who It's For — SilaOS</title>
+    <meta name="description" content="SilaOS is built for service business owners doing the work — plumbers, HVAC techs, pilates instructors, doctors. Brilliant at their craft. Buried under the business around it.">
+    <meta name="theme-color" content="#18181B">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --near-black: #18181B; --soft-black: #2C2C30; --cream: #D4C9B8; --warm-white: #EDE8DF; --background: #FAF8F4; --white: #FFFFFF; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.7; color: var(--near-black); background: var(--background); overflow-x: hidden; }
+        h1, h2, h3, h4 { font-family: 'Inter', sans-serif; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
+        h1 { font-size: clamp(2.4rem, 5vw, 3.8rem); margin-bottom: 1.5rem; }
+        h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); margin-bottom: 1.25rem; }
+        h3 { font-size: 1.125rem; margin-bottom: 0.5rem; font-weight: 700; }
+        p { font-size: 1rem; margin-bottom: 1rem; color: #4a4a4a; }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease; }
+        nav.scrolled { background: var(--near-black); padding: 1rem 2rem; box-shadow: 0 2px 20px rgba(0,0,0,0.15); }
+        .nav-logo { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.03em; color: var(--near-black); text-decoration: none; transition: color 0.3s; }
+        nav.scrolled .nav-logo { color: var(--white); }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--near-black); font-size: 0.9rem; font-weight: 500; transition: opacity 0.2s; }
+        nav.scrolled .nav-links a { color: var(--warm-white); }
+        .nav-links a:hover { opacity: 0.65; }
+        .btn { background: var(--near-black); color: var(--cream); padding: 0.8rem 1.75rem; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 0.9rem; border: none; cursor: pointer; transition: all 0.25s; display: inline-block; }
+        .btn:hover { background: var(--soft-black); transform: translateY(-2px); }
+        nav.scrolled .btn { background: var(--cream); color: var(--near-black); }
+        section { padding: 6rem 2rem; }
+        .container { max-width: 900px; margin: 0 auto; }
+        .container-wide { max-width: 1100px; margin: 0 auto; }
+        .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream); background: var(--near-black); display: inline-block; padding: 0.3rem 0.75rem; border-radius: 4px; margin-bottom: 1.5rem; }
+        .section-label.light { background: transparent; color: #999; padding: 0; }
+        .hero { background: var(--near-black); padding: 10rem 2rem 7rem; }
+        .hero h1 { color: var(--warm-white); max-width: 760px; }
+        .hero h1 span { color: var(--cream); }
+        .hero-sub { color: rgba(237,232,223,0.8); font-size: 1.2rem; max-width: 600px; margin-top: 1.5rem; margin-bottom: 0; }
+        .verticals { background: var(--background); }
+        .verticals-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .vertical-card { background: var(--white); border-radius: 12px; padding: 2.5rem 2rem; border-top: 3px solid var(--cream); box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: all 0.25s; }
+        .vertical-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
+        .vertical-icon { font-size: 2rem; margin-bottom: 1rem; }
+        .vertical-card h3 { color: var(--near-black); font-size: 1.1rem; margin-bottom: 0.75rem; }
+        .vertical-card p { color: #666; font-size: 0.9rem; margin-bottom: 0; line-height: 1.65; }
+        .people { background: var(--soft-black); padding: 6rem 2rem; }
+        .people h2 { color: var(--warm-white); max-width: 680px; }
+        .people-intro { color: rgba(237,232,223,0.75); font-size: 1.1rem; max-width: 620px; margin-bottom: 3rem; }
+        .person-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .person-card { background: #1f1f23; padding: 2rem; border-radius: 12px; border-left: 4px solid var(--cream); transition: all 0.25s; }
+        .person-card:hover { transform: translateY(-4px); }
+        .person-card h3 { color: var(--cream); font-size: 1rem; margin-bottom: 0.6rem; }
+        .person-card p { color: rgba(237,232,223,0.65); font-size: 0.9rem; margin: 0; line-height: 1.7; }
+        .not-for { background: var(--background); }
+        .not-for h2 { max-width: 600px; }
+        .not-for-intro { font-size: 1.05rem; color: #666; max-width: 560px; margin-bottom: 3rem; }
+        .not-list { display: flex; flex-direction: column; gap: 0; max-width: 680px; }
+        .not-item { display: flex; gap: 1.5rem; padding: 1.25rem 0; border-bottom: 1px solid rgba(0,0,0,0.07); align-items: flex-start; }
+        .not-item:first-child { border-top: 1px solid rgba(0,0,0,0.07); }
+        .not-x { color: #ccc; font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
+        .not-item p { color: #666; font-size: 0.95rem; margin: 0; line-height: 1.6; }
+        .fits { background: var(--near-black); }
+        .fits h2 { color: var(--warm-white); max-width: 600px; }
+        .fits-intro { color: rgba(237,232,223,0.7); font-size: 1.05rem; max-width: 560px; margin-bottom: 3rem; }
+        .fits-list { display: flex; flex-direction: column; gap: 0; max-width: 680px; }
+        .fits-item { display: flex; gap: 1.5rem; padding: 1.25rem 0; border-bottom: 1px solid #2C2C30; align-items: flex-start; }
+        .fits-item:first-child { border-top: 1px solid #2C2C30; }
+        .fits-check { color: var(--cream); font-size: 1rem; flex-shrink: 0; margin-top: 2px; font-weight: 700; }
+        .fits-item p { color: var(--warm-white); font-size: 0.95rem; margin: 0; line-height: 1.6; }
+        .cta-section { background: var(--background); text-align: center; }
+        .cta-section h2 { max-width: 580px; margin: 0 auto 1rem; }
+        .cta-section p { color: #666; max-width: 480px; margin: 0 auto 2.5rem; font-size: 1.05rem; }
+        .btn-primary { background: var(--near-black); color: var(--warm-white); padding: 1rem 2.5rem; border-radius: 8px; font-size: 1rem; font-weight: 700; text-decoration: none; display: inline-block; transition: all 0.2s; }
+        .btn-primary:hover { background: var(--soft-black); transform: translateY(-2px); }
+        footer { background: var(--near-black); padding: 3rem 2rem; text-align: center; }
+        .footer-logo { font-size: 1.1rem; font-weight: 800; color: var(--warm-white); letter-spacing: -0.03em; margin-bottom: 0.75rem; }
+        .footer-tagline { color: var(--cream); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.5rem; }
+        .footer-links { display: flex; gap: 2rem; justify-content: center; margin-bottom: 2rem; flex-wrap: wrap; }
+        .footer-links a { color: rgba(237,232,223,0.5); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--warm-white); }
+        .footer-copy { color: rgba(237,232,223,0.3); font-size: 0.8rem; margin-bottom: 0; }
+        .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            section { padding: 4rem 1.5rem; }
+            .hero { padding: 8rem 1.5rem 5rem; }
+        }
+    </style>
+</head>
+<body>
+<nav id="navbar">
+    <a href="/" class="nav-logo">SilaOS</a>
+    <div class="nav-links">
+        <a href="/how-it-works">How it works</a>
+        <a href="/who-its-for">Who it's for</a>
+        <a href="/about">About</a>
+    </div>
+    <a href="/#offer" class="btn">Apply now</a>
+</nav>
+<section class="hero">
+    <div class="container">
+        <div class="section-label">Who it's for</div>
+        <h1 class="fade-up">Built for the businesses<br><span>that keep the world running.</span></h1>
+        <p class="hero-sub fade-up">Not every business. The right ones. Service business owners who are brilliant at their craft and drowning in the operational chaos of running the business around it.</p>
+    </div>
+</section>
+<section class="verticals">
+    <div class="container-wide">
+        <div class="section-label light">The verticals</div>
+        <h2 class="fade-up">Four industries. One problem.</h2>
+        <p class="fade-up" style="max-width:600px;">Missed calls. Scheduling chaos. Follow-ups that never happen. Daily briefings that exist only in your head. SilaOS was built for all of them.</p>
+        <div class="verticals-grid">
+            <div class="vertical-card fade-up">
+                <div class="vertical-icon">🏠</div>
+                <h3>Home services</h3>
+                <p>Plumbing, electrical, HVAC, landscaping, construction. You're on the job when the phone rings. SilaOS answers, qualifies the lead, and books the next one — before you come up for air.</p>
+            </div>
+            <div class="vertical-card fade-up">
+                <div class="vertical-icon">🏋️</div>
+                <h3>Health & fitness</h3>
+                <p>Pilates studios, gyms, personal training, coaching. Your calendar fills automatically. No-shows drop. Reminders go out without you. Revenue becomes predictable month after month.</p>
+            </div>
+            <div class="vertical-card fade-up">
+                <div class="vertical-icon">🩺</div>
+                <h3>Medical & wellness</h3>
+                <p>Doctor's offices, chiropractors, therapists, physical therapy. Less front desk chaos. More time with patients. Scheduling runs itself — in any language your patients speak.</p>
+            </div>
+            <div class="vertical-card fade-up">
+                <div class="vertical-icon">🎯</div>
+                <h3>Specialty services</h3>
+                <p>Skydiving facilities, sports academies, instruction-based businesses, complex scheduling. SilaOS handles the logistics. You handle the experience that keeps clients coming back.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="people">
+    <div class="container-wide">
+        <div class="section-label">Real people. Real problems.</div>
+        <h2 class="fade-up">These aren't personas. These are the people SilaOS was built for.</h2>
+        <p class="people-intro fade-up">Every missed call is a real person. Every scheduling mess is a real morning. Every follow-up that never happened is a real client who felt forgotten.</p>
+        <div class="person-grid">
+            <div class="person-card fade-up">
+                <h3>The plumber who can't manage leads</h3>
+                <p>Someone calls while he's on a job. They don't leave a message. He never follows up. That's revenue walking out the door — and he doesn't even know it happened.</p>
+            </div>
+            <div class="person-card fade-up">
+                <h3>The pilates instructor buried in scheduling</h3>
+                <p>Back-and-forth texts, last-minute cancellations, no-shows. She's spending hours a week on logistics that should take minutes. That's not why she became an instructor.</p>
+            </div>
+            <div class="person-card fade-up">
+                <h3>The doctor whose front desk is overwhelmed</h3>
+                <p>Phones ringing, patients waiting, forms piling up. The team is doing their best — but the system underneath isn't keeping up. Patients feel it. Revenue reflects it.</p>
+            </div>
+            <div class="person-card fade-up">
+                <h3>The owner who is the bottleneck</h3>
+                <p>Every decision runs through them. Every problem lands on their desk. They can't grow what they can't get out of — and they know it. They just don't have a way out yet.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="fits">
+    <div class="container">
+        <div class="section-label">You're the right fit if</div>
+        <h2 class="fade-up">SilaOS works when these are true.</h2>
+        <p class="fits-intro fade-up">We're selective about who we onboard — because we want every client to win. Here's what the right fit looks like.</p>
+        <div class="fits-list">
+            <div class="fits-item fade-up">
+                <div class="fits-check">✓</div>
+                <p>You run a service business doing $300K–$5M a year and you're the one calls go through</p>
+            </div>
+            <div class="fits-item fade-up">
+                <div class="fits-check">✓</div>
+                <p>You're missing calls because you're doing the actual work — not because you don't care</p>
+            </div>
+            <div class="fits-item fade-up">
+                <div class="fits-check">✓</div>
+                <p>You want to be the owner, not the operator — and you know the difference</p>
+            </div>
+            <div class="fits-item fade-up">
+                <div class="fits-check">✓</div>
+                <p>You're ready to let a system handle what doesn't require your judgment</p>
+            </div>
+            <div class="fits-item fade-up">
+                <div class="fits-check">✓</div>
+                <p>You'd rather see results before committing — and 14 days is enough to know</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="not-for">
+    <div class="container">
+        <div class="section-label light">A few honest notes</div>
+        <h2 class="fade-up">What SilaOS is — and what it isn't.</h2>
+        <p class="not-for-intro fade-up">SilaOS works alongside your existing tools — your CRM, your scheduling software, your dispatch system. It doesn't replace them. It fills the gap they all leave open: the moment a call goes unanswered and the lead disappears.</p>
+        <div class="not-list">
+            <div class="not-item fade-up">
+                <div class="not-x">✕</div>
+                <p>Businesses with no inbound phone calls — SilaOS is built around the moment a call comes in and nobody picks up. No calls, no gap to fill.</p>
+            </div>
+            <div class="not-item fade-up">
+                <div class="not-x">✕</div>
+                <p>Owners who need to personally handle every client interaction — SilaOS is designed to take things off your plate. If nothing should ever happen without you, it won't fit.</p>
+            </div>
+            <div class="not-item fade-up">
+                <div class="not-x">✕</div>
+                <p>Businesses looking to replace their CRM, dispatch, or invoicing system — SilaOS is the missed-call layer that plugs in on top of whatever you already use. If you need a full platform replacement, that's not us.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <div class="section-label light">Sound like you?</div>
+        <h2 class="fade-up">We're accepting 5 founding clients this month.</h2>
+        <p class="fade-up">If this is your business, apply now. We'll confirm within 24 hours and have you live within 48.</p>
+        <a href="/#offer" class="btn-primary fade-up">Apply now</a>
