@@ -1,7 +1,0 @@
-{
-  "rewrites": [
-    { "source": "/how-it-works", "destination": "/how-it-works.html" },
-    { "source": "/who-its-for", "destination": "/who-its-for.html" },
-    { "source": "/about", "destination": "/about.html" }
-  ]
-}
