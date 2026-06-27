@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SilaOS — The Operating System for Service Businesses</title>
-    <meta name="description" content="You own it. SilaOS runs it. AI that answers your calls, books your jobs, and runs your operation — in any language — so you can be the owner, not the operator.">
+    <title>SilaOS — The Agentic AI Operating System for Service Businesses</title>
+    <meta name="description" content="You own it. SilaOS runs it. The agentic AI operating system that answers your calls, books your jobs, and runs your front office — 24/7, in any language.">
     <meta property="og:title" content="SilaOS — You own it. SilaOS runs it.">
-    <meta property="og:description" content="The AI operating system built for service businesses. Handles calls, scheduling, follow-ups, and operations — in any language — 24/7.">
+    <meta property="og:description" content="The agentic AI operating system built for service businesses. Handles calls, scheduling, follow-ups — in any language — 24/7.">
     <meta property="og:image" content="https://silaos.ai/og-image.png">
     <meta property="og:url" content="https://silaos.ai">
     <meta name="theme-color" content="#18181B">
@@ -21,11 +21,13 @@
         }
         html { scroll-behavior: smooth; }
         body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.7; color: var(--near-black); background: var(--background); overflow-x: hidden; }
-        h1, h2, h3, h4 { font-family: 'Inter', sans-serif; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
+        h1,h2,h3,h4 { font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
         h1 { font-size: clamp(2.8rem, 6vw, 4.5rem); margin-bottom: 1.5rem; }
         h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); margin-bottom: 1.25rem; }
         h3 { font-size: 1.125rem; margin-bottom: 0.5rem; font-weight: 700; }
         p { font-size: 1rem; margin-bottom: 1rem; color: #4a4a4a; }
+
+        /* NAV */
         nav { position: sticky; top: 0; z-index: 1000; background: transparent; padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease; }
         nav.scrolled { background: var(--near-black); box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
         .nav-logo { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.03em; color: var(--near-black); text-decoration: none; transition: color 0.3s; }
@@ -35,35 +37,42 @@
         nav.scrolled .nav-links a { color: var(--warm-white); }
         .nav-links a:hover { opacity: 0.65; }
         .btn { background: var(--near-black); color: var(--cream); padding: 0.8rem 1.75rem; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 0.9rem; border: none; cursor: pointer; transition: all 0.25s ease; display: inline-block; box-shadow: 0 4px 12px rgba(24,24,27,0.2); }
-        .btn:hover { background: var(--soft-black); transform: translateY(-2px); box-shadow: 0 10px 24px rgba(24,24,27,0.3); }
+        .btn:hover { background: var(--soft-black); transform: translateY(-2px); }
         nav.scrolled .btn { background: var(--cream); color: var(--near-black); }
-        nav.scrolled .btn:hover { background: var(--warm-white); }
-        .btn-primary { background: var(--cream); color: var(--near-black); padding: 1.1rem 2.5rem; font-size: 1.05rem; font-weight: 700; border-radius: 6px; border: none; cursor: pointer; transition: all 0.25s; display: inline-block; text-decoration: none; box-shadow: 0 4px 16px rgba(212,201,184,0.3); }
-        .btn-primary:hover { background: var(--warm-white); transform: translateY(-3px); box-shadow: 0 14px 32px rgba(212,201,184,0.4); }
-        .btn-ghost { background: transparent; color: var(--cream); padding: 1.1rem 2.5rem; font-size: 1.05rem; font-weight: 600; border-radius: 6px; border: 2px solid var(--cream); cursor: pointer; transition: all 0.25s; display: inline-block; text-decoration: none; }
-        .btn-ghost:hover { background: rgba(212,201,184,0.1); transform: translateY(-2px); }
+
+        /* HERO */
         .hero { background: var(--near-black); color: var(--white); padding: 7rem 2rem 6rem; text-align: center; min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
         .hero-eyebrow { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cream); margin-bottom: 1.5rem; display: inline-flex; align-items: center; gap: 0.5rem; }
         .hero-eyebrow::before, .hero-eyebrow::after { content: ''; display: inline-block; width: 28px; height: 1px; background: var(--cream); opacity: 0.5; }
         .hero h1 { color: var(--white); max-width: 900px; margin-left: auto; margin-right: auto; margin-bottom: 1rem; }
         .hero h1 span { color: var(--cream); }
-        .hero-sub { font-size: 1.2rem; color: var(--warm-white); max-width: 640px; margin: 0 auto 2.5rem; line-height: 1.65; }
+        .hero-sub { font-size: 1.2rem; color: var(--warm-white); max-width: 600px; margin: 0 auto 2.5rem; line-height: 1.65; }
         .hero-cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.25rem; }
+        .btn-primary { background: var(--cream); color: var(--near-black); padding: 1.1rem 2.5rem; font-size: 1.05rem; font-weight: 700; border-radius: 6px; border: none; cursor: pointer; transition: all 0.25s; display: inline-block; text-decoration: none; box-shadow: 0 4px 16px rgba(212,201,184,0.3); }
+        .btn-primary:hover { background: var(--warm-white); transform: translateY(-3px); box-shadow: 0 14px 32px rgba(212,201,184,0.4); }
+        .btn-ghost { background: transparent; color: var(--cream); padding: 1.1rem 2.5rem; font-size: 1.05rem; font-weight: 600; border-radius: 6px; border: 2px solid var(--cream); cursor: pointer; transition: all 0.25s; display: inline-block; text-decoration: none; }
+        .btn-ghost:hover { background: rgba(212,201,184,0.1); transform: translateY(-2px); }
         .hero-proof { font-size: 0.875rem; color: #666; display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 0.25rem; }
         .hero-proof span { display: flex; align-items: center; gap: 0.35rem; }
         .hero-proof span::before { content: '✓'; color: var(--cream); font-weight: 700; }
+
+        /* TRUST BAR */
         .trust-bar { background: var(--soft-black); padding: 2rem; display: flex; justify-content: center; gap: 0; flex-wrap: wrap; }
         .trust-stat { text-align: center; padding: 1rem 2.5rem; border-right: 1px solid #3a3a3e; flex: 1; min-width: 180px; }
         .trust-stat:last-child { border-right: none; }
         .trust-stat-number { font-size: 2rem; font-weight: 800; color: var(--cream); line-height: 1; margin-bottom: 0.3rem; }
         .trust-stat-label { font-size: 0.8rem; color: var(--warm-white); line-height: 1.4; }
+
+        /* SECTIONS */
         .section { padding: 6rem 2rem; }
         .section-inner { max-width: 1200px; margin: 0 auto; }
+        .section-inner-narrow { max-width: 900px; margin: 0 auto; }
         .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cream); margin-bottom: 1rem; }
         .section-label.dark { color: var(--soft-black); opacity: 0.5; }
+        .section-label.pill { background: var(--near-black); display: inline-block; padding: 0.3rem 0.75rem; border-radius: 4px; color: var(--cream); }
+
+        /* PROBLEM */
         .problem { background: var(--background); }
-        .problem h2 { max-width: 760px; }
-        .problem-intro { font-size: 1.2rem; color: #444; max-width: 700px; margin-bottom: 3.5rem; line-height: 1.7; }
         .cost-box { background: var(--near-black); color: var(--white); border-radius: 12px; padding: 2.5rem 3rem; margin-bottom: 3.5rem; max-width: 680px; }
         .cost-box p { color: var(--warm-white); margin: 0; font-size: 1rem; }
         .cost-number { font-size: 3rem; font-weight: 800; color: var(--cream); line-height: 1; margin: 0.5rem 0; }
@@ -73,18 +82,98 @@
         .pain-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
         .pain-card h3 { color: var(--near-black); margin-bottom: 0.5rem; font-size: 1.05rem; }
         .pain-card p { color: #555; font-size: 0.925rem; margin: 0; line-height: 1.7; }
+
+        /* AGENTIC CALLOUT */
+        .agentic-callout { background: var(--near-black); border-radius: 12px; padding: 2.5rem 3rem; max-width: 680px; border-left: 4px solid var(--cream); margin-top: 3rem; }
+        .agentic-callout p:first-child { font-size: 1.35rem; font-weight: 800; color: var(--cream); line-height: 1.4; margin: 0; letter-spacing: -0.01em; }
+        .agentic-callout p:last-child { font-size: 0.95rem; color: var(--warm-white); margin: 0.75rem 0 0; line-height: 1.7; }
+
+        /* SOLUTION / PILLARS */
         .solution { background: var(--near-black); }
         .solution h2 { color: var(--white); max-width: 760px; }
-        .solution-sub { color: var(--cream); font-size: 1.1rem; max-width: 580px; margin-bottom: 3.5rem; }
+        .solution-sub { color: var(--cream); font-size: 1.1rem; max-width: 580px; margin-bottom: 2.5rem; }
+        .pillar-shelf { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-bottom: 3.5rem; }
+        .pillar-item { border-top: 3px solid var(--cream); padding-top: 1.25rem; }
+        .pillar-num { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; color: var(--cream); opacity: 0.55; text-transform: uppercase; margin-bottom: 0.35rem; }
+        .pillar-name { font-size: 1.2rem; font-weight: 800; color: var(--cream); letter-spacing: -0.01em; }
+        .pillar-desc { font-size: 0.875rem; color: var(--warm-white); margin-top: 0.5rem; opacity: 0.75; line-height: 1.6; }
         .cap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
         .cap-card { background: var(--soft-black); padding: 2.25rem; border-radius: 10px; border-top: 3px solid var(--cream); transition: all 0.25s; }
         .cap-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.3); }
         .cap-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
         .cap-card h3 { color: var(--cream); margin-bottom: 0.6rem; font-size: 1.05rem; }
         .cap-card p { color: var(--warm-white); font-size: 0.9rem; margin: 0; line-height: 1.7; }
+
+        /* WHY SILAOS */
+        .why { background: var(--background); }
+        .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+        .why-card { background: var(--white); border-radius: 10px; padding: 2rem; border-top: 3px solid var(--cream); }
+        .why-card h3 { margin-bottom: 0.5rem; }
+        .why-card p { font-size: 0.9rem; color: #666; margin: 0; }
+
+        /* HOW IT WORKS */
+        .how { background: var(--background); }
+        .steps-big { display: flex; flex-direction: column; gap: 0; margin-top: 2.5rem; }
+        .step-big { display: grid; grid-template-columns: 80px 1fr; gap: 2.5rem; padding: 3rem 0; border-bottom: 1px solid rgba(0,0,0,0.08); align-items: start; }
+        .step-big:first-child { border-top: 1px solid rgba(0,0,0,0.08); }
+        .step-num-big { font-size: 3.5rem; font-weight: 800; color: var(--cream); line-height: 1; }
+        .step-content h3 { font-size: 1.3rem; font-weight: 800; color: var(--near-black); margin-bottom: 0.75rem; }
+        .step-content p { font-size: 1rem; color: #555; margin-bottom: 0.75rem; line-height: 1.7; }
+        .step-detail { background: var(--white); border-radius: 10px; padding: 1.25rem 1.5rem; margin-top: 1rem; border-left: 3px solid var(--cream); }
+        .step-detail p { font-size: 0.9rem; color: #666; margin: 0; }
+
+        /* TIMELINE */
+        .timeline-section { background: var(--near-black); }
+        .timeline { display: flex; flex-direction: column; gap: 0; max-width: 720px; }
+        .timeline-item { display: flex; gap: 2rem; align-items: flex-start; padding: 1.5rem 0; border-bottom: 1px solid #2C2C30; }
+        .timeline-item:last-child { border-bottom: none; }
+        .timeline-time { font-size: 0.8rem; font-weight: 700; color: var(--cream); white-space: nowrap; min-width: 70px; margin-top: 2px; }
+        .timeline-content h4 { color: var(--warm-white); font-size: 1rem; font-weight: 700; margin-bottom: 0.25rem; }
+        .timeline-content p { color: rgba(237,232,223,0.6); font-size: 0.9rem; margin: 0; line-height: 1.6; }
+
+        /* BLUEPRINT */
+        .blueprint { background: var(--background); }
+        .blueprint-examples { display: flex; flex-direction: column; gap: 0; max-width: 700px; border: 1px solid rgba(0,0,0,0.08); border-radius: 12px; overflow: hidden; }
+        .blueprint-row { display: flex; gap: 1.5rem; padding: 1.5rem 2rem; border-bottom: 1px solid rgba(0,0,0,0.06); background: var(--white); align-items: flex-start; }
+        .blueprint-row:last-child { border-bottom: none; }
+        .blueprint-icon { font-size: 1.25rem; flex-shrink: 0; margin-top: 2px; }
+        .blueprint-row-title { font-weight: 700; color: var(--near-black); margin-bottom: 0.25rem; }
+        .blueprint-row-desc { font-size: 0.9rem; color: #666; }
+
+        /* STUDIO */
+        .studio { background: var(--near-black); }
+        .studio-examples { display: flex; flex-direction: column; gap: 0; max-width: 700px; border: 1px solid #2C2C30; border-radius: 12px; overflow: hidden; }
+        .studio-row { display: flex; gap: 1.5rem; padding: 1.5rem 2rem; border-bottom: 1px solid #2C2C30; background: #1E1E22; align-items: flex-start; }
+        .studio-row:last-child { border-bottom: none; }
+        .studio-icon { font-size: 1.25rem; flex-shrink: 0; margin-top: 2px; }
+        .studio-row-title { font-weight: 700; color: var(--warm-white); margin-bottom: 0.25rem; }
+        .studio-row-desc { font-size: 0.9rem; color: rgba(237,232,223,0.6); }
+
+        /* WHO IT'S FOR */
+        .verticals { background: var(--background); }
+        .verticals-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .vertical-card { background: var(--white); border-radius: 12px; padding: 2.5rem 2rem; border-top: 3px solid var(--cream); box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: all 0.25s; }
+        .vertical-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
+        .vertical-icon { font-size: 2rem; margin-bottom: 1rem; }
+        .vertical-card h3 { color: var(--near-black); font-size: 1.1rem; margin-bottom: 0.75rem; }
+        .vertical-card p { color: #666; font-size: 0.9rem; margin-bottom: 0; line-height: 1.65; }
+
+        /* FITS / NOT FOR */
+        .fits { background: var(--near-black); }
+        .fits-list { display: flex; flex-direction: column; gap: 0; max-width: 680px; }
+        .fits-item { display: flex; gap: 1.5rem; padding: 1.25rem 0; border-bottom: 1px solid #2C2C30; align-items: flex-start; }
+        .fits-item:first-child { border-top: 1px solid #2C2C30; }
+        .fits-check { color: var(--cream); font-size: 1rem; flex-shrink: 0; margin-top: 2px; font-weight: 700; }
+        .fits-item p { color: var(--warm-white); font-size: 0.95rem; margin: 0; line-height: 1.6; }
+        .not-for { background: var(--background); }
+        .not-list { display: flex; flex-direction: column; gap: 0; max-width: 680px; }
+        .not-item { display: flex; gap: 1.5rem; padding: 1.25rem 0; border-bottom: 1px solid rgba(0,0,0,0.07); align-items: flex-start; }
+        .not-item:first-child { border-top: 1px solid rgba(0,0,0,0.07); }
+        .not-x { color: #ccc; font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
+        .not-item p { color: #666; font-size: 0.95rem; margin: 0; line-height: 1.6; }
+
+        /* VALUE STACK */
         .value { background: var(--near-black); }
-        .value h2 { color: var(--white); max-width: 700px; }
-        .value-sub { color: var(--cream); font-size: 1.05rem; max-width: 560px; margin-bottom: 3rem; }
         .value-stack { max-width: 640px; }
         .value-row { display: flex; justify-content: space-between; align-items: center; padding: 1.1rem 0; border-bottom: 1px solid #2C2C30; }
         .value-row:last-child { border-bottom: none; }
@@ -92,9 +181,9 @@
         .value-item::before { content: '✓'; color: var(--cream); font-weight: 700; flex-shrink: 0; }
         .value-total { background: rgba(212,201,184,0.08); border: 1px solid var(--cream); border-radius: 10px; padding: 1.75rem 2rem; margin-top: 2rem; }
         .value-total-label { color: var(--cream); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+
+        /* OFFER */
         .offer { background: var(--background); }
-        .offer h2 { max-width: 700px; }
-        .offer-sub { font-size: 1.15rem; color: #555; max-width: 600px; margin-bottom: 3rem; }
         .offer-box { background: var(--near-black); border-radius: 14px; padding: 3.5rem; max-width: 680px; position: relative; overflow: hidden; }
         .offer-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--cream), var(--warm-white), var(--cream)); }
         .offer-tag { display: inline-block; background: rgba(212,201,184,0.12); border: 1px solid var(--cream); border-radius: 20px; padding: 0.3rem 0.85rem; font-size: 0.75rem; font-weight: 700; color: var(--cream); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.5rem; }
@@ -122,6 +211,13 @@
         .guarantee-icon { font-size: 1.75rem; flex-shrink: 0; }
         .guarantee-text h4 { color: var(--cream); font-size: 0.9rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.3rem; }
         .guarantee-text p { color: var(--warm-white); font-size: 0.9rem; margin: 0; line-height: 1.6; }
+
+        /* RESULT BOX */
+        .result-box { background: var(--near-black); border-radius: 10px; padding: 2rem 2.5rem; max-width: 700px; border-top: 3px solid var(--cream); margin-top: 2rem; }
+        .result-box-label { color: var(--cream); font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .result-box p { color: var(--warm-white); font-size: 0.95rem; margin: 0; line-height: 1.75; }
+
+        /* FOOTER */
         footer { background: var(--near-black); color: var(--white); padding: 3rem 2rem; text-align: center; }
         .footer-inner { max-width: 1200px; margin: 0 auto; }
         .footer-logo { font-size: 1.2rem; font-weight: 800; color: var(--cream); margin-bottom: 1.25rem; letter-spacing: -0.02em; }
@@ -130,8 +226,12 @@
         .footer-links a { color: var(--warm-white); text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
         .footer-links a:hover { color: var(--cream); }
         .footer-copy { color: #444; font-size: 0.8rem; }
+
+        /* ANIMATIONS */
         .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
         .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        /* RESPONSIVE */
         @media (max-width: 768px) {
             nav { padding: 1rem 1.25rem; }
             .nav-links { display: none; }
@@ -144,6 +244,8 @@
             .section { padding: 4rem 1.25rem; }
             .cost-box { padding: 2rem; }
             .offer-box { padding: 2.5rem 1.75rem; }
+            .step-big { grid-template-columns: 1fr; gap: 1rem; }
+            .step-num-big { font-size: 2.5rem; }
             h1 { font-size: 2.2rem; }
             h2 { font-size: 1.6rem; }
         }
@@ -151,30 +253,33 @@
 </head>
 <body>
 
+<!-- NAV -->
 <nav id="navbar">
     <a href="/" class="nav-logo">SilaOS</a>
     <div class="nav-links">
-        <a href="/how-it-works">How it works</a>
-        <a href="/who-its-for">Who it's for</a>
         <a href="/about">About</a>
     </div>
-    <a href="#offer" class="btn">Apply now</a>
+    <a href="https://calendly.com/tatijanaz" target="_blank" class="btn">Book a call</a>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
-    <div class="hero-eyebrow">The AI Operating System for Service Businesses</div>
+    <div class="hero-eyebrow">The Agentic AI Operating System for Service Businesses</div>
     <h1>You own it.<br><span>SilaOS runs it.</span></h1>
-    <p class="hero-sub">Stop being the operator. Start being the owner. SilaOS runs your front office and runs from your rules — so every call gets answered, every system runs the way you'd run it, and you're never the bottleneck again.</p>
+    <p class="hero-sub">Stop being the operator. SilaOS handles every call, every booking, every follow-up — your way, without you in the middle.</p>
     <div class="hero-cta-group">
-        <a href="/how-it-works" class="btn-primary">See how it works</a>
+        <a href="#offer" class="btn-primary">Claim your founding spot</a>
+        <a href="#how-it-works" class="btn-ghost">See how it works</a>
     </div>
     <div class="hero-proof">
         <span>14-day free trial</span>
         <span>No credit card required</span>
-        <span>Works in any language</span>
+        <span>100+ languages — more than any competitor</span>
+        <span>Built &amp; tested in Studio before going live</span>
     </div>
 </section>
 
+<!-- TRUST BAR -->
 <div class="trust-bar">
     <div class="trust-stat">
         <div class="trust-stat-number">62%</div>
@@ -194,39 +299,61 @@
     </div>
 </div>
 
+<!-- PROBLEM -->
 <section class="section problem" id="problem">
     <div class="section-inner">
         <div class="section-label dark">The hidden cost</div>
         <h2>A 4-truck HVAC company missing 62% of calls loses $22,000 every month.</h2>
-        <p class="problem-intro">Not because their work is bad. Because they were under a unit when the phone rang. You can be the best in your trade — and still lose the job to whoever picked up first.</p>
+        <p style="font-size:1.2rem;color:#444;max-width:700px;margin-bottom:3.5rem;line-height:1.7;">Not because their work is bad. Because they were under a unit when the phone rang. You can be the best in your trade — and still lose the job to whoever picked up first.</p>
         <div class="cost-box fade-up">
             <p class="cost-label">What missed calls actually cost you</p>
             <div class="cost-number">$22,000<span style="font-size:1.5rem;font-weight:400;color:#888;">/mo</span></div>
             <p style="margin-top:0.5rem;">40 calls/week × 27% missed × 46% booked × $1,100 avg job. Real industry data. Every month.</p>
         </div>
-        <p class="fade-up" style="font-size:1rem;color:#666;max-width:680px;margin-bottom:2.5rem;">HVAC. Plumbing. Pilates. Nail salons. Physical therapy. Electrical. <strong style="color:var(--near-black);">The math is the same for any service business that runs on inbound calls.</strong> The only difference is how long you wait to fix it.</p>
         <div class="pain-grid">
             <div class="pain-card fade-up">
                 <h3>You're missing nearly half your calls</h3>
-                <p>Industry data: service businesses miss 62% of inbound calls. You're on a job, on a roof, under a sink. That call? Gone. That's $1,100 average walking out the door. Silently. Every single week.</p>
+                <p>You're on a job, on a roof, under a sink. That call? Gone. That's $1,100 walking out the door — and you don't even know it happened.</p>
             </div>
             <div class="pain-card fade-up">
                 <h3>You are the bottleneck</h3>
-                <p>Every lead needs you to follow up. Every rescheduled appointment needs you to fix it. Every question needs you to answer it. You built a business — and it's running you instead of the other way around.</p>
+                <p>Every lead needs you to follow up. Every rescheduled appointment needs you to fix it. Every question needs you to answer it. You built a business — and it's running you.</p>
             </div>
             <div class="pain-card fade-up">
                 <h3>Speed wins. You're losing on speed.</h3>
-                <p>78% of buyers go with the first business that responds. Not the best. The fastest. While you're delivering excellence, your competitor is picking up the phone. That's the only difference between winning and losing the job.</p>
+                <p>The fastest responder wins — not the best one. While you're delivering excellent work, your competitor is picking up the phone. That's the only difference.</p>
             </div>
+        </div>
+        <div class="agentic-callout fade-up">
+            <p>Most AI tools wait to be asked. SilaOS acts.</p>
+            <p>The moment a call goes unanswered, SilaOS initiates a conversation, qualifies the lead, and books the job — on its own. No waiting. Just results.</p>
         </div>
     </div>
 </section>
 
+<!-- SOLUTION / THREE PILLARS -->
 <section class="section solution">
     <div class="section-inner">
         <div class="section-label">The solution</div>
         <h2 style="color:var(--white);">This is not a tool. This is your business running itself.</h2>
         <p class="solution-sub">In any language your customers speak. 24/7.</p>
+        <div class="pillar-shelf">
+            <div class="pillar-item fade-up">
+                <div class="pillar-num">01</div>
+                <div class="pillar-name">Autonomous Front Office</div>
+                <div class="pillar-desc">Answers every call. Books every job. Runs 24/7 — without you.</div>
+            </div>
+            <div class="pillar-item fade-up">
+                <div class="pillar-num">02</div>
+                <div class="pillar-name">SilaOS Blueprints</div>
+                <div class="pillar-desc">Your rules, written once. Every interaction runs from them — forever.</div>
+            </div>
+            <div class="pillar-item fade-up">
+                <div class="pillar-num">03</div>
+                <div class="pillar-name">SilaOS Studio</div>
+                <div class="pillar-desc">Build it. Test it. Train on it. Nothing goes live unproven.</div>
+            </div>
+        </div>
         <div class="cap-grid">
             <div class="cap-card fade-up">
                 <div class="cap-icon">📞</div>
@@ -241,122 +368,281 @@
             <div class="cap-card fade-up">
                 <div class="cap-icon">🔁</div>
                 <h3>Follow-ups happen on their own.</h3>
-                <p>Post-job check-ins. Review requests. Reactivation campaigns for past clients. Every customer lifecycle touchpoint runs automatically.</p>
+                <p>Post-job check-ins. Review requests. Reactivation for past clients. Every customer touchpoint runs automatically.</p>
             </div>
             <div class="cap-card fade-up">
                 <div class="cap-icon">📊</div>
                 <h3>You see everything. Touch nothing.</h3>
-                <p>One daily briefing. Calls handled. Revenue recovered. You're always in control without being in everything. Step in only when your judgment is needed.</p>
+                <p>One daily briefing. Calls handled. Revenue recovered. You're always in control without being in everything.</p>
             </div>
             <div class="cap-card fade-up">
                 <div class="cap-icon">🧠</div>
-                <h3>Your rules. Built in.</h3>
-                <p>Tell SilaOS how you work — what you charge, how you communicate, what you take and turn down. SilaOS runs from your Blueprint, not generic AI. Every interaction, your way.</p>
+                <h3>Your Blueprint. Your rules. Forever.</h3>
+                <p>Your pricing. Your protocols. Your voice. Write your Blueprint once — SilaOS runs from it forever. Not what AI thinks is right. What you decided is right.</p>
             </div>
             <div class="cap-card fade-up">
                 <div class="cap-icon">🎙</div>
                 <h3>Build it. Test it. Train on it.</h3>
-                <p>SilaOS Studio is where your business comes to life before it meets the world. Build your character, stress-test every scenario, and train your team — before a single real call.</p>
+                <p>SilaOS Studio is where your business comes to life before it meets the world. Build your character, stress-test every scenario, train your team — before a single real call.</p>
             </div>
         </div>
     </div>
 </section>
 
-<section class="section" style="background:var(--background);padding:5rem 2rem;">
+<!-- WHY SILAOS -->
+<section class="section why">
     <div class="section-inner">
         <div class="section-label dark">Why SilaOS</div>
         <h2 class="fade-up">Built for this. Not retrofitted for it.</h2>
-        <p class="fade-up" style="font-size:1.1rem;color:#555;max-width:640px;margin-bottom:3rem;">Every competitor you've heard of either built a full platform you have to replace everything for — or bolted an AI feature onto software that wasn't designed for it. We built one thing, for one person, and went all in on it. That's why it works.</p>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;">
-            <div class="fade-up" style="background:var(--white);border-radius:10px;padding:2rem;border-top:3px solid var(--cream);">
+        <p class="fade-up" style="font-size:1.1rem;color:#555;max-width:640px;margin-bottom:3rem;">Every other AI tool waits for you to log in and notice. SilaOS acts the moment a call goes unanswered — before you know it happened.<br><br>Every competitor built a platform you have to replace everything for — or bolted AI onto software that wasn't designed for it. We built one thing, for one person. That's why it works.</p>
+        <div class="why-grid">
+            <div class="why-card fade-up">
                 <div style="font-size:1.5rem;margin-bottom:0.75rem;">🌐</div>
-                <h3 style="margin-bottom:0.5rem;">100+ languages</h3>
-                <p style="font-size:0.9rem;color:#666;margin:0;">No competitor comes close. The highest is 60. If your customers speak Spanish, Portuguese, Mandarin, or anything else — SilaOS answers in their language, automatically.</p>
+                <h3>100+ languages — more than any competitor</h3>
+                <p>The highest competitor is 60. If your customers speak Spanish, Portuguese, Mandarin, or anything else — SilaOS answers in their language, automatically.</p>
             </div>
-            <div class="fade-up" style="background:var(--white);border-radius:10px;padding:2rem;border-top:3px solid var(--cream);">
+            <div class="why-card fade-up">
                 <div style="font-size:1.5rem;margin-bottom:0.75rem;">⚡</div>
-                <h3 style="margin-bottom:0.5rem;">60-second response. Every time.</h3>
-                <p style="font-size:0.9rem;color:#666;margin:0;">Not a human hybrid. Not an add-on. The moment a call goes unanswered, SilaOS acts — texts the lead, qualifies them, books the appointment — without anyone touching it.</p>
+                <h3>60-second response. Every time.</h3>
+                <p>The moment a call goes unanswered, SilaOS acts — texts the lead, qualifies them, books the appointment — without anyone touching it.</p>
             </div>
-            <div class="fade-up" style="background:var(--white);border-radius:10px;padding:2rem;border-top:3px solid var(--cream);">
+            <div class="why-card fade-up">
                 <div style="font-size:1.5rem;margin-bottom:0.75rem;">🔗</div>
-                <h3 style="margin-bottom:0.5rem;">Works alongside what you already use</h3>
-                <p style="font-size:0.9rem;color:#666;margin:0;">Already using scheduling software, a CRM, or a dispatch tool? Good. SilaOS plugs in alongside it. You keep what's working. We cover the gap everything else leaves open.</p>
+                <h3>Works alongside what you already use</h3>
+                <p>Already using scheduling software, a CRM, or a dispatch tool? Good. SilaOS plugs in alongside it. You keep what's working.</p>
             </div>
-            <div class="fade-up" style="background:var(--white);border-radius:10px;padding:2rem;border-top:3px solid var(--cream);">
+            <div class="why-card fade-up">
                 <div style="font-size:1.5rem;margin-bottom:0.75rem;">🚀</div>
-                <h3 style="margin-bottom:0.5rem;">Live in 48 hours</h3>
-                <p style="font-size:0.9rem;color:#666;margin:0;">Most business software takes months to implement. SilaOS is answering your calls within 48 hours of your onboarding call. No IT team. No migration. No downtime.</p>
+                <h3>Live in 48 hours</h3>
+                <p>Most business software takes months to implement. SilaOS is answering your calls within 48 hours of your onboarding call. No IT team. No migration. No downtime.</p>
             </div>
-            <div class="fade-up" style="background:var(--white);border-radius:10px;padding:2rem;border-top:3px solid var(--cream);">
+            <div class="why-card fade-up">
                 <div style="font-size:1.5rem;margin-bottom:0.75rem;">🧠</div>
-                <h3 style="margin-bottom:0.5rem;">Your rules, not generic AI</h3>
-                <p style="font-size:0.9rem;color:#666;margin:0;">Most AI does what it thinks is right. SilaOS does what you decided is right. Build your Blueprint once — your pricing, your protocols, your voice. SilaOS runs from it forever.</p>
+                <h3>Your rules, not generic AI</h3>
+                <p>Most AI does what it thinks is right. SilaOS does what you decided is right. Your Blueprint. Your call. Every time.</p>
             </div>
-            <div class="fade-up" style="background:var(--white);border-radius:10px;padding:2rem;border-top:3px solid var(--cream);">
+            <div class="why-card fade-up">
                 <div style="font-size:1.5rem;margin-bottom:0.75rem;">🎙</div>
-                <h3 style="margin-bottom:0.5rem;">Go live with confidence, not hope</h3>
-                <p style="font-size:0.9rem;color:#666;margin:0;">SilaOS Studio lets you build your character, run every scenario, and train your team before a single real call. Most businesses go live and hope. You go live and know.</p>
+                <h3>Go live with confidence, not hope</h3>
+                <p>SilaOS Studio lets you build your character, run every scenario, and train your team before a single real call. Most businesses go live and hope. You go live and know.</p>
             </div>
         </div>
     </div>
 </section>
 
+<!-- HOW IT WORKS -->
+<section class="section how" id="how-it-works">
+    <div class="section-inner-narrow">
+        <div class="section-label dark">How it works</div>
+        <h2 class="fade-up">Set it up once. Let it run.</h2>
+        <p class="fade-up" style="font-size:1rem;color:#888;max-width:600px;margin-bottom:0.5rem;">Each step maps to one of SilaOS's three pillars — <strong>Autonomous Front Office</strong>, <strong>SilaOS Blueprints</strong>, and <strong>SilaOS Studio</strong>.</p>
+        <div class="steps-big">
+            <div class="step-big fade-up">
+                <div class="step-num-big">1</div>
+                <div class="step-content">
+                    <h3>Connect your business</h3>
+                    <p>We connect SilaOS to your phone number, calendar, and booking system. You don't need to be technical — we handle it. Most businesses are live in under 15 minutes. We handle the technical setup; you just confirm your number, your calendar, and your Blueprint. Your number stays the same.</p>
+                </div>
+            </div>
+            <div class="step-big fade-up">
+                <div class="step-num-big">2</div>
+                <div class="step-content">
+                    <h3>Build your Blueprint</h3>
+                    <p>Your pricing. Your protocols. Your communication standards. How you handle edge cases. What you take — and what you turn down. You write your rules once. SilaOS runs from them forever — and so does your team.</p>
+                    <div class="step-detail">
+                        <p>Not generic AI — your AI. A new hire joins? SilaOS answers from your Blueprint. A customer asks about pricing? SilaOS responds your way.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="step-big fade-up">
+                <div class="step-num-big">3</div>
+                <div class="step-content">
+                    <h3>Go back to your craft</h3>
+                    <p>SilaOS runs. Every morning: calls handled, jobs booked, revenue recovered. You step in only when your judgment is actually needed — and you never lose visibility. You just stop being the person everything runs through.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="section timeline-section">
+    <div class="section-inner-narrow">
+        <div class="section-label">Pillar 01 — Autonomous Front Office</div>
+        <h2 class="fade-up" style="color:var(--warm-white);">You miss a call. Here's the next 60 seconds.</h2>
+        <p class="fade-up" style="color:rgba(237,232,223,0.75);font-size:1.05rem;max-width:580px;margin-bottom:3rem;">You're under a sink, in a session, with a patient. The phone rings. You can't answer. Here's what SilaOS does instead.</p>
+        <div class="timeline">
+            <div class="timeline-item fade-up">
+                <div class="timeline-time">0:00</div>
+                <div class="timeline-content"><h4>Call comes in</h4><p>You don't answer. SilaOS detects the missed call instantly.</p></div>
+            </div>
+            <div class="timeline-item fade-up">
+                <div class="timeline-time">0:10</div>
+                <div class="timeline-content"><h4>Customer gets a text</h4><p>In their language. Warm, professional, sounds like you. "Hey, sorry we missed you — what can we help you with?"</p></div>
+            </div>
+            <div class="timeline-item fade-up">
+                <div class="timeline-time">0:30</div>
+                <div class="timeline-content"><h4>SilaOS qualifies the lead</h4><p>Understands what they need, confirms their location, asks the right follow-up questions — just like your best front desk person would.</p></div>
+            </div>
+            <div class="timeline-item fade-up">
+                <div class="timeline-time">0:50</div>
+                <div class="timeline-content"><h4>Appointment booked</h4><p>SilaOS sends the booking link or confirms directly. The job is on your calendar before you finish the one you're on.</p></div>
+            </div>
+            <div class="timeline-item fade-up">
+                <div class="timeline-time">Next morning</div>
+                <div class="timeline-content"><h4>You see it in your briefing</h4><p>Calls handled. Jobs booked. Revenue recovered. All while you were working.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BLUEPRINT -->
+<section class="section blueprint">
+    <div class="section-inner-narrow">
+        <div class="section-label dark">Pillar 02 — SilaOS Blueprints</div>
+        <h2 class="fade-up">SilaOS Blueprints.<br>Your rules. Forever.</h2>
+        <p class="fade-up" style="font-size:1.1rem;color:#555;max-width:640px;margin-bottom:3rem;line-height:1.7;">Most AI does what it thinks is right. SilaOS does what you decided is right. You build your Blueprint once — your pricing, your protocols, your voice. From that point on, SilaOS doesn't guess. It executes the way you would. Every call. Every hire. Every edge case.</p>
+        <div class="blueprint-examples fade-up">
+            <div class="blueprint-row">
+                <div class="blueprint-icon">💬</div>
+                <div><div class="blueprint-row-title">Customer asks about your rates</div><div class="blueprint-row-desc">SilaOS answers from your Blueprint — your pricing, your way. Not a guess.</div></div>
+            </div>
+            <div class="blueprint-row">
+                <div class="blueprint-icon">🧑‍🔧</div>
+                <div><div class="blueprint-row-title">New hire joins the team</div><div class="blueprint-row-desc">They ask SilaOS how to handle a cancellation. SilaOS tells them — from your Blueprint. No shadowing. No guessing.</div></div>
+            </div>
+            <div class="blueprint-row">
+                <div class="blueprint-icon">📍</div>
+                <div><div class="blueprint-row-title">Lead calls from outside your service area</div><div class="blueprint-row-desc">SilaOS knows your rules. It handles it politely and correctly — the way you would.</div></div>
+            </div>
+            <div class="blueprint-row">
+                <div class="blueprint-icon">🛡</div>
+                <div><div class="blueprint-row-title">Customer pushes back on price</div><div class="blueprint-row-desc">SilaOS responds using your voice and your answer — not generic AI language. Consistent. Every time.</div></div>
+            </div>
+        </div>
+        <div class="result-box fade-up">
+            <div class="result-box-label">The result</div>
+            <p>You stop being the answer to every question. Your Blueprint is. The owner becomes the architect. SilaOS becomes the operator. Write it once — it runs forever.</p>
+        </div>
+    </div>
+</section>
+
+<!-- STUDIO -->
+<section class="section studio">
+    <div class="section-inner-narrow">
+        <div class="section-label">Pillar 03 — SilaOS Studio</div>
+        <h2 class="fade-up" style="color:var(--warm-white);">SilaOS Studio.<br>Nothing goes live unproven.</h2>
+        <p class="fade-up" style="font-size:1.1rem;color:rgba(237,232,223,0.75);max-width:620px;margin-bottom:3rem;line-height:1.7;">Before your first real call, you build in SilaOS Studio. Design your character. Test your Blueprint. Train your team. Nothing goes live until you know it works.</p>
+        <div class="studio-examples fade-up">
+            <div class="studio-row">
+                <div class="studio-icon">🎭</div>
+                <div><div class="studio-row-title">Build your character</div><div class="studio-row-desc">Name your AI persona, define their personality, select their voice. Customers don't talk to "an AI" — they talk to Maya from Garcia Plumbing. Same warmth, every time.</div></div>
+            </div>
+            <div class="studio-row">
+                <div class="studio-icon">🧪</div>
+                <div><div class="studio-row-title">Test your Blueprint</div><div class="studio-row-desc">Run every scenario before it's real — pricing, objections, after-hours emergencies, edge cases. SilaOS plays the customer. You watch how your Blueprint holds up. Fix what doesn't work.</div></div>
+            </div>
+            <div class="studio-row">
+                <div class="studio-icon">🎓</div>
+                <div><div class="studio-row-title">Train your team</div><div class="studio-row-desc">Your team practices on SilaOS before they practice on your customers. SilaOS plays the difficult client — the price pusher, the angry caller, the cancellation. They get good before it's real.</div></div>
+            </div>
+        </div>
+        <div class="fade-up" style="margin-top:2rem;background:rgba(212,201,184,0.1);border:1px solid var(--cream);border-radius:10px;padding:2rem 2.5rem;max-width:700px;">
+            <p style="color:var(--cream);font-size:1rem;font-weight:700;margin-bottom:0.5rem;">The result</p>
+            <p style="color:var(--warm-white);font-size:0.95rem;margin:0;line-height:1.75;">Most businesses go live and hope. You go live and know. Build the character. Test the Blueprint. Train the team. Then go live.</p>
+        </div>
+    </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section class="section verticals" id="who-its-for">
+    <div class="section-inner">
+        <div class="section-label dark">Who it's for</div>
+        <h2 class="fade-up">Built for the businesses that keep the world running.</h2>
+        <p class="fade-up" style="max-width:600px;">Service businesses doing $300K–$5M a year — owners who are brilliant at their craft and drowning in the operational chaos of running the business around it.</p>
+        <div class="verticals-grid">
+            <div class="vertical-card fade-up">
+                <div class="vertical-icon">🏠</div>
+                <h3>Home services</h3>
+                <p>Plumbing, electrical, HVAC, landscaping, construction. You're on the job when the phone rings. SilaOS answers, qualifies the lead, and books the next one — before you come up for air.</p>
+            </div>
+            <div class="vertical-card fade-up">
+                <div class="vertical-icon">🏋️</div>
+                <h3>Health &amp; fitness</h3>
+                <p>Pilates studios, gyms, personal training, coaching. Every inquiry answered, every session booked — even while you're on the floor. No more missed calls while you're teaching.</p>
+            </div>
+            <div class="vertical-card fade-up">
+                <div class="vertical-icon">🩺</div>
+                <h3>Medical &amp; wellness</h3>
+                <p>Doctor's offices, chiropractors, therapists, physical therapy. Less front desk chaos. More time with patients. Scheduling runs itself — in any language your patients speak.</p>
+            </div>
+            <div class="vertical-card fade-up">
+                <div class="vertical-icon">🎯</div>
+                <h3>Specialty services</h3>
+                <p>Skydiving facilities, sports academies, instruction-based businesses, complex scheduling. SilaOS handles the logistics. You handle the experience that keeps clients coming back.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FITS IF -->
+<section class="section fits">
+    <div class="section-inner-narrow">
+        <div class="section-label">You're the right fit if</div>
+        <h2 class="fade-up" style="color:var(--warm-white);">SilaOS works when these are true.</h2>
+        <p class="fade-up" style="color:rgba(237,232,223,0.7);font-size:1.05rem;max-width:560px;margin-bottom:3rem;">We're selective about who we onboard. SilaOS works best when inbound calls are the lifeblood of your business — and missing them hurts. If that's you, keep reading.</p>
+        <div class="fits-list">
+            <div class="fits-item fade-up"><div class="fits-check">✓</div><p>You run a service business doing $300K–$5M a year and you're the one calls go through</p></div>
+            <div class="fits-item fade-up"><div class="fits-check">✓</div><p>You're missing calls because you're doing the actual work — not because you don't care</p></div>
+            <div class="fits-item fade-up"><div class="fits-check">✓</div><p>You want to be the owner, not the operator — and you know the difference</p></div>
+            <div class="fits-item fade-up"><div class="fits-check">✓</div><p>You're ready to let a system handle what doesn't require your judgment</p></div>
+            <div class="fits-item fade-up"><div class="fits-check">✓</div><p>You'd rather see results before committing — and 14 days is enough to know</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- NOT FOR -->
+<section class="section not-for">
+    <div class="section-inner-narrow">
+        <div class="section-label dark">A few honest notes</div>
+        <h2 class="fade-up">What SilaOS is — and what it isn't.</h2>
+        <p class="fade-up" style="font-size:1.05rem;color:#666;max-width:560px;margin-bottom:3rem;">SilaOS isn't for everyone. If you're not losing calls, you don't need it. If you need to personally handle every interaction, it's not the right fit.</p>
+        <div class="not-list">
+            <div class="not-item fade-up"><div class="not-x">✕</div><p>Businesses with no inbound calls — if the phone doesn't ring, there's no gap to fill.</p></div>
+            <div class="not-item fade-up"><div class="not-x">✕</div><p>Owners who need to personally handle every client interaction — if nothing should ever happen without you, SilaOS won't fit.</p></div>
+            <div class="not-item fade-up"><div class="not-x">✕</div><p>Businesses looking to replace their CRM, dispatch, or invoicing system — SilaOS is the operational layer that plugs in on top, handling calls, scheduling, follow-ups, and team consistency without replacing the tools you already rely on.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- VALUE STACK -->
 <section class="section value">
     <div class="section-inner">
         <div class="section-label">How it works with your business</div>
         <h2 style="color:var(--white);">SilaOS works with your business. Not instead of it.</h2>
-        <p class="value-sub">You and your team keep doing what you do best. SilaOS fills the gaps — the after-hours calls, the follow-ups no one had time for, the scheduling that was eating your mornings.</p>
+        <p style="color:var(--cream);font-size:1.05rem;max-width:560px;margin-bottom:3rem;">You and your team keep doing what you do best. SilaOS fills the gaps — the after-hours calls, the follow-ups no one had time for, the scheduling that was eating your mornings.</p>
         <div class="value-stack">
-            <div class="value-row">
-                <span class="value-item">You wake up — SilaOS has your daily briefing ready</span>
-                <span style="color:var(--cream);font-size:0.8rem;white-space:nowrap;">Always in control</span>
-            </div>
-            <div class="value-row">
-                <span class="value-item">Job is done — SilaOS follows up, requests a review, books the next visit</span>
-                <span style="color:var(--cream);font-size:0.8rem;white-space:nowrap;">Retention on autopilot</span>
-            </div>
-            <div class="value-row">
-                <span class="value-item">A customer needs to reschedule — SilaOS handles it automatically</span>
-                <span style="color:var(--cream);font-size:0.8rem;white-space:nowrap;">No back and forth</span>
-            </div>
-            <div class="value-row">
-                <span class="value-item">Your team is on a job — SilaOS handles the new inquiry</span>
-                <span style="color:var(--cream);font-size:0.8rem;white-space:nowrap;">Nothing missed</span>
-            </div>
-            <div class="value-row">
-                <span class="value-item">Calls come in after hours — SilaOS answers, qualifies, and books</span>
-                <span style="color:var(--cream);font-size:0.8rem;white-space:nowrap;">You're off the clock</span>
-            </div>
-            <div class="value-row">
-                <span class="value-item">A customer calls in Spanish — SilaOS responds in Spanish</span>
-                <span style="color:var(--cream);font-size:0.8rem;white-space:nowrap;">100+ languages</span>
-            </div>
-            <div class="value-row">
-                <span class="value-item">A new hire joins — SilaOS answers their questions from your Blueprint</span>
-                <span style="color:var(--cream);font-size:0.8rem;white-space:nowrap;">No more shadowing</span>
-            </div>
-            <div class="value-row">
-                <span class="value-item">Your team needs to know your policy — SilaOS tells them from your rules</span>
-                <span style="color:var(--cream);font-size:0.8rem;white-space:nowrap;">Consistency guaranteed</span>
-            </div>
-            <div class="value-row">
-                <span class="value-item">Before going live — you build, test every scenario, and train your team in Studio</span>
-                <span style="color:var(--cream);font-size:0.8rem;white-space:nowrap;">Nothing goes live unproven</span>
-            </div>
+            <div class="value-row"><span class="value-item">You wake up — SilaOS has your daily briefing ready</span><span style="color:var(--cream);font-size:0.8rem;white-space:nowrap;">Always in control</span></div>
+            <div class="value-row"><span class="value-item">Job is done — SilaOS follows up, requests a review, books the next visit</span><span style="color:var(--cream);font-size:0.8rem;white-space:nowrap;">Retention on autopilot</span></div>
+            <div class="value-row"><span class="value-item">A customer needs to reschedule — SilaOS handles it automatically</span><span style="color:var(--cream);font-size:0.8rem;white-space:nowrap;">No back and forth</span></div>
+            <div class="value-row"><span class="value-item">Your team is on a job — SilaOS handles the new inquiry</span><span style="color:var(--cream);font-size:0.8rem;white-space:nowrap;">Nothing missed</span></div>
+            <div class="value-row"><span class="value-item">Calls come in after hours — SilaOS answers, qualifies, and books</span><span style="color:var(--cream);font-size:0.8rem;white-space:nowrap;">You're off the clock</span></div>
+            <div class="value-row"><span class="value-item">A new hire joins — SilaOS answers their questions from your Blueprint</span><span style="color:var(--cream);font-size:0.8rem;white-space:nowrap;">No more shadowing</span></div>
+            <div class="value-row"><span class="value-item">Before going live — you build, test every scenario, and train your team in Studio</span><span style="color:var(--cream);font-size:0.8rem;white-space:nowrap;">Nothing goes live unproven</span></div>
             <div class="value-total">
                 <div class="value-total-label">The result</div>
-                <div style="color:var(--white);font-size:1.1rem;font-weight:600;margin-top:0.4rem;line-height:1.5;">You stop being the person everything runs through.<br>You start being the person who owns what runs itself.</div>
+                <div style="color:var(--white);font-size:1.1rem;font-weight:600;margin-top:0.4rem;line-height:1.5;">You stop being the person everything runs through.</div>
             </div>
         </div>
     </div>
 </section>
 
+<!-- OFFER -->
 <section class="section offer" id="offer">
     <div class="section-inner">
         <div class="section-label dark">Apply now</div>
         <h2>We're accepting 5 founding clients this month.</h2>
-        <p class="offer-sub">We're not taking a hundred clients. We're taking five — and building this around your business, not a template.</p>
+        <p style="font-size:1.15rem;color:#555;max-width:600px;margin-bottom:3rem;">We're not taking a hundred clients. We're taking five — and building this around your business, not a template. After that, pricing goes up. Book a call to see if you qualify.</p>
         <div class="offer-box fade-up">
             <div class="offer-tag">Founding Client Offer</div>
             <h3>Start your 14-day free trial</h3>
@@ -365,14 +651,14 @@
                 <div class="guarantee-icon">🛡</div>
                 <div class="guarantee-text">
                     <h4>The SilaOS Guarantee</h4>
-                    <p>If SilaOS doesn't recover at least one job in your first 14 days, you owe us nothing. No questions. No hoops. We back the result.</p>
+                    <p>If SilaOS doesn't recover at least one job in your first 14 days, <strong style="color:var(--cream);font-size:1rem;">you owe us nothing.</strong> No questions. No hoops. We back the result.</p>
                 </div>
             </div>
             <ul class="offer-bullets">
-                <li>14-day free trial — see real results before you commit to anything</li>
-                <li>We handle your setup — you're live within 48 hours</li>
+                <li>14-day free trial — real results before you commit to anything</li>
+                <li>We handle your setup — live within 48 hours, guaranteed</li>
                 <li>Direct access to the founding team throughout onboarding</li>
-                <li>Simple, flat monthly pricing based on your business — no per-call charges, no surprises. We'll walk through it on your call.</li>
+                <li>Simple, flat monthly pricing based on your business — no per-call charges, no surprises</li>
                 <li>Works in English, Spanish, Portuguese + 97 more languages</li>
                 <li>First access to SilaOS Studio — build your character, run your scenarios, and train your team before you go live</li>
             </ul>
@@ -395,24 +681,27 @@
                 <div class="form-status" id="offer-status"></div>
             </form>
             <p class="offer-disclaimer">We'll reach out within 24 hours to confirm your trial and get you set up.</p>
+            <p class="offer-disclaimer" style="margin-top:0.5rem;">Prefer to book directly? <a href="https://calendly.com/tatijanaz" target="_blank" style="color:var(--cream);text-decoration:underline;">Schedule a call here →</a></p>
         </div>
     </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
     <div class="footer-inner">
         <div class="footer-logo">SilaOS</div>
         <div class="footer-tagline">You own it. SilaOS runs it.</div>
         <div class="footer-links">
             <a href="/">Home</a>
-            <a href="/how-it-works">How it works</a>
-            <a href="/who-its-for">Who it's for</a>
+            <a href="#how-it-works">How it works</a>
+            <a href="#who-its-for">Who it's for</a>
             <a href="/about">About</a>
-            <a href="/#offer">Apply now</a>
+            <a href="#offer">Apply now</a>
+            <a href="https://calendly.com/tatijanaz" target="_blank">Book a call</a>
             <a href="https://instagram.com/silaos.ai" target="_blank">Instagram</a>
             <a href="mailto:hello@silaos.ai">Contact</a>
         </div>
-        <p class="footer-copy">© 2026 SilaOS. All rights reserved. | silaos.ai</p>
+        <p class="footer-copy">&copy; 2026 SilaOS. All rights reserved. | silaos.ai</p>
     </div>
 </footer>
 
