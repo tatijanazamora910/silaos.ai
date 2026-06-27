@@ -105,8 +105,8 @@
 <nav id="navbar">
     <a href="/" class="nav-logo">SilaOS</a>
     <div class="nav-links">
-        <a href="/personal">For Personal</a>
-        <a href="/">For Business</a>
+        
+        
         <a href="/about">About</a>
     </div>
     <a href="https://calendly.com/tatijanaz" target="_blank" class="btn">Book a call</a>
@@ -254,4 +254,56 @@
             </div>
         </div>
         <blockquote>
-            <p>The owner writes the rules once.
+            <p>The owner writes the rules once. SilaOS runs them every day.</p>
+        </blockquote>
+    </div>
+</section>
+
+<section class="section cta-section">
+    <div class="section-inner">
+        <h2>Ready to get back to what you're actually good at?</h2>
+        <p>Learn how SilaOS works and how we can help your business operate without you being everywhere at once.</p>
+        <a href="https://calendly.com/tatijanaz" target="_blank" class="btn-primary">Book a call</a>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-logo">SilaOS</div>
+    <div class="footer-links">
+        <a href="/">For Business</a>
+        <a href="/personal">Personal</a>
+        <a href="/about">About</a>
+        <a href="https://www.instagram.com/silaos.ai/" target="_blank">Instagram</a>
+        <a href="mailto:hello@silaos.ai">hello@silaos.ai</a>
+    </div>
+    <p class="footer-copy">© 2026 SilaOS. You live it. SilaOS runs it.</p>
+</footer>
+
+<script>
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+});
+
+const fadeElements = document.querySelectorAll('.fade-up');
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+fadeElements.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
