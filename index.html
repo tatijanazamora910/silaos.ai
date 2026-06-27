@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SilaOS — The Agentic AI Operating System for Service Businesses</title>
+    <title>SilaOS Business — The Agentic AI Operating System for Service Businesses</title>
     <meta name="description" content="You own it. SilaOS runs it. The agentic AI operating system that answers your calls, books your jobs, and runs your front office — 24/7, in any language.">
     <meta property="og:title" content="SilaOS — You own it. SilaOS runs it.">
     <meta property="og:description" content="The agentic AI operating system built for service businesses. Handles calls, scheduling, follow-ups — in any language — 24/7.">
@@ -182,6 +182,19 @@
         .value-total { background: rgba(212,201,184,0.08); border: 1px solid var(--cream); border-radius: 10px; padding: 1.75rem 2rem; margin-top: 2rem; }
         .value-total-label { color: var(--cream); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
 
+
+        /* PRICING */
+        .pricing-section { background: var(--near-black); }
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 3rem; max-width: 800px; }
+        .pricing-card { background: #1E1E22; border: 1px solid #2C2C30; border-radius: 12px; padding: 2rem; }
+        .pricing-card.featured { border-color: var(--cream); background: #23231F; }
+        .pricing-tag { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--cream); margin-bottom: 0.75rem; }
+        .pricing-price { font-size: 2.5rem; font-weight: 800; color: var(--white); line-height: 1; margin-bottom: 0.25rem; }
+        .pricing-period { font-size: 0.85rem; color: #888; margin-bottom: 1.5rem; }
+        .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; }
+        .pricing-features li { font-size: 0.9rem; color: var(--warm-white); display: flex; gap: 0.5rem; align-items: flex-start; }
+        .pricing-features li::before { content: '✓'; color: var(--cream); font-weight: 700; flex-shrink: 0; }
+
         /* OFFER */
         .offer { background: var(--background); }
         .offer-box { background: var(--near-black); border-radius: 14px; padding: 3.5rem; max-width: 680px; position: relative; overflow: hidden; }
@@ -257,8 +270,6 @@
 <nav id="navbar">
     <a href="/" class="nav-logo">SilaOS</a>
     <div class="nav-links">
-        <a href="/personal">For Personal</a>
-        <a href="/">For Business</a>
         <a href="/about">About</a>
     </div>
     <a href="https://calendly.com/tatijanaz" target="_blank" class="btn">Book a call</a>
@@ -688,6 +699,45 @@
     </div>
 </section>
 
+<!-- PRICING -->
+<section class="section pricing-section">
+    <div class="section-inner">
+        <div class="section-label">Pricing</div>
+        <h2 style="color:var(--white);" class="fade-up">Simple. One number. No surprises.</h2>
+        <p class="fade-up" style="color:var(--warm-white);max-width:560px;margin-bottom:0;">5 founding spots. Rate locked forever. After founding closes, price goes to $1,497/month.</p>
+        <div class="pricing-grid fade-up">
+            <div class="pricing-card featured">
+                <div class="pricing-tag">⭐ Founding Rate — 5 spots only</div>
+                <div class="pricing-price">$997</div>
+                <div class="pricing-period">per month — locked forever</div>
+                <ul class="pricing-features">
+                    <li>Full SilaOS setup — live in 48 hours</li>
+                    <li>SilaOS Front Office running 24/7</li>
+                    <li>Your Blueprint built with you</li>
+                    <li>SilaOS Studio — build, test, train before going live</li>
+                    <li>SilaOS Dashboards — daily briefing + full visibility</li>
+                    <li>100+ languages — no competitor is close</li>
+                    <li>14-day free trial — results before you commit</li>
+                    <li>Rate locked for life</li>
+                </ul>
+                <a href="#offer" class="btn-primary" style="display:block;text-align:center;">Claim your founding spot</a>
+            </div>
+            <div class="pricing-card">
+                <div class="pricing-tag">Enterprise</div>
+                <div class="pricing-price" style="font-size:1.5rem;padding-top:0.5rem;">Let's talk</div>
+                <div class="pricing-period">custom pricing</div>
+                <ul class="pricing-features">
+                    <li>Multi-location businesses</li>
+                    <li>Larger teams — full Blueprint and Studio buildout</li>
+                    <li>Custom integrations</li>
+                    <li>Dedicated support</li>
+                </ul>
+                <a href="https://calendly.com/tatijanaz" target="_blank" class="btn" style="display:block;text-align:center;">Book a call</a>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- OFFER -->
 <section class="section offer" id="offer">
     <div class="section-inner">
@@ -696,8 +746,8 @@
         <p style="font-size:1.15rem;color:#555;max-width:600px;margin-bottom:3rem;">We're not taking a hundred clients. We're taking five — and building this around your business, not a template. After that, pricing goes up. Book a call to see if you qualify.</p>
         <div class="offer-box fade-up">
             <div class="offer-tag">Founding Client Offer</div>
-            <h3>Start your 14-day free trial</h3>
-            <p>No credit card. No setup fee. We'll have you live and answering calls within 48 hours of your onboarding call.</p>
+            <h3>Start your 14-day free trial — $997/month after</h3>
+            <p>No credit card. No setup fee. We'll have you live and answering calls within 48 hours of your onboarding call. Founding rate locked forever.</p>
             <div class="guarantee-box">
                 <div class="guarantee-icon">🛡</div>
                 <div class="guarantee-text">
@@ -743,11 +793,9 @@
         <div class="footer-logo">SilaOS</div>
         <div class="footer-tagline">You own it. SilaOS runs it.</div>
         <div class="footer-links">
-            <a href="/">Home</a>
-            <a href="#how-it-works">How it works</a>
-            <a href="#who-its-for">Who it's for</a>
+            <a href="/">Business</a>
+            <a href="/personal">Personal</a>
             <a href="/about">About</a>
-            <a href="#offer">Apply now</a>
             <a href="https://calendly.com/tatijanaz" target="_blank">Book a call</a>
             <a href="https://instagram.com/silaos.ai" target="_blank">Instagram</a>
             <a href="mailto:hello@silaos.ai">Contact</a>
@@ -788,4 +836,4 @@
 </script>
 </body>
 </html>
-                                                       
+                                                                                                                                                          
