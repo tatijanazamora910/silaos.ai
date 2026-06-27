@@ -14,7 +14,7 @@
         :root { --near-black: #18181B; --soft-black: #2C2C30; --cream: #D4C9B8; --warm-white: #EDE8DF; --background: #FAF8F4; --white: #FFFFFF; }
         html { scroll-behavior: smooth; }
         body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.7; color: var(--near-black); background: var(--background); overflow-x: hidden; }
-        h1, h2, h3, h4 { font-family: 'Inter', sans-serif; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
+        h1, h2, h3, h4 { font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
         h1 { font-size: clamp(2.4rem, 5vw, 3.8rem); margin-bottom: 1.5rem; }
         h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); margin-bottom: 1.25rem; }
         h3 { font-size: 1.125rem; margin-bottom: 0.5rem; font-weight: 700; }
@@ -32,7 +32,6 @@
         nav.scrolled .btn { background: var(--cream); color: var(--near-black); }
         section { padding: 6rem 2rem; }
         .container { max-width: 900px; margin: 0 auto; }
-        .container-wide { max-width: 1100px; margin: 0 auto; }
         .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream); background: var(--near-black); display: inline-block; padding: 0.3rem 0.75rem; border-radius: 4px; margin-bottom: 1.5rem; }
         .section-label.light { background: transparent; color: #999; padding: 0; }
         .hero { background: var(--near-black); padding: 10rem 2rem 7rem; }
@@ -90,6 +89,7 @@
     </style>
 </head>
 <body>
+
 <nav id="navbar">
     <a href="/" class="nav-logo">SilaOS</a>
     <div class="nav-links">
@@ -99,6 +99,7 @@
     </div>
     <a href="/#offer" class="btn">Apply now</a>
 </nav>
+
 <section class="hero">
     <div class="container">
         <div class="section-label">How it works</div>
@@ -106,6 +107,7 @@
         <p class="hero-sub fade-up">15 minutes to connect your business. Everything after that runs on its own — in any language your customers speak, at any hour they call.</p>
     </div>
 </section>
+
 <section class="steps-section">
     <div class="container">
         <div class="section-label light">The setup</div>
@@ -124,10 +126,10 @@
             <div class="step-big fade-up">
                 <div class="step-num-big">2</div>
                 <div class="step-content">
-                    <h3>Tell SilaOS how you work</h3>
-                    <p>Your services. Your pricing. Your availability. How you like to communicate with clients. SilaOS learns your business in one onboarding conversation and represents you exactly right — every time.</p>
+                    <h3>Build your Blueprint</h3>
+                    <p>Your pricing. Your protocols. Your communication standards. How you handle edge cases. What you take — and what you turn down. You write your rules once. SilaOS runs from them forever — and so does your team.</p>
                     <div class="step-detail">
-                        <p>No scripts. No rigid flows. SilaOS understands context, handles edge cases, and responds the way you would respond — every time.</p>
+                        <p>This is what makes SilaOS different. Not generic AI — your AI. A new hire joins? SilaOS answers their questions from your Blueprint. A customer asks about pricing? SilaOS responds your way. Write it once. It runs everything.</p>
                     </div>
                 </div>
             </div>
@@ -135,7 +137,7 @@
                 <div class="step-num-big">3</div>
                 <div class="step-content">
                     <h3>Go back to your craft</h3>
-                    <p>SilaOS runs everything in the background. Every morning you get a daily briefing: calls handled, jobs booked, revenue recovered. You step in only when your judgment — and only your judgment — is actually needed.</p>
+                    <p>Once everything is built, tested, and trained — SilaOS runs in the background. Every morning you get a daily briefing: calls handled, jobs booked, revenue recovered. You step in only when your judgment — and only your judgment — is actually needed.</p>
                     <div class="step-detail">
                         <p>You're always in control. SilaOS surfaces what matters and handles what doesn't. You never lose visibility — you just stop being the person everything runs through.</p>
                     </div>
@@ -144,6 +146,7 @@
         </div>
     </div>
 </section>
+
 <section class="what-happens">
     <div class="container">
         <div class="section-label">What happens when a call comes in</div>
@@ -188,6 +191,7 @@
         </div>
     </div>
 </section>
+
 <section class="tech-section">
     <div class="container">
         <div class="section-label light">The tech stack</div>
@@ -231,6 +235,84 @@
         </div>
     </div>
 </section>
+
+<section style="background:var(--background);padding:6rem 2rem;">
+    <div class="container">
+        <div class="section-label light">SilaOS Blueprints</div>
+        <h2 class="fade-up">You wrote the Blueprint.<br>SilaOS runs it.</h2>
+        <p class="fade-up" style="font-size:1.1rem;color:#555;max-width:640px;margin-bottom:3rem;line-height:1.7;">Most AI runs on generic logic. SilaOS runs on yours. In Step 2, you build your Blueprint — your pricing, your protocols, your voice, your rules. From that moment on, SilaOS doesn't guess. It executes exactly the way you would.</p>
+        <div style="display:flex;flex-direction:column;gap:0;max-width:700px;border:1px solid rgba(0,0,0,0.08);border-radius:12px;overflow:hidden;">
+            <div class="fade-up" style="display:flex;gap:1.5rem;padding:1.5rem 2rem;border-bottom:1px solid rgba(0,0,0,0.06);background:var(--white);align-items:flex-start;">
+                <div style="font-size:1.25rem;flex-shrink:0;margin-top:2px;">💬</div>
+                <div>
+                    <div style="font-weight:700;color:var(--near-black);margin-bottom:0.25rem;">Customer asks about your rates</div>
+                    <div style="font-size:0.9rem;color:#666;">SilaOS answers from your Blueprint — your pricing, your way. Not a guess.</div>
+                </div>
+            </div>
+            <div class="fade-up" style="display:flex;gap:1.5rem;padding:1.5rem 2rem;border-bottom:1px solid rgba(0,0,0,0.06);background:var(--white);align-items:flex-start;">
+                <div style="font-size:1.25rem;flex-shrink:0;margin-top:2px;">🧑‍🔧</div>
+                <div>
+                    <div style="font-weight:700;color:var(--near-black);margin-bottom:0.25rem;">New hire joins the team</div>
+                    <div style="font-size:0.9rem;color:#666;">They ask SilaOS how to handle a cancellation. SilaOS tells them — from your Blueprint. No shadowing. No guessing.</div>
+                </div>
+            </div>
+            <div class="fade-up" style="display:flex;gap:1.5rem;padding:1.5rem 2rem;border-bottom:1px solid rgba(0,0,0,0.06);background:var(--white);align-items:flex-start;">
+                <div style="font-size:1.25rem;flex-shrink:0;margin-top:2px;">📍</div>
+                <div>
+                    <div style="font-weight:700;color:var(--near-black);margin-bottom:0.25rem;">Lead calls from outside your service area</div>
+                    <div style="font-size:0.9rem;color:#666;">SilaOS knows your rules. It handles it politely and correctly — the way you would.</div>
+                </div>
+            </div>
+            <div class="fade-up" style="display:flex;gap:1.5rem;padding:1.5rem 2rem;background:var(--white);align-items:flex-start;">
+                <div style="font-size:1.25rem;flex-shrink:0;margin-top:2px;">🛡</div>
+                <div>
+                    <div style="font-weight:700;color:var(--near-black);margin-bottom:0.25rem;">Customer pushes back on price</div>
+                    <div style="font-size:0.9rem;color:#666;">SilaOS responds using your voice and your answer — not generic AI language. Consistent. Every time.</div>
+                </div>
+            </div>
+        </div>
+        <div class="fade-up" style="margin-top:2rem;background:var(--near-black);border-radius:10px;padding:2rem 2.5rem;max-width:700px;">
+            <p style="color:var(--cream);font-size:1rem;font-weight:700;margin-bottom:0.5rem;">The result</p>
+            <p style="color:var(--warm-white);font-size:0.95rem;margin:0;line-height:1.75;">You stop being the answer to every question. Your Blueprint is. The owner becomes the architect. SilaOS becomes the operator. Write it once — it runs forever.</p>
+        </div>
+    </div>
+</section>
+
+<section style="background:var(--near-black);padding:6rem 2rem;">
+    <div class="container">
+        <div class="section-label">SilaOS Studio</div>
+        <h2 class="fade-up" style="color:var(--warm-white);">Nothing goes live unproven.</h2>
+        <p class="fade-up" style="font-size:1.1rem;color:rgba(237,232,223,0.75);max-width:620px;margin-bottom:3rem;line-height:1.7;">Before your first real call, you build in SilaOS Studio. You design your character — the voice and persona your customers actually interact with. You stress-test your Blueprint on every scenario you can think of. And your team practices on SilaOS before they ever touch a real customer.</p>
+        <div style="display:flex;flex-direction:column;gap:0;max-width:700px;border:1px solid #2C2C30;border-radius:12px;overflow:hidden;">
+            <div class="fade-up" style="display:flex;gap:1.5rem;padding:1.5rem 2rem;border-bottom:1px solid #2C2C30;background:#1E1E22;align-items:flex-start;">
+                <div style="font-size:1.25rem;flex-shrink:0;margin-top:2px;">🎭</div>
+                <div>
+                    <div style="font-weight:700;color:var(--warm-white);margin-bottom:0.25rem;">Build your character</div>
+                    <div style="font-size:0.9rem;color:rgba(237,232,223,0.6);">Name your AI persona, define their personality, select their voice. Customers don't talk to "an AI" — they talk to Maya from Garcia Plumbing. Same warmth, every time.</div>
+                </div>
+            </div>
+            <div class="fade-up" style="display:flex;gap:1.5rem;padding:1.5rem 2rem;border-bottom:1px solid #2C2C30;background:#1E1E22;align-items:flex-start;">
+                <div style="font-size:1.25rem;flex-shrink:0;margin-top:2px;">🧪</div>
+                <div>
+                    <div style="font-weight:700;color:var(--warm-white);margin-bottom:0.25rem;">Test your Blueprint</div>
+                    <div style="font-size:0.9rem;color:rgba(237,232,223,0.6);">Run every scenario before it's real — pricing, objections, after-hours emergencies, edge cases. SilaOS plays the customer. You watch how your Blueprint holds up. Fix what doesn't work.</div>
+                </div>
+            </div>
+            <div class="fade-up" style="display:flex;gap:1.5rem;padding:1.5rem 2rem;background:#1E1E22;align-items:flex-start;">
+                <div style="font-size:1.25rem;flex-shrink:0;margin-top:2px;">🎓</div>
+                <div>
+                    <div style="font-weight:700;color:var(--warm-white);margin-bottom:0.25rem;">Train your team</div>
+                    <div style="font-size:0.9rem;color:rgba(237,232,223,0.6);">Your team practices on SilaOS before they practice on your customers. SilaOS plays the difficult client — the price pusher, the angry caller, the cancellation. They get good before it's real.</div>
+                </div>
+            </div>
+        </div>
+        <div class="fade-up" style="margin-top:2rem;background:rgba(212,201,184,0.1);border:1px solid var(--cream);border-radius:10px;padding:2rem 2.5rem;max-width:700px;">
+            <p style="color:var(--cream);font-size:1rem;font-weight:700;margin-bottom:0.5rem;">The result</p>
+            <p style="color:var(--warm-white);font-size:0.95rem;margin:0;line-height:1.75;">Most businesses go live and hope. You go live and know. Build the character. Test the Blueprint. Train the team. Then go live.</p>
+        </div>
+    </div>
+</section>
+
 <section class="cta-section">
     <div class="container">
         <div class="section-label">Ready?</div>
@@ -239,6 +321,7 @@
         <a href="/#offer" class="btn-primary fade-up">Apply now</a>
     </div>
 </section>
+
 <footer>
     <div class="footer-logo">SilaOS</div>
     <p class="footer-tagline">You own it. SilaOS runs it.</p>
@@ -249,9 +332,11 @@
         <a href="/about">About</a>
         <a href="/#offer">Apply now</a>
         <a href="https://instagram.com/silaos.ai" target="_blank">Instagram</a>
+        <a href="mailto:hello@silaos.ai">Contact</a>
     </div>
     <p class="footer-copy">&copy; 2026 SilaOS. All rights reserved.</p>
 </footer>
+
 <script>
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 50); });
