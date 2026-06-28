@@ -19,7 +19,7 @@
         h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); }
         h3 { font-size: 1.15rem; font-weight: 700; }
         p { font-size: 1rem; color: #4a4a4a; margin-bottom: 1.25rem; line-height: 1.85; }
-        nav { position: sticky; top: 0; z-index: 1000; background: transparent; padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease; }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: transparent; padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease; }
         nav.scrolled { background: var(--near-black); box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
         .nav-logo { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.03em; color: var(--near-black); text-decoration: none; transition: color 0.3s; }
         nav.scrolled .nav-logo { color: var(--white); }
@@ -105,7 +105,8 @@
 <nav id="navbar">
     <a href="/" class="nav-logo">SilaOS</a>
     <div class="nav-links">
-        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/offers">Work with us</a>
     </div>
     <a href="https://calendly.com/tatijanaz" target="_blank" class="btn">Book a call</a>
 </nav>
@@ -232,35 +233,35 @@
         <div class="fade-up" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin:2rem 0 2.5rem;max-width:700px;">
             <div style="border-top:2px solid var(--cream);padding-top:1rem;">
                 <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.15em;color:var(--cream);opacity:0.5;text-transform:uppercase;margin-bottom:0.3rem;">01</div>
-                <div style="font-size:1rem;font-weight:800;color:var(--cream);">SilaOS Front Office</div>
-                <div style="font-size:0.85rem;color:var(--warm-white);margin-top:0.4rem;opacity:0.7;line-height:1.6;">Every call. Every job. 24/7.</div>
+                <div style="font-size:1rem;font-weight:800;color:var(--cream);">SilaOS Blueprint</div>
+                <div style="font-size:0.85rem;color:var(--warm-white);margin-top:0.4rem;opacity:0.7;line-height:1.6;">The doctrine layer. Services, pricing, policies, tone — all in one place.</div>
             </div>
             <div style="border-top:2px solid var(--cream);padding-top:1rem;">
                 <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.15em;color:var(--cream);opacity:0.5;text-transform:uppercase;margin-bottom:0.3rem;">02</div>
-                <div style="font-size:1rem;font-weight:800;color:var(--cream);">SilaOS Blueprints</div>
-                <div style="font-size:0.85rem;color:var(--warm-white);margin-top:0.4rem;opacity:0.7;line-height:1.6;">Living knowledge base. Single source of truth.</div>
+                <div style="font-size:1rem;font-weight:800;color:var(--cream);">SilaOS Studio</div>
+                <div style="font-size:0.85rem;color:var(--warm-white);margin-top:0.4rem;opacity:0.7;line-height:1.6;">Simulation and training before anything goes live.</div>
             </div>
             <div style="border-top:2px solid var(--cream);padding-top:1rem;">
                 <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.15em;color:var(--cream);opacity:0.5;text-transform:uppercase;margin-bottom:0.3rem;">03</div>
-                <div style="font-size:1rem;font-weight:800;color:var(--cream);">SilaOS Studio</div>
-                <div style="font-size:0.85rem;color:var(--warm-white);margin-top:0.4rem;opacity:0.7;line-height:1.6;">Individuals and teams train before launch — and every day after.</div>
+                <div style="font-size:1rem;font-weight:800;color:var(--cream);">SilaOS Workflows</div>
+                <div style="font-size:0.85rem;color:var(--warm-white);margin-top:0.4rem;opacity:0.7;line-height:1.6;">Automated execution. Calls, intake, scheduling, follow-ups — running 24/7.</div>
             </div>
             <div style="border-top:2px solid var(--cream);padding-top:1rem;">
                 <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.15em;color:var(--cream);opacity:0.5;text-transform:uppercase;margin-bottom:0.3rem;">04</div>
-                <div style="font-size:1rem;font-weight:800;color:var(--cream);">SilaOS Dashboards</div>
+                <div style="font-size:1rem;font-weight:800;color:var(--cream);">SilaOS Dashboard</div>
                 <div style="font-size:0.85rem;color:var(--warm-white);margin-top:0.4rem;opacity:0.7;line-height:1.6;">The control tower. See everything without being in everything.</div>
             </div>
         </div>
         <blockquote>
-            <p>The owner writes the rules once.            <p>The owner writes the rules once. SilaOS runs them — the front office, the training, the knowledge base, the dashboard. Blueprints builds the standard. Studio trains everyone to it. The Front Office runs it 24/7. Dashboards show you it's working. That's the whole system.</p>
+            <p>The owner writes the rules once. SilaOS runs them — the Workflows, the Studio, the Blueprint, the Dashboard. Blueprint sets the standard. Studio proves it works before it's live. Workflows run it 24/7. Dashboard shows you it's working. That's the whole system.</p>
         </blockquote>
     </div>
 </section>
 
 <section class="cta-section">
     <h2 class="fade-up">Ready to stop being the person everything runs through?</h2>
-    <p class="fade-up">5 founding spots. 14-day free trial. Live within 48 hours.</p>
-    <a href="/#offer" class="btn-primary fade-up">Claim your founding spot</a>
+    <p class="fade-up">Start with a Front Office OS Assessment. We'll map how your business runs today and design the system it actually needs.</p>
+    <a href="/offers" class="btn-primary fade-up">See how we work →</a>
 </section>
 
 <footer>
@@ -269,6 +270,7 @@
     <div class="footer-links">
         <a href="/">Home</a>
         <a href="/about">About</a>
+        <a href="/offers">Work with us</a>
         <a href="https://calendly.com/tatijanaz" target="_blank">Book a call</a>
         <a href="https://instagram.com/silaos.ai" target="_blank">Instagram</a>
         <a href="mailto:hello@silaos.ai">Contact</a>
