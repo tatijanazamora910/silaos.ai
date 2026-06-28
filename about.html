@@ -24,7 +24,7 @@
         .nav-logo { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.03em; color: var(--near-black); text-decoration: none; transition: color 0.3s; }
         nav.scrolled .nav-logo { color: var(--white); }
         .nav-links { display: flex; gap: 2rem; align-items: center; }
-        .nav-links a { text-decoration: none; color: var(--warm-white); font-size: 0.9rem; font-weight: 500; transition: opacity 0.2s; }
+        .nav-links a { text-decoration: none; color: var(--near-black); font-size: 0.9rem; font-weight: 500; transition: opacity 0.2s; }
         nav.scrolled .nav-links a { color: var(--warm-white); }
         .nav-links a:hover { opacity: 0.65; }
         .btn { background: var(--near-black); color: var(--cream); padding: 0.75rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 0.875rem; transition: all 0.25s; display: inline-block; }
@@ -105,8 +105,6 @@
 <nav id="navbar">
     <a href="/" class="nav-logo">SilaOS</a>
     <div class="nav-links">
-        <a href="/personal">For Personal</a>
-        <a href="/">For Business</a>
         <a href="/about">About</a>
     </div>
     <a href="https://calendly.com/tatijanaz" target="_blank" class="btn">Book a call</a>
@@ -254,56 +252,37 @@
             </div>
         </div>
         <blockquote>
-            <p>The owner writes the rules once. SilaOS runs them every day.</p>
+            <p>The owner writes the rules once.            <p>The owner writes the rules once. SilaOS runs them — the front office, the training, the knowledge base, the dashboard. Blueprints builds the standard. Studio trains everyone to it. The Front Office runs it 24/7. Dashboards show you it's working. That's the whole system.</p>
         </blockquote>
     </div>
 </section>
 
-<section class="section cta-section">
-    <div class="section-inner">
-        <h2>Ready to get back to what you're actually good at?</h2>
-        <p>Learn how SilaOS works and how we can help your business operate without you being everywhere at once.</p>
-        <a href="https://calendly.com/tatijanaz" target="_blank" class="btn-primary">Book a call</a>
-    </div>
+<section class="cta-section">
+    <h2 class="fade-up">Ready to stop being the person everything runs through?</h2>
+    <p class="fade-up">5 founding spots. 14-day free trial. Live within 48 hours.</p>
+    <a href="/#offer" class="btn-primary fade-up">Claim your founding spot</a>
 </section>
 
 <footer>
     <div class="footer-logo">SilaOS</div>
+    <p class="footer-tagline">You own it. SilaOS runs it.</p>
     <div class="footer-links">
-        <a href="/">For Business</a>
-        <a href="/personal">Personal</a>
+        <a href="/">Home</a>
         <a href="/about">About</a>
-        <a href="https://www.instagram.com/silaos.ai/" target="_blank">Instagram</a>
-        <a href="mailto:hello@silaos.ai">hello@silaos.ai</a>
+        <a href="https://calendly.com/tatijanaz" target="_blank">Book a call</a>
+        <a href="https://instagram.com/silaos.ai" target="_blank">Instagram</a>
+        <a href="mailto:hello@silaos.ai">Contact</a>
     </div>
-    <p class="footer-copy">© 2026 SilaOS. You live it. SilaOS runs it.</p>
+    <p class="footer-copy">&copy; 2026 SilaOS. All rights reserved. | silaos.ai</p>
 </footer>
 
 <script>
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-});
-
-const fadeElements = document.querySelectorAll('.fade-up');
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-        }
-    });
-}, observerOptions);
-fadeElements.forEach(el => observer.observe(el));
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 50); });
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
-
 </body>
 </html>
