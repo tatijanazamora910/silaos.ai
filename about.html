@@ -19,12 +19,12 @@
         h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); }
         h3 { font-size: 1.15rem; font-weight: 700; }
         p { font-size: 1rem; color: #4a4a4a; margin-bottom: 1.25rem; line-height: 1.85; }
-        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: transparent; padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease; }
+        nav { position: sticky; top: 0; z-index: 1000; background: transparent; padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease; }
         nav.scrolled { background: var(--near-black); box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
         .nav-logo { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.03em; color: var(--near-black); text-decoration: none; transition: color 0.3s; }
         nav.scrolled .nav-logo { color: var(--white); }
         .nav-links { display: flex; gap: 2rem; align-items: center; }
-        .nav-links a { text-decoration: none; color: var(--warm-white); font-size: 0.9rem; font-weight: 500; transition: opacity 0.2s; }
+        .nav-links a { text-decoration: none; color: var(--near-black); font-size: 0.9rem; font-weight: 500; transition: opacity 0.2s; }
         nav.scrolled .nav-links a { color: var(--warm-white); }
         .nav-links a:hover { opacity: 0.65; }
         .btn { background: var(--near-black); color: var(--cream); padding: 0.75rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 0.875rem; transition: all 0.25s; display: inline-block; }
