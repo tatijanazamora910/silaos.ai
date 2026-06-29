@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About — SilaOS</title>
+    <meta name="description" content="SilaOS exists for the people who are brilliant at their craft but buried in the business of running it.">
+    <meta name="theme-color" content="#18181B">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --near-black: #18181B; --soft-black: #2C2C30; --cream: #D4C9B8; --warm-white: #EDE8DF; --background: #FAF8F4; --white: #FFFFFF; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.7; color: var(--near-black); background: var(--background); overflow-x: hidden; }
+        h1, h2, h3 { font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
+        h1 { font-size: clamp(2.8rem, 6vw, 4.2rem); }
+        h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); }
+        h3 { font-size: 1.15rem; font-weight: 700; }
+        p { font-size: 1rem; color: #4a4a4a; margin-bottom: 1.25rem; line-height: 1.85; }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: transparent; padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease; }
+        nav.scrolled { background: var(--near-black); box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+        .nav-logo { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.03em; color: var(--near-black); text-decoration: none; transition: color 0.3s; }
+        nav.scrolled .nav-logo { color: var(--white); }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--near-black); font-size: 0.9rem; font-weight: 500; transition: opacity 0.2s; }
+        nav.scrolled .nav-links a { color: var(--warm-white); }
+        .nav-links a:hover { opacity: 0.65; }
+        .btn { background: var(--near-black); color: var(--cream); padding: 0.75rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 0.875rem; transition: all 0.25s; display: inline-block; }
+        .btn:hover { background: var(--soft-black); transform: translateY(-2px); }
+        nav.scrolled .btn { background: var(--cream); color: var(--near-black); }
+        .hero { background: var(--near-black); padding: 10rem 2rem 7rem; min-height: 55vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        .hero-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream); margin-bottom: 1.5rem; display: inline-flex; align-items: center; gap: 0.6rem; }
+        .hero-label::before, .hero-label::after { content: ''; display: inline-block; width: 28px; height: 1px; background: var(--cream); opacity: 0.4; }
+        .hero h1 { color: var(--white); max-width: 800px; margin: 0 auto 1.5rem; }
+        .hero h1 span { color: var(--cream); }
+        .hero-sub { font-size: 1.2rem; color: var(--warm-white); max-width: 600px; margin: 0 auto; line-height: 1.7; }
+        .section { padding: 6rem 2rem; }
+        .section-inner { max-width: 860px; margin: 0 auto; }
+        .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cream); margin-bottom: 1rem; }
+        .section-label.dark { color: var(--soft-black); opacity: 0.4; }
+        .people { background: var(--white); }
+        .people h2 { margin-bottom: 2rem; max-width: 700px; }
+        .people p { font-size: 1.1rem; max-width: 740px; }
+        .people p.opener { font-size: 1.3rem; color: var(--near-black); font-weight: 500; line-height: 1.65; margin-bottom: 2rem; }
+        .person-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3.5rem; }
+        .person-card { background: var(--background); padding: 2rem; border-radius: 10px; border-left: 4px solid var(--cream); transition: all 0.25s; }
+        .person-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
+        .person-card h3 { color: var(--near-black); margin-bottom: 0.5rem; font-size: 1rem; }
+        .person-card p { color: #555; font-size: 0.9rem; margin: 0; line-height: 1.7; }
+        .name-section { background: var(--near-black); }
+        .name-word { font-size: clamp(4rem, 10vw, 7rem); font-weight: 800; color: var(--cream); letter-spacing: -0.03em; line-height: 1; margin-bottom: 0.4rem; display: block; }
+        .name-origin { font-size: 0.95rem; color: var(--warm-white); font-style: italic; margin-bottom: 2.5rem; }
+        .name-section p { color: var(--warm-white); font-size: 1.05rem; max-width: 680px; }
+        .beliefs { background: var(--background); }
+        .beliefs h2 { margin-bottom: 3rem; max-width: 600px; }
+        .belief-list { max-width: 740px; }
+        .belief { padding: 1.75rem 0; border-bottom: 1px solid var(--warm-white); display: flex; gap: 1.5rem; align-items: flex-start; }
+        .belief:last-child { border-bottom: none; }
+        .belief-num { font-size: 0.75rem; font-weight: 700; color: var(--cream); letter-spacing: 0.1em; margin-top: 0.2rem; flex-shrink: 0; }
+        .belief-text h3 { color: var(--near-black); margin-bottom: 0.4rem; font-size: 1rem; }
+        .belief-text p { color: #555; font-size: 0.95rem; margin: 0; line-height: 1.7; }
+        .founder { background: var(--white); }
+        .founder-inner { display: flex; gap: 4rem; align-items: flex-start; max-width: 860px; }
+        .founder-photo-wrap { flex-shrink: 0; }
+        .founder-photo { width: 180px; height: 180px; border-radius: 12px; background: var(--warm-white); display: flex; align-items: center; justify-content: center; overflow: hidden; border: 3px solid var(--cream); }
+        .founder-photo-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: var(--near-black); color: var(--cream); font-size: 2.5rem; font-weight: 800; letter-spacing: -0.02em; }
+        .founder-content blockquote { font-size: 1.15rem; color: var(--near-black); line-height: 1.75; font-style: italic; margin-bottom: 1.5rem; max-width: 600px; }
+        .founder-content blockquote::before { content: '\201C'; font-size: 2rem; color: var(--cream); line-height: 0; vertical-align: -0.5rem; margin-right: 0.2rem; }
+        .founder-name { font-weight: 800; color: var(--near-black); font-size: 1rem; margin-bottom: 0.2rem; }
+        .founder-title { font-size: 0.85rem; color: #888; }
+        .vision { background: var(--near-black); }
+        .vision h2 { color: var(--white); max-width: 680px; margin-bottom: 2rem; }
+        .vision p { color: var(--warm-white); font-size: 1.05rem; max-width: 700px; }
+        .vision blockquote { border-left: 3px solid var(--cream); padding-left: 1.5rem; margin: 2.5rem 0; max-width: 680px; }
+        .vision blockquote p { color: var(--cream); font-size: 1.2rem; font-style: italic; font-weight: 500; line-height: 1.6; }
+        .cta-section { background: var(--white); padding: 6rem 2rem; text-align: center; }
+        .cta-section h2 { max-width: 560px; margin: 0 auto 1rem; }
+        .cta-section p { max-width: 480px; margin: 0 auto 2.5rem; color: #666; font-size: 1.05rem; }
+        .btn-primary { background: var(--near-black); color: var(--cream); padding: 1.1rem 2.5rem; font-size: 1rem; font-weight: 700; border-radius: 6px; border: none; cursor: pointer; transition: all 0.25s; display: inline-block; text-decoration: none; box-shadow: 0 4px 16px rgba(24,24,27,0.2); }
+        .btn-primary:hover { background: var(--soft-black); transform: translateY(-3px); }
+        footer { background: var(--near-black); color: var(--white); padding: 3rem 2rem; text-align: center; }
+        .footer-logo { font-size: 1.2rem; font-weight: 800; color: var(--cream); margin-bottom: 0.5rem; }
+        .footer-tagline { font-size: 0.75rem; color: #555; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1.5rem; }
+        .footer-links { display: flex; gap: 2rem; justify-content: center; margin-bottom: 1.5rem; flex-wrap: wrap; }
+        .footer-links a { color: var(--warm-white); text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--cream); }
+        .footer-copy { color: #444; font-size: 0.8rem; }
+        .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero { padding: 8rem 1.5rem 5rem; min-height: auto; }
+            .section { padding: 4rem 1.25rem; }
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.6rem; }
+            .name-word { font-size: 4.5rem; }
+            .founder-inner { flex-direction: column; gap: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav id="navbar">
+    <a href="/" class="nav-logo">SilaOS</a>
+    <div class="nav-links">
+        <a href="/about">About</a>
+        <a href="/offers">Work with us</a>
+    </div>
+    <a href="https://calendly.com/tatijanaz" target="_blank" class="btn">Book a call</a>
+</nav>
+
+<section class="hero">
+    <div class="hero-label">About SilaOS</div>
+    <h1>You started this business because you're good at what you do.<br><span>Not because you wanted to manage chaos.</span></h1>
+    <p class="hero-sub">SilaOS exists for the people buried in the business of running a business — and ready to get back to the work they actually love.</p>
+</section>
+
+<section class="section people">
+    <div class="section-inner">
+        <div class="section-label dark fade-up">Who this is for</div>
+        <h2 class="fade-up">Real people. Real problems. Every single day.</h2>
+        <p class="opener fade-up">We've been in these businesses. We've seen what happens when a call goes unanswered, when a new hire has no playbook, when the owner becomes the bottleneck of everything they built.</p>
+        <p class="fade-up">The master plumber who can't manage leads. The pilates studio owner buried in scheduling. The doctor whose front desk is overwhelmed. The HVAC tech who misses a call because he's under a unit — and loses the job before he even knows it existed.</p>
+        <p class="fade-up">These aren't small problems. They're the difference between a business that grows and one that grinds its owner into the ground.</p>
+        <div class="person-grid">
+            <div class="person-card fade-up">
+                <h3>The plumber who can't manage leads</h3>
+                <p>Someone calls while he's on a job. They don't leave a message. He never follows up. That's revenue walking out the door — and he doesn't even know it happened.</p>
+            </div>
+            <div class="person-card fade-up">
+                <h3>The pilates studio owner buried in scheduling</h3>
+                <p>Back-and-forth texts, last-minute cancellations, no-shows. She's spending hours a week on logistics that should take minutes. That's not why she opened a studio.</p>
+            </div>
+            <div class="person-card fade-up">
+                <h3>The doctor whose front desk is overwhelmed</h3>
+                <p>Phones ringing, patients waiting, forms piling up. The team is doing their best. But the system underneath isn't keeping up. Patients feel it. Revenue reflects it.</p>
+            </div>
+            <div class="person-card fade-up">
+                <h3>The business owner who is the bottleneck</h3>
+                <p>Every decision runs through them. Every problem lands on their desk. They can't grow what they can't get out of — and they know it. They just don't have a way out yet.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section name-section">
+    <div class="section-inner">
+        <div class="section-label fade-up">The name</div>
+        <span class="name-word fade-up">Sila.</span>
+        <p class="name-origin fade-up">Force. Strength. Power.</p>
+        <p class="fade-up">Sila means strength — but not the loud kind. It's the kind that runs in the background while you're on the job, handles what you can't, and never needs credit for it.</p>
+        <p class="fade-up">That's what we built.</p>
+        <p class="fade-up">OS stands for operating system — because SilaOS isn't a single tool. It's the full system that runs the operational layer of your business. The layer that used to run through you.</p>
+    </div>
+</section>
+
+<section class="section beliefs">
+    <div class="section-inner">
+        <div class="section-label dark fade-up">What we believe</div>
+        <h2 class="fade-up">The principles behind everything we build.</h2>
+        <div class="belief-list">
+            <div class="belief fade-up">
+                <span class="belief-num">01</span>
+                <div class="belief-text">
+                    <h3>People should do what only they can do</h3>
+                    <p>The plumber's skill is in the pipes. SilaOS handles everything that doesn't require that skill — so they can be fully present for everything that does.</p>
+                </div>
+            </div>
+            <div class="belief fade-up">
+                <span class="belief-num">02</span>
+                <div class="belief-text">
+                    <h3>A missed call is a real person who needed help</h3>
+                    <p>Behind every unanswered call is someone with a leaky pipe, a scheduling conflict, a health question, a need. SilaOS treats every missed call as what it actually is — an opportunity to help someone and serve them well.</p>
+                </div>
+            </div>
+            <div class="belief fade-up">
+                <span class="belief-num">03</span>
+                <div class="belief-text">
+                    <h3>AI should integrate, not replace</h3>
+                    <p>SilaOS fills the gaps — the after-hours calls, the follow-ups, the scheduling chaos — without replacing what's already working.</p>
+                </div>
+            </div>
+            <div class="belief fade-up">
+                <span class="belief-num">04</span>
+                <div class="belief-text">
+                    <h3>Every customer deserves to be heard in their language</h3>
+                    <p>The customer who calls in Spanish deserves the same response time and quality as the one who calls in English. SilaOS works in 100+ languages — because good service shouldn't have a language barrier.</p>
+                </div>
+            </div>
+            <div class="belief fade-up">
+                <span class="belief-num">05</span>
+                <div class="belief-text">
+                    <h3>Owners deserve to own their businesses</h3>
+                    <p>Not just in name — in reality. The business should be able to run without them being everywhere at once. SilaOS is built to make that possible — not someday, but now.</p>
+                </div>
+            </div>
+            <div class="belief fade-up">
+                <span class="belief-num">06</span>
+                <div class="belief-text">
+                    <h3>Nothing goes live unproven</h3>
+                    <p>Studio is the simulation environment. AI agents play the other side — the frustrated customer, the price-shopper, the after-hours emergency. Employees train individually. Teams train together. Before launch and every day after. Going live should feel like a decision, not a gamble.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section founder">
+    <div class="section-inner">
+        <div class="section-label dark fade-up">The founder</div>
+        <div class="founder-inner">
+            <div class="founder-photo-wrap fade-up">
+                <div class="founder-photo">
+                    <div class="founder-photo-placeholder">TZ</div>
+                </div>
+            </div>
+            <div class="founder-content fade-up">
+                <blockquote>I built SilaOS because I kept seeing the same thing everywhere: people who were genuinely great at their craft — buried under the weight of running the business around it. The calls. The scheduling. The follow-ups. The things that never stop, that can't be ignored, and that have nothing to do with why they started in the first place. SilaOS is what I built to give them that time back.</blockquote>
+                <p class="founder-name">Tatijana Zamora</p>
+                <p class="founder-title">Founder, SilaOS</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section vision">
+    <div class="section-inner">
+        <div class="section-label fade-up">The vision</div>
+        <h2 class="fade-up">The owner becomes the architect. SilaOS becomes the operator.</h2>
+        <p class="fade-up">Service businesses are the backbone of every community. The plumber who shows up at midnight. The instructor who remembers your name. The doctor who actually listens. These people deserve tools built for them — not enterprise software watered down and repackaged.</p>
+        <div class="fade-up" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin:2rem 0 2.5rem;max-width:700px;">
+            <div style="border-top:2px solid var(--cream);padding-top:1rem;">
+                <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.15em;color:var(--cream);opacity:0.5;text-transform:uppercase;margin-bottom:0.3rem;">01</div>
+                <div style="font-size:1rem;font-weight:800;color:var(--cream);">SilaOS Blueprint</div>
+                <div style="font-size:0.85rem;color:var(--warm-white);margin-top:0.4rem;opacity:0.7;line-height:1.6;">The doctrine layer. Services, pricing, policies, tone — all in one place.</div>
+            </div>
+            <div style="border-top:2px solid var(--cream);padding-top:1rem;">
+                <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.15em;color:var(--cream);opacity:0.5;text-transform:uppercase;margin-bottom:0.3rem;">02</div>
+                <div style="font-size:1rem;font-weight:800;color:var(--cream);">SilaOS Studio</div>
+                <div style="font-size:0.85rem;color:var(--warm-white);margin-top:0.4rem;opacity:0.7;line-height:1.6;">Simulation and training before anything goes live.</div>
+            </div>
+            <div style="border-top:2px solid var(--cream);padding-top:1rem;">
+                <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.15em;color:var(--cream);opacity:0.5;text-transform:uppercase;margin-bottom:0.3rem;">03</div>
+                <div style="font-size:1rem;font-weight:800;color:var(--cream);">SilaOS Workflows</div>
+                <div style="font-size:0.85rem;color:var(--warm-white);margin-top:0.4rem;opacity:0.7;line-height:1.6;">Automated execution. Calls, intake, scheduling, follow-ups — running 24/7.</div>
+            </div>
+            <div style="border-top:2px solid var(--cream);padding-top:1rem;">
+                <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.15em;color:var(--cream);opacity:0.5;text-transform:uppercase;margin-bottom:0.3rem;">04</div>
+                <div style="font-size:1rem;font-weight:800;color:var(--cream);">SilaOS Dashboard</div>
+                <div style="font-size:0.85rem;color:var(--warm-white);margin-top:0.4rem;opacity:0.7;line-height:1.6;">The control tower. See everything without being in everything.</div>
+            </div>
+        </div>
+        <blockquote>
+            <p>The owner writes the rules once. SilaOS runs them — the Workflows, the Studio, the Blueprint, the Dashboard. Blueprint sets the standard. Studio proves it works before it's live. Workflows run it 24/7. Dashboard shows you it's working. That's the whole system.</p>
+        </blockquote>
+    </div>
+</section>
+
+<section class="cta-section">
+    <h2 class="fade-up">Ready to stop being the person everything runs through?</h2>
+    <p class="fade-up">Start with a Front Office OS Assessment. We'll map how your business runs today and design the system it actually needs.</p>
+    <a href="/offers" class="btn-primary fade-up">See how we work →</a>
+</section>
+
+<footer>
+    <div class="footer-logo">SilaOS</div>
+    <p class="footer-tagline">You own it. SilaOS runs it.</p>
+    <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/offers">Work with us</a>
+        <a href="https://calendly.com/tatijanaz" target="_blank">Book a call</a>
+        <a href="https://instagram.com/silaos.ai" target="_blank">Instagram</a>
+        <a href="mailto:hello@silaos.ai">Contact</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 SilaOS. All rights reserved. | silaos.ai</p>
+</footer>
+
+<script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 50); });
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

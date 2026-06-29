@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work With Us — SilaOS</title>
+    <meta name="description" content="Start with an assessment. Build your operating system. Optimize over time. Here's exactly how SilaOS works with your business.">
+    <meta name="theme-color" content="#18181B">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --near-black: #18181B; --soft-black: #2C2C30; --cream: #D4C9B8; --warm-white: #EDE8DF; --background: #FAF8F4; --white: #FFFFFF; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.7; color: var(--near-black); background: var(--background); overflow-x: hidden; }
+        h1, h2, h3 { font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
+        h1 { font-size: clamp(2.8rem, 6vw, 4.2rem); }
+        h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); }
+        h3 { font-size: 1.2rem; font-weight: 700; }
+        p { font-size: 1rem; color: #4a4a4a; margin-bottom: 1rem; line-height: 1.8; }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: transparent; padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease; }
+        nav.scrolled { background: var(--near-black); box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+        .nav-logo { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.03em; color: var(--near-black); text-decoration: none; transition: color 0.3s; }
+        nav.scrolled .nav-logo { color: var(--white); }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--near-black); font-size: 0.9rem; font-weight: 500; transition: opacity 0.2s; }
+        nav.scrolled .nav-links a { color: var(--warm-white); }
+        .nav-links a:hover { opacity: 0.65; }
+        .btn { background: var(--near-black); color: var(--cream); padding: 0.75rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 0.875rem; transition: all 0.25s; display: inline-block; }
+        .btn:hover { background: var(--soft-black); transform: translateY(-2px); }
+        nav.scrolled .btn { background: var(--cream); color: var(--near-black); }
+        .btn-primary { background: var(--near-black); color: var(--cream); padding: 1.1rem 2.5rem; font-size: 1rem; font-weight: 700; border-radius: 6px; border: none; cursor: pointer; transition: all 0.25s; display: inline-block; text-decoration: none; }
+        .btn-primary:hover { background: var(--soft-black); transform: translateY(-3px); }
+        .hero { background: var(--near-black); padding: 10rem 2rem 7rem; min-height: 55vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        .hero-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream); margin-bottom: 1.5rem; display: inline-flex; align-items: center; gap: 0.6rem; }
+        .hero-label::before, .hero-label::after { content: ''; display: inline-block; width: 28px; height: 1px; background: var(--cream); opacity: 0.4; }
+        .hero h1 { color: var(--white); max-width: 800px; margin: 0 auto 1.5rem; }
+        .hero h1 span { color: var(--cream); }
+        .hero-sub { font-size: 1.2rem; color: var(--warm-white); max-width: 600px; margin: 0 auto; line-height: 1.7; }
+        .section { padding: 6rem 2rem; }
+        .section-inner { max-width: 1000px; margin: 0 auto; }
+        .section-inner-narrow { max-width: 800px; margin: 0 auto; }
+        .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cream); margin-bottom: 1rem; }
+        .section-label.dark { color: var(--soft-black); opacity: 0.4; }
+
+        /* OFFER CARDS */
+        .offer-stack { display: flex; flex-direction: column; gap: 3rem; }
+        .offer-card { background: var(--white); border-radius: 16px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.06); }
+        .offer-card-header { background: var(--near-black); padding: 2.5rem 3rem; }
+        .offer-card-header.light { background: var(--warm-white); }
+        .offer-number { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cream); opacity: 0.6; margin-bottom: 0.5rem; }
+        .offer-number.dark { color: var(--soft-black); }
+        .offer-name { font-size: 1.6rem; font-weight: 800; color: var(--white); letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+        .offer-name.dark { color: var(--near-black); }
+        .offer-price { font-size: 2.5rem; font-weight: 800; color: var(--cream); line-height: 1; }
+        .offer-price.dark { color: var(--near-black); }
+        .offer-price-note { font-size: 0.85rem; color: rgba(237,232,223,0.6); margin-top: 0.25rem; }
+        .offer-price-note.dark { color: #888; }
+        .offer-card-body { padding: 2.5rem 3rem; }
+        .offer-desc { font-size: 1.05rem; color: #444; max-width: 680px; margin-bottom: 2rem; line-height: 1.75; }
+        .offer-deliverables { margin-bottom: 2rem; }
+        .offer-deliverables h4 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--soft-black); opacity: 0.5; margin-bottom: 1rem; }
+        .deliverable-list { display: flex; flex-direction: column; gap: 0; border: 1px solid rgba(0,0,0,0.06); border-radius: 10px; overflow: hidden; }
+        .deliverable-item { display: flex; gap: 1rem; padding: 1.1rem 1.5rem; border-bottom: 1px solid rgba(0,0,0,0.06); align-items: flex-start; background: var(--background); }
+        .deliverable-item:last-child { border-bottom: none; }
+        .deliverable-check { color: var(--cream); font-weight: 700; flex-shrink: 0; margin-top: 2px; font-size: 0.9rem; }
+        .deliverable-item p { font-size: 0.9rem; color: #555; margin: 0; line-height: 1.6; }
+        .deliverable-item strong { color: var(--near-black); }
+        .offer-cta { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+        .offer-cta-note { font-size: 0.85rem; color: #888; }
+
+        /* RETAINER TABLE */
+        .retainer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem; }
+        .retainer-card { background: var(--background); border-radius: 12px; padding: 2rem; border-top: 3px solid var(--cream); }
+        .retainer-card.featured { background: var(--near-black); }
+        .retainer-name { font-size: 1.1rem; font-weight: 800; color: var(--near-black); margin-bottom: 0.25rem; }
+        .retainer-name.light { color: var(--cream); }
+        .retainer-price { font-size: 2rem; font-weight: 800; color: var(--near-black); line-height: 1; margin-bottom: 0.5rem; }
+        .retainer-price.light { color: var(--white); }
+        .retainer-period { font-size: 0.8rem; color: #888; margin-bottom: 1.25rem; }
+        .retainer-period.light { color: rgba(237,232,223,0.5); }
+        .retainer-features { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+        .retainer-features li { font-size: 0.875rem; color: #555; display: flex; gap: 0.5rem; align-items: flex-start; }
+        .retainer-features.light li { color: var(--warm-white); }
+        .retainer-features li::before { content: '→'; color: var(--cream); font-weight: 700; flex-shrink: 0; }
+
+        /* ENTERPRISE */
+        .enterprise-box { background: var(--near-black); border-radius: 14px; padding: 3rem; max-width: 700px; border-top: 3px solid var(--cream); }
+        .enterprise-box h3 { color: var(--white); font-size: 1.4rem; margin-bottom: 0.75rem; }
+        .enterprise-box p { color: var(--warm-white); font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.7; }
+
+        /* HOW WE BUILD */
+        .build-steps { display: flex; flex-direction: column; gap: 0; margin-top: 2.5rem; }
+        .build-step { display: grid; grid-template-columns: 60px 1fr; gap: 2rem; padding: 2.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.07); }
+        .build-step:first-child { border-top: 1px solid rgba(0,0,0,0.07); }
+        .build-step-num { font-size: 2.5rem; font-weight: 800; color: var(--cream); line-height: 1; }
+        .build-step-content h3 { font-size: 1.1rem; color: var(--near-black); margin-bottom: 0.5rem; }
+        .build-step-content p { font-size: 0.95rem; color: #666; margin: 0; line-height: 1.7; }
+
+        /* OWNERSHIP */
+        .ownership { background: var(--near-black); }
+        .ownership-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+        .ownership-card { background: var(--soft-black); border-radius: 10px; padding: 2rem; border-top: 2px solid var(--cream); }
+        .ownership-card h3 { color: var(--cream); font-size: 1rem; margin-bottom: 0.5rem; }
+        .ownership-card p { color: var(--warm-white); font-size: 0.875rem; margin: 0; line-height: 1.7; }
+
+        /* FAQ */
+        .faq-list { display: flex; flex-direction: column; gap: 0; max-width: 720px; }
+        .faq-item { padding: 1.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.08); }
+        .faq-item:first-child { border-top: 1px solid rgba(0,0,0,0.08); }
+        .faq-q { font-size: 1rem; font-weight: 700; color: var(--near-black); margin-bottom: 0.5rem; }
+        .faq-a { font-size: 0.95rem; color: #666; margin: 0; line-height: 1.75; }
+
+        footer { background: var(--near-black); color: var(--white); padding: 3rem 2rem; text-align: center; }
+        .footer-logo { font-size: 1.2rem; font-weight: 800; color: var(--cream); margin-bottom: 0.5rem; }
+        .footer-tagline { font-size: 0.75rem; color: #555; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1.5rem; }
+        .footer-links { display: flex; gap: 2rem; justify-content: center; margin-bottom: 1.5rem; flex-wrap: wrap; }
+        .footer-links a { color: var(--warm-white); text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--cream); }
+        .footer-copy { color: #444; font-size: 0.8rem; }
+        .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero { padding: 8rem 1.5rem 5rem; min-height: auto; }
+            .section { padding: 4rem 1.25rem; }
+            .offer-card-header, .offer-card-body { padding: 2rem 1.75rem; }
+            .retainer-grid { grid-template-columns: 1fr; }
+            .build-step { grid-template-columns: 1fr; gap: 0.75rem; }
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav id="navbar">
+    <a href="/" class="nav-logo">SilaOS</a>
+    <div class="nav-links">
+        <a href="/about">About</a>
+        <a href="/offers">Work with us</a>
+    </div>
+    <a href="https://calendly.com/tatijanaz" target="_blank" class="btn">Book a call</a>
+</nav>
+
+<section class="hero">
+    <div class="hero-label">Work With Us</div>
+    <h1>An operating system <span>designed for your business.</span></h1>
+    <p class="hero-sub">SilaOS isn't a subscription you turn on. It's assessed, built, and installed inside the way your business actually runs — then managed and improved over time.</p>
+</section>
+
+<!-- ENGAGEMENT MODEL -->
+<section class="section" style="background:var(--background);">
+    <div class="section-inner">
+        <div class="section-label dark fade-up">How it works</div>
+        <h2 class="fade-up">Three stages. One operating system.</h2>
+        <p class="fade-up" style="font-size:1.1rem;color:#555;max-width:640px;margin-bottom:4rem;line-height:1.75;">Every SilaOS engagement follows the same path: understand how the business runs, build the operating system around it, then keep it tuned and growing. Here's what each stage actually delivers.</p>
+
+        <div class="offer-stack">
+
+            <!-- ASSESSMENT -->
+            <div class="offer-card fade-up">
+                <div class="offer-card-header">
+                    <div class="offer-number">Stage 01</div>
+                    <div class="offer-name">Front Office OS Assessment</div>
+                    <div class="offer-price">$997</div>
+                    <div class="offer-price-note">One time — real deliverable, not just a call</div>
+                </div>
+                <div class="offer-card-body">
+                    <p class="offer-desc">Before we build anything, we map how your business actually runs. Calls, intake, scheduling, follow-ups, handoffs — where the revenue is leaking and where the owner is still the bottleneck. You walk away with a concrete design for the operating system your business needs.</p>
+                    <div class="offer-deliverables">
+                        <h4>What you receive</h4>
+                        <div class="deliverable-list">
+                            <div class="deliverable-item"><div class="deliverable-check">✓</div><p><strong>Current-state operating map</strong> — how your business actually runs today, documented</p></div>
+                            <div class="deliverable-item"><div class="deliverable-check">✓</div><p><strong>Pain point and revenue-leak analysis</strong> — missed calls, slow follow-up, scheduling gaps, handoff failures</p></div>
+                            <div class="deliverable-item"><div class="deliverable-check">✓</div><p><strong>Draft SilaOS Blueprint structure</strong> — the doctrine layer for your specific business</p></div>
+                            <div class="deliverable-item"><div class="deliverable-check">✓</div><p><strong>Phase-one workflow recommendations</strong> — what SilaOS should run first and why</p></div>
+                            <div class="deliverable-item"><div class="deliverable-check">✓</div><p><strong>Build scope, timeline, and quote</strong> — exactly what the OS build would include and what it costs</p></div>
+                        </div>
+                    </div>
+                    <div class="offer-cta">
+                        <a href="https://calendly.com/tatijanaz" target="_blank" class="btn-primary">Book your assessment →</a>
+                        <p class="offer-cta-note">We'll reach out within 24 hours to confirm and schedule.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BUILD -->
+            <div class="offer-card fade-up">
+                <div class="offer-card-header">
+                    <div class="offer-number">Stage 02</div>
+                    <div class="offer-name">SilaOS Business OS Build</div>
+                    <div class="offer-price">$4,997–$7,997</div>
+                    <div class="offer-price-note">One time — most projects land in this range</div>
+                </div>
+                <div class="offer-card-body">
+                    <p class="offer-desc">This is where the operating system gets built and installed. Blueprint populated with your real business doctrine. Workflows designed, tested in Studio, and deployed. Dashboard giving you full visibility. All of it installed inside your own accounts and systems — you own it.</p>
+                    <div class="offer-deliverables">
+                        <h4>What gets built and handed over</h4>
+                        <div class="deliverable-list">
+                            <div class="deliverable-item"><div class="deliverable-check">✓</div><p><strong>SilaOS Blueprint v1</strong> — services, pricing, policies, scripts, escalation rules, tone, and edge cases</p></div>
+                            <div class="deliverable-item"><div class="deliverable-check">✓</div><p><strong>SilaOS Dashboard v1</strong> — calls, leads, jobs, outcomes, and the visibility layer your business needs</p></div>
+                            <div class="deliverable-item"><div class="deliverable-check">✓</div><p><strong>SilaOS Studio setup</strong> — configured and tested before anything goes live</p></div>
+                            <div class="deliverable-item"><div class="deliverable-check">✓</div><p><strong>1–3 live Workflows</strong> — front-office execution installed and running in your actual systems</p></div>
+                            <div class="deliverable-item"><div class="deliverable-check">✓</div><p><strong>Connected integrations</strong> — your calendar, CRM, phone system, and tools wired in</p></div>
+                            <div class="deliverable-item"><div class="deliverable-check">✓</div><p><strong>Handoff packet and training</strong> — owner map, rules, escalation logic, and how to operate what was built</p></div>
+                        </div>
+                    </div>
+                    <div style="background:rgba(212,201,184,0.1);border:1px solid rgba(212,201,184,0.3);border-radius:8px;padding:1.25rem 1.5rem;margin-bottom:2rem;">
+                        <p style="font-size:0.9rem;font-weight:700;color:var(--near-black);margin-bottom:0.25rem;">You own the implementation.</p>
+                        <p style="font-size:0.875rem;color:#555;margin:0;line-height:1.7;">SilaOS is installed inside your accounts and systems — not hidden in ours. Your business. Your tools. Your operating system.</p>
+                    </div>
+                    <div class="offer-cta">
+                        <a href="https://calendly.com/tatijanaz" target="_blank" class="btn-primary">Book a call to discuss →</a>
+                        <p class="offer-cta-note">Starts after assessment. Scope confirmed before any build begins.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RETAINER -->
+            <div class="offer-card fade-up">
+                <div class="offer-card-header light">
+                    <div class="offer-number dark">Stage 03</div>
+                    <div class="offer-name dark">OS Optimization — Ongoing</div>
+                    <div class="offer-price dark">$1,497–$2,497</div>
+                    <div class="offer-price-note dark">Per month — optional after the build</div>
+                </div>
+                <div class="offer-card-body">
+                    <p class="offer-desc">The retainer isn't software access. It's AI operations — monitoring, tuning, optimizing, and expanding the system that runs your business. An OS that doesn't get maintained drifts. One that gets maintained keeps getting better.</p>
+                    <div class="retainer-grid">
+                        <div class="retainer-card">
+                            <div class="retainer-name">OS Care</div>
+                            <div class="retainer-price">$1,497</div>
+                            <div class="retainer-period">per month</div>
+                            <ul class="retainer-features">
+                                <li>Monthly performance review against your KPIs</li>
+                                <li>Blueprint updates as services or pricing change</li>
+                                <li>Workflow optimization and routing improvements</li>
+                                <li>Prompt and guardrail tuning from real behavior</li>
+                                <li>Priority support when something needs attention</li>
+                                <li>Monthly summary report and recommendations</li>
+                            </ul>
+                        </div>
+                        <div class="retainer-card featured">
+                            <div class="retainer-name light">OS Growth</div>
+                            <div class="retainer-price light">$2,497</div>
+                            <div class="retainer-period light">per month</div>
+                            <ul class="retainer-features light">
+                                <li>Everything in OS Care</li>
+                                <li>Higher-touch support and faster response</li>
+                                <li>One meaningful workflow expansion per month</li>
+                                <li>New automations as your business grows</li>
+                                <li>Proactive recommendations — not just reactive fixes</li>
+                                <li>OS keeps expanding as your business does</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="offer-cta">
+                        <a href="https://calendly.com/tatijanaz" target="_blank" class="btn-primary">Book a call to discuss →</a>
+                        <p class="offer-cta-note">Available after the build is complete and live.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ENTERPRISE -->
+<section class="section" style="background:var(--near-black);">
+    <div class="section-inner">
+        <div class="section-label fade-up">Enterprise</div>
+        <h2 class="fade-up" style="color:var(--white);">Multi-location or complex operations?</h2>
+        <p class="fade-up" style="color:var(--warm-white);max-width:580px;margin-bottom:3rem;font-size:1.05rem;">For businesses with significantly more complexity — multiple locations, higher volume, more internal workflows, multilingual operations — scope and pricing are custom.</p>
+        <div class="enterprise-box fade-up">
+            <h3>Executive / Enterprise OS Build</h3>
+            <p>Multi-location businesses or significantly more complex operations start from $15,000. Custom scope, dedicated support, multi-agent architecture where justified, and deeper dashboard and reporting. We design the full operating system for how your business actually runs at scale.</p>
+            <a href="https://calendly.com/tatijanaz" target="_blank" class="btn-primary">Book a call to discuss →</a>
+        </div>
+    </div>
+</section>
+
+<!-- HOW WE BUILD -->
+<section class="section" style="background:var(--background);">
+    <div class="section-inner-narrow">
+        <div class="section-label dark fade-up">The build process</div>
+        <h2 class="fade-up">How SilaOS gets built — in order.</h2>
+        <p class="fade-up" style="font-size:1rem;color:#888;max-width:600px;">We follow a specific sequence because order matters. Blueprint before prompting. Testing before launch. One stable workflow before the next.</p>
+        <div class="build-steps">
+            <div class="build-step fade-up">
+                <div class="build-step-num">1</div>
+                <div class="build-step-content">
+                    <h3>Blueprint first</h3>
+                    <p>Before any AI runs, we build the doctrine. Services, pricing, policies, tone, scripts, escalation rules. The AI runs from the Blueprint — not from guesswork. This is always the foundation.</p>
+                </div>
+            </div>
+            <div class="build-step fade-up">
+                <div class="build-step-num">2</div>
+                <div class="build-step-content">
+                    <h3>Workflow design</h3>
+                    <p>We define the workflows SilaOS should run: what triggers them, what they collect, what decisions they make, when they escalate to a human. Deterministic logic before AI behavior.</p>
+                </div>
+            </div>
+            <div class="build-step fade-up">
+                <div class="build-step-num">3</div>
+                <div class="build-step-content">
+                    <h3>Agent layer</h3>
+                    <p>The first agent is narrow and specific — usually Front Office Intake. Limited tools, strict permissions, tight escalation rules. We don't build a general-purpose AI on day one.</p>
+                </div>
+            </div>
+            <div class="build-step fade-up">
+                <div class="build-step-num">4</div>
+                <div class="build-step-content">
+                    <h3>Dashboard visibility</h3>
+                    <p>Before anything goes live, the Dashboard is built. You need to see what SilaOS is doing. Without visibility, you can't trust the system — and neither can we.</p>
+                </div>
+            </div>
+            <div class="build-step fade-up">
+                <div class="build-step-num">5</div>
+                <div class="build-step-content">
+                    <h3>Studio testing</h3>
+                    <p>Every scenario gets run in Studio before it touches a real customer. Pricing questions. Objections. Edge cases. After-hours emergencies. We prove it works before it's live.</p>
+                </div>
+            </div>
+            <div class="build-step fade-up">
+                <div class="build-step-num">6</div>
+                <div class="build-step-content">
+                    <h3>Launch with guardrails — then expand</h3>
+                    <p>We launch the first workflow and watch it run. Only after it's stable do we add the next one. The OS grows in layers — each one proven before the next is built.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- OWNERSHIP -->
+<section class="section ownership">
+    <div class="section-inner">
+        <div class="section-label fade-up">Ownership and transparency</div>
+        <h2 class="fade-up" style="color:var(--white);">You own the operating system we build.</h2>
+        <p class="fade-up" style="color:var(--warm-white);max-width:580px;font-size:1.05rem;margin-bottom:0;">SilaOS is installed inside your systems and accounts. Not ours. Here's exactly what that means.</p>
+        <div class="ownership-grid">
+            <div class="ownership-card fade-up">
+                <h3>Your accounts</h3>
+                <p>SilaOS is built inside your tools — your calendar, your CRM, your phone system. The credentials are yours. The billing is yours. Nothing is hidden in a black box.</p>
+            </div>
+            <div class="ownership-card fade-up">
+                <h3>Your implementation</h3>
+                <p>The Blueprint, Dashboard, workflows, and configurations built for your business belong to your business. If the retainer ends, the system stays. You own what was built.</p>
+            </div>
+            <div class="ownership-card fade-up">
+                <h3>Our frameworks</h3>
+                <p>We retain the underlying SilaOS methodology, playbooks, prompt libraries, and reusable frameworks. You get the implementation. We keep the system that produces it.</p>
+            </div>
+            <div class="ownership-card fade-up">
+                <h3>Transparency</h3>
+                <p>Your customers always know they're interacting with an AI. SilaOS is honest about that. What they experience is fast, professional, and sounds like your business — because it runs from your Blueprint.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" style="background:var(--background);">
+    <div class="section-inner-narrow">
+        <div class="section-label dark fade-up">Common questions</div>
+        <h2 class="fade-up">What people ask before they start.</h2>
+        <div class="faq-list">
+            <div class="faq-item fade-up">
+                <div class="faq-q">Do I need to replace my current tools?</div>
+                <div class="faq-a">No. SilaOS installs alongside what you already use — your calendar, your CRM, your phone system. It fills the gaps rather than replacing infrastructure that's already working.</div>
+            </div>
+            <div class="faq-item fade-up">
+                <div class="faq-q">What if I'm not technical?</div>
+                <div class="faq-a">You don't need to be. We handle the technical setup. Your job is to know your business — pricing, protocols, how you handle edge cases. We build the system around that knowledge.</div>
+            </div>
+            <div class="faq-item fade-up">
+                <div class="faq-q">How long does a build take?</div>
+                <div class="faq-a">Most builds take 4–8 weeks from assessment to first live workflow, depending on complexity. We move as fast as the scope allows — but we don't rush past testing.</div>
+            </div>
+            <div class="faq-item fade-up">
+                <div class="faq-q">What happens if I don't want the retainer?</div>
+                <div class="faq-a">The system stays. What was built in your accounts remains yours. The retainer is optional — it's for clients who want ongoing optimization, monitoring, and expansion. Not for clients who want to run it independently.</div>
+            </div>
+            <div class="faq-item fade-up">
+                <div class="faq-q">Do my customers know they're talking to AI?</div>
+                <div class="faq-a">Yes — always. SilaOS is honest about being AI. What customers experience is a fast, professional response that sounds like your business. That transparency is what builds trust and makes the system work long-term.</div>
+            </div>
+            <div class="faq-item fade-up">
+                <div class="faq-q">Is the assessment just a sales call?</div>
+                <div class="faq-a">No. It's a paid engagement that produces real deliverables — your operating map, revenue-leak analysis, draft Blueprint structure, and a build scope. You leave with something useful whether you move forward or not.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FINAL CTA -->
+<section style="background:var(--near-black);padding:6rem 2rem;text-align:center;">
+    <div style="max-width:640px;margin:0 auto;">
+        <p style="font-size:0.75rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--cream);opacity:0.6;margin-bottom:1rem;">Start here</p>
+        <h2 style="color:var(--white);margin-bottom:1rem;">Ready to stop being the person everything runs through?</h2>
+        <p style="color:var(--warm-white);font-size:1.05rem;margin-bottom:2.5rem;line-height:1.7;">Start with an assessment. We'll map how your business runs today and design the operating system it actually needs.</p>
+        <a href="https://calendly.com/tatijanaz" target="_blank" class="btn-primary" style="background:var(--cream);color:var(--near-black);">Book your assessment — $997 →</a>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-logo">SilaOS</div>
+    <p class="footer-tagline">You own it. SilaOS runs it.</p>
+    <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/offers">Work with us</a>
+        <a href="https://calendly.com/tatijanaz" target="_blank">Book a call</a>
+        <a href="https://instagram.com/silaos.ai" target="_blank">Instagram</a>
+        <a href="mailto:hello@silaos.ai">Contact</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 SilaOS. All rights reserved. | silaos.ai</p>
+</footer>
+
+<script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 50); });
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

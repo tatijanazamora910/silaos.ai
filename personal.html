@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SilaOS Personal — Your Personal Agentic Operator</title>
+    <meta name="description" content="You live it. SilaOS Personal runs it. A fully agentic personal operator built around you — your schedule, your voice, your standards.">
+    <meta property="og:title" content="SilaOS Personal — You live it. SilaOS runs it.">
+    <meta property="og:description" content="A fully agentic personal operator built around you. Not a chatbot. Not an assistant you prompt. A system that acts on your behalf.">
+    <meta property="og:url" content="https://silaos.ai/personal">
+    <meta name="theme-color" content="#18181B">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --near-black: #18181B; --soft-black: #2C2C30; --cream: #D4C9B8;
+            --warm-white: #EDE8DF; --background: #FAF8F4; --white: #FFFFFF;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.7; color: var(--near-black); background: var(--background); overflow-x: hidden; }
+        h1,h2,h3,h4 { font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
+        h1 { font-size: clamp(2.8rem, 6vw, 4.5rem); margin-bottom: 1.5rem; }
+        h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); margin-bottom: 1.25rem; }
+        h3 { font-size: 1.125rem; margin-bottom: 0.5rem; font-weight: 700; }
+        p { font-size: 1rem; margin-bottom: 1rem; color: #4a4a4a; }
+
+        /* NAV */
+        nav { position: sticky; top: 0; z-index: 1000; background: transparent; padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease; }
+        nav.scrolled { background: var(--near-black); box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+        .nav-logo { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.03em; color: var(--near-black); text-decoration: none; transition: color 0.3s; }
+        nav.scrolled .nav-logo { color: var(--white); }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--near-black); font-size: 0.9rem; font-weight: 500; transition: opacity 0.2s; }
+        nav.scrolled .nav-links a { color: var(--warm-white); }
+        .nav-links a:hover { opacity: 0.65; }
+        .btn { background: var(--near-black); color: var(--cream); padding: 0.8rem 1.75rem; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 0.9rem; border: none; cursor: pointer; transition: all 0.25s ease; display: inline-block; box-shadow: 0 4px 12px rgba(24,24,27,0.2); }
+        .btn:hover { background: var(--soft-black); transform: translateY(-2px); }
+        nav.scrolled .btn { background: var(--cream); color: var(--near-black); }
+
+        /* HERO */
+        .hero { background: var(--near-black); color: var(--white); padding: 7rem 2rem 6rem; text-align: center; min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .hero-eyebrow { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cream); margin-bottom: 1.5rem; display: inline-flex; align-items: center; gap: 0.5rem; }
+        .hero-eyebrow::before, .hero-eyebrow::after { content: ''; display: inline-block; width: 28px; height: 1px; background: var(--cream); opacity: 0.5; }
+        .hero h1 { color: var(--white); max-width: 900px; margin-left: auto; margin-right: auto; margin-bottom: 1rem; }
+        .hero h1 span { color: var(--cream); }
+        .hero-sub { font-size: 1.2rem; color: var(--warm-white); max-width: 600px; margin: 0 auto 2.5rem; line-height: 1.65; }
+        .hero-cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.25rem; }
+        .btn-primary { background: var(--cream); color: var(--near-black); padding: 1.1rem 2.5rem; font-size: 1.05rem; font-weight: 700; border-radius: 6px; border: none; cursor: pointer; transition: all 0.25s; display: inline-block; text-decoration: none; box-shadow: 0 4px 16px rgba(212,201,184,0.3); }
+        .btn-primary:hover { background: var(--warm-white); transform: translateY(-3px); box-shadow: 0 14px 32px rgba(212,201,184,0.4); }
+        .btn-ghost { background: transparent; color: var(--cream); padding: 1.1rem 2.5rem; font-size: 1.05rem; font-weight: 600; border-radius: 6px; border: 2px solid var(--cream); cursor: pointer; transition: all 0.25s; display: inline-block; text-decoration: none; }
+        .btn-ghost:hover { background: rgba(212,201,184,0.1); transform: translateY(-2px); }
+        .hero-proof { font-size: 0.875rem; color: #666; display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 0.25rem; }
+        .hero-proof span { display: flex; align-items: center; gap: 0.35rem; }
+        .hero-proof span::before { content: '✓'; color: var(--cream); font-weight: 700; }
+
+        /* TRUST BAR */
+        .trust-bar { background: var(--soft-black); padding: 2rem; display: flex; justify-content: center; gap: 0; flex-wrap: wrap; }
+        .trust-stat { text-align: center; padding: 1rem 2.5rem; border-right: 1px solid #3a3a3e; flex: 1; min-width: 180px; }
+        .trust-stat:last-child { border-right: none; }
+        .trust-stat-number { font-size: 2rem; font-weight: 800; color: var(--cream); line-height: 1; margin-bottom: 0.3rem; }
+        .trust-stat-label { font-size: 0.8rem; color: var(--warm-white); line-height: 1.4; }
+
+        /* SECTIONS */
+        .section { padding: 6rem 2rem; }
+        .section-inner { max-width: 1200px; margin: 0 auto; }
+        .section-inner-narrow { max-width: 900px; margin: 0 auto; }
+        .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cream); margin-bottom: 1rem; }
+        .section-label.dark { color: var(--soft-black); opacity: 0.5; }
+
+        /* PROBLEM */
+        .problem { background: var(--background); }
+        .pain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .pain-card { background: var(--white); border-radius: 10px; padding: 2rem; border: 1px solid rgba(0,0,0,0.06); }
+        .pain-card h3 { color: var(--near-black); margin-bottom: 0.5rem; }
+        .pain-card p { color: #666; font-size: 0.95rem; margin: 0; }
+
+        /* AGENTIC CALLOUT */
+        .agentic { background: var(--near-black); padding: 5rem 2rem; text-align: center; }
+        .agentic-inner { max-width: 700px; margin: 0 auto; }
+        .agentic h2 { color: var(--white); margin-bottom: 1rem; }
+        .agentic p { color: var(--warm-white); font-size: 1.1rem; margin-bottom: 0; }
+        .agentic-diff { display: flex; gap: 2rem; justify-content: center; margin-top: 3rem; flex-wrap: wrap; }
+        .diff-item { text-align: center; }
+        .diff-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
+        .diff-label.bad { color: #888; }
+        .diff-label.good { color: var(--cream); }
+        .diff-text { font-size: 1rem; font-weight: 700; }
+        .diff-text.bad { color: #555; text-decoration: line-through; }
+        .diff-text.good { color: var(--warm-white); }
+
+        /* SOLUTION / PILLARS */
+        .solution { background: var(--soft-black); padding: 6rem 2rem; }
+        .solution-sub { font-size: 1.1rem; color: rgba(237,232,223,0.7); max-width: 580px; margin-bottom: 3rem; }
+        .pillar-shelf { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-bottom: 3.5rem; }
+        .pillar-item { border-top: 3px solid var(--cream); padding-top: 1.25rem; }
+        .pillar-num { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; color: var(--cream); opacity: 0.55; text-transform: uppercase; margin-bottom: 0.35rem; }
+        .pillar-name { font-size: 1.2rem; font-weight: 800; color: var(--cream); letter-spacing: -0.01em; }
+        .pillar-desc { font-size: 0.875rem; color: var(--warm-white); margin-top: 0.5rem; opacity: 0.75; line-height: 1.6; }
+
+
+        /* FEATURES */
+        .features { background: var(--background); }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+        .feature-card { background: var(--white); border-radius: 10px; padding: 1.75rem; border: 1px solid rgba(0,0,0,0.06); }
+        .feature-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+        .feature-card h3 { font-size: 1rem; color: var(--near-black); margin-bottom: 0.4rem; }
+        .feature-card p { font-size: 0.875rem; color: #666; margin: 0; line-height: 1.6; }
+
+        /* BLUEPRINT */
+        .blueprint { background: var(--background); }
+        .blueprint-examples { display: flex; flex-direction: column; gap: 0; max-width: 700px; border: 1px solid rgba(0,0,0,0.08); border-radius: 12px; overflow: hidden; }
+        .blueprint-row { display: flex; gap: 1.5rem; padding: 1.5rem 2rem; border-bottom: 1px solid rgba(0,0,0,0.06); background: var(--white); align-items: flex-start; }
+        .blueprint-row:last-child { border-bottom: none; }
+        .blueprint-icon { font-size: 1.25rem; flex-shrink: 0; margin-top: 2px; }
+        .blueprint-row-title { font-weight: 700; color: var(--near-black); margin-bottom: 0.25rem; }
+        .blueprint-row-desc { font-size: 0.9rem; color: #666; }
+        .result-box { background: var(--near-black); border-radius: 10px; padding: 2rem 2.5rem; max-width: 700px; margin-top: 2rem; }
+        .result-box-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--cream); margin-bottom: 0.75rem; }
+        .result-box p { color: var(--warm-white); margin: 0; font-size: 0.95rem; line-height: 1.75; }
+
+        /* STUDIO */
+        .studio { background: var(--near-black); }
+        .studio-examples { display: flex; flex-direction: column; gap: 0; max-width: 700px; border: 1px solid #2C2C30; border-radius: 12px; overflow: hidden; }
+        .studio-row { display: flex; gap: 1.5rem; padding: 1.5rem 2rem; border-bottom: 1px solid #2C2C30; background: #1E1E22; align-items: flex-start; }
+        .studio-row:last-child { border-bottom: none; }
+        .studio-icon { font-size: 1.25rem; flex-shrink: 0; margin-top: 2px; }
+        .studio-row-title { font-weight: 700; color: var(--warm-white); margin-bottom: 0.25rem; }
+        .studio-row-desc { font-size: 0.9rem; color: rgba(237,232,223,0.6); }
+
+        /* WHO ITS FOR */
+        .verticals { background: var(--background); }
+        .verticals-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2.5rem; }
+        .vertical-card { background: var(--white); border-radius: 10px; padding: 2rem; border: 1px solid rgba(0,0,0,0.06); }
+        .vertical-icon { font-size: 2rem; margin-bottom: 1rem; }
+        .vertical-card h3 { color: var(--near-black); margin-bottom: 0.5rem; }
+        .vertical-card p { color: #666; font-size: 0.95rem; margin: 0; }
+
+        /* HOW IT WORKS */
+        .how { background: var(--warm-white); }
+        .steps-big { display: flex; flex-direction: column; gap: 0; margin-top: 2.5rem; }
+        .step-big { display: flex; gap: 2rem; padding: 2.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.08); }
+        .step-big:last-child { border-bottom: none; }
+        .step-num-big { font-size: 3rem; font-weight: 800; color: var(--cream); line-height: 1; flex-shrink: 0; width: 60px; }
+        .step-content h3 { font-size: 1.25rem; color: var(--near-black); margin-bottom: 0.5rem; }
+        .step-content p { color: #555; margin: 0; }
+        .step-detail { margin-top: 1rem; background: var(--white); border-radius: 8px; padding: 1rem 1.25rem; border-left: 3px solid var(--cream); }
+        .step-detail p { font-size: 0.9rem; color: #666; margin: 0; }
+
+        /* PRICING */
+        .pricing { background: var(--near-black); }
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 3rem; max-width: 900px; }
+        .pricing-card { background: #1E1E22; border: 1px solid #2C2C30; border-radius: 12px; padding: 2rem; }
+        .pricing-card.featured { border-color: var(--cream); background: #23231F; }
+        .pricing-tag { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--cream); margin-bottom: 0.75rem; }
+        .pricing-price { font-size: 2.5rem; font-weight: 800; color: var(--white); line-height: 1; margin-bottom: 0.25rem; }
+        .pricing-period { font-size: 0.85rem; color: #888; margin-bottom: 1.5rem; }
+        .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; }
+        .pricing-features li { font-size: 0.9rem; color: var(--warm-white); display: flex; gap: 0.5rem; align-items: flex-start; }
+        .pricing-features li::before { content: '✓'; color: var(--cream); font-weight: 700; flex-shrink: 0; }
+
+        /* FITS / NOT FOR */
+        .fits { background: var(--soft-black); }
+        .fits-list { display: flex; flex-direction: column; gap: 1rem; max-width: 640px; }
+        .fits-item { display: flex; gap: 1rem; align-items: flex-start; }
+        .fits-check { color: var(--cream); font-weight: 700; font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
+        .fits-item p { color: var(--warm-white); margin: 0; font-size: 0.95rem; line-height: 1.6; }
+
+        /* OFFER / FORM */
+        .offer { background: var(--near-black); padding: 6rem 2rem; }
+        .offer-inner { max-width: 600px; margin: 0 auto; text-align: center; }
+        .offer-inner h2 { color: var(--white); }
+        .offer-inner p { color: var(--warm-white); font-size: 1.05rem; margin-bottom: 2rem; }
+        .offer-form { display: flex; flex-direction: column; gap: 1rem; text-align: left; }
+        .offer-form input, .offer-form select { width: 100%; padding: 0.875rem 1rem; background: rgba(255,255,255,0.06); border: 1px solid #3a3a3e; border-radius: 6px; color: var(--white); font-family: 'Inter', sans-serif; font-size: 0.95rem; }
+        .offer-form input::placeholder { color: #666; }
+        .offer-form select option { background: var(--near-black); }
+        .offer-submit { width: 100%; background: var(--cream); color: var(--near-black); padding: 1.1rem; border: none; border-radius: 6px; font-weight: 800; font-size: 1rem; cursor: pointer; transition: all 0.25s; margin-top: 0.5rem; box-shadow: 0 4px 16px rgba(212,201,184,0.25); }
+        .offer-submit:hover { background: var(--warm-white); transform: translateY(-2px); }
+        .form-note { font-size: 0.8rem; color: #666; text-align: center; margin-top: 0.5rem; }
+        .form-status { display: none; padding: 1rem; border-radius: 6px; text-align: center; font-size: 0.9rem; }
+        .form-status.success { background: #1a3a2a; color: #6fcf97; display: block; }
+
+        /* FOOTER */
+        footer { background: var(--soft-black); padding: 3rem 2rem; text-align: center; }
+        .footer-logo { font-size: 1.25rem; font-weight: 800; color: var(--cream); letter-spacing: -0.03em; margin-bottom: 0.5rem; }
+        .footer-links { display: flex; gap: 1.5rem; justify-content: center; margin: 1rem 0; flex-wrap: wrap; }
+        .footer-links a { color: var(--warm-white); text-decoration: none; font-size: 0.875rem; opacity: 0.7; transition: opacity 0.2s; }
+        .footer-links a:hover { opacity: 1; }
+        footer p { color: #555; font-size: 0.8rem; margin: 0; }
+
+        /* ANIMATIONS */
+        .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero { padding: 5rem 1.5rem 4rem; min-height: 70vh; }
+            .section { padding: 4rem 1.5rem; }
+            .step-big { flex-direction: column; gap: 1rem; }
+            .step-num-big { font-size: 2rem; width: auto; }
+            .btn-primary, .btn-ghost { width: 100%; max-width: 320px; text-align: center; }
+            .pricing-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<nav id="navbar">
+    <a href="/" class="nav-logo">SilaOS</a>
+    <div class="nav-links">
+        <a href="/personal">For Personal</a>
+        <a href="/">For Business</a>
+        <a href="/about">About</a>
+    </div>
+    <a href="https://calendly.com/tatijanaz" target="_blank" class="btn">Book a call</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-eyebrow">SilaOS Personal</div>
+    <h1>You live it.<br><span>SilaOS runs it.</span></h1>
+    <p class="hero-sub">A fully agentic personal operating system built around you — your schedule, your voice, your goals, your standards. Not a chatbot. A system that captures, organizes, translates, and acts without being asked.</p>
+    <div class="hero-cta-group">
+        <a href="#offer" class="btn-primary">Claim your founding spot</a>
+        <a href="#how-it-works" class="btn-ghost">See how it works</a>
+    </div>
+    <div class="hero-proof">
+        <span>$697/month founding rate</span>
+        <span>5 spots only</span>
+        <span>Voice capture, docs, calendar, translation + more</span>
+    </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+    <div class="trust-stat">
+        <div class="trust-stat-number">24/7</div>
+        <div class="trust-stat-label">operating on your behalf —<br>without being asked</div>
+    </div>
+    <div class="trust-stat">
+        <div class="trust-stat-number">1</div>
+        <div class="trust-stat-label">onboarding session —<br>then it runs forever</div>
+    </div>
+    <div class="trust-stat">
+        <div class="trust-stat-number">100%</div>
+        <div class="trust-stat-label">your voice, your standards —<br>not generic AI</div>
+    </div>
+    <div class="trust-stat">
+        <div class="trust-stat-number">100+</div>
+        <div class="trust-stat-label">languages — for you<br>and your global work</div>
+    </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="section problem">
+    <div class="section-inner">
+        <div class="section-label dark">The problem</div>
+        <h2 class="fade-up">You're too good at what you do<br>to be doing all of this.</h2>
+        <p class="fade-up" style="max-width:620px;font-size:1.1rem;margin-bottom:3rem;">High performers don't fail because of skill. They drown because every follow-up, every scheduling back-and-forth, every thing that should have been handled — lands on them.</p>
+        <div class="pain-grid">
+            <div class="pain-card fade-up">
+                <h3>Your inbox owns you.</h3>
+                <p>You read it, you mean to respond, life happens. Three days later it's buried. The relationship suffers. Not because you didn't care — because you didn't have a system.</p>
+            </div>
+            <div class="pain-card fade-up">
+                <h3>Follow-ups fall through.</h3>
+                <p>You said you'd circle back. You meant to. Weeks pass. The deal stalls, the connection fades, the opportunity closes quietly. It wasn't a priority problem. It was a capacity problem.</p>
+            </div>
+            <div class="pain-card fade-up">
+                <h3>Your schedule runs you.</h3>
+                <p>Double bookings, back-to-back without thinking time, logistics that eat mornings. Nobody is protecting your time — because there's no one whose job it is to do that.</p>
+            </div>
+            <div class="pain-card fade-up">
+                <h3>Your knowledge lives in your head.</h3>
+                <p>How you like things done, what matters, who matters and why, your standards. All of it locked inside you — and unavailable when you're busy, offline, or just tired.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- AGENTIC CALLOUT -->
+<section class="agentic">
+    <div class="agentic-inner">
+        <div class="section-label" style="text-align:center;">What makes SilaOS Personal different</div>
+        <h2>This is not an assistant you prompt.<br>This is an operator that acts.</h2>
+        <p>Every AI assistant waits for you to ask. SilaOS Personal detects what needs to happen — and does it. The moment a follow-up is due, a meeting needs confirming, or a connection needs nurturing — SilaOS acts. You find out after.</p>
+        <div class="agentic-diff">
+            <div class="diff-item">
+                <div class="diff-label bad">Every other AI tool</div>
+                <div class="diff-text bad">Waits for you to ask</div>
+            </div>
+            <div style="display:flex;align-items:center;color:#555;font-size:1.5rem;">→</div>
+            <div class="diff-item">
+                <div class="diff-label good">SilaOS Personal</div>
+                <div class="diff-text good">Acts without being asked</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SOLUTION / PILLARS -->
+<section class="section solution">
+    <div class="section-inner">
+        <div class="section-label">The system</div>
+        <h2 style="color:var(--white);">Four layers. One system. Built around you.</h2>
+        <p class="solution-sub">Blueprints builds your standard. Studio tests it. Your Personal Operator runs it 24/7. Dashboards show you it's working.</p>
+        <div class="pillar-shelf">
+            <div class="pillar-item fade-up">
+                <div class="pillar-num">01</div>
+                <div class="pillar-name">Personal Blueprint</div>
+                <div class="pillar-desc">Your living knowledge base — goals, docs, templates, presentations, voice notes. Written once. Everything runs from it.</div>
+            </div>
+            <div class="pillar-item fade-up">
+                <div class="pillar-num">02</div>
+                <div class="pillar-name">Personal Operator</div>
+                <div class="pillar-desc">Acts on your behalf 24/7. Schedules, follows up, communicates, translates — in your voice, from your Blueprint.</div>
+            </div>
+            <div class="pillar-item fade-up">
+                <div class="pillar-num">03</div>
+                <div class="pillar-name">Personal Studio</div>
+                <div class="pillar-desc">Roleplay with AI agents. Practice negotiations, difficult conversations, sales calls — before they're real.</div>
+            </div>
+            <div class="pillar-item fade-up">
+                <div class="pillar-num">04</div>
+                <div class="pillar-name">Personal Dashboard</div>
+                <div class="pillar-desc">Full visibility — goals, feedback on interactions, relationship health, what's moving and what's stalled.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section features">
+    <div class="section-inner">
+        <div class="section-label dark">Everything included</div>
+        <h2 class="fade-up">One system. Every tool you need to run your life.</h2>
+        <p class="fade-up" style="max-width:600px;font-size:1.05rem;">SilaOS Personal isn't a single tool. It's the complete operating system for how you operate — capturing, organizing, communicating, translating, and acting on your behalf.</p>
+        <div class="features-grid">
+            <div class="feature-card fade-up">
+                <div class="feature-icon">🎙</div>
+                <h3>Voice Capture</h3>
+                <p>Talk to SilaOS anywhere — driving, walking, thinking. It captures, categorizes, and files everything automatically. Ideas, tasks, notes, decisions. No typing required.</p>
+            </div>
+            <div class="feature-card fade-up">
+                <div class="feature-icon">📁</div>
+                <h3>Document & Asset Storage</h3>
+                <p>Goals, templates, presentations, lists, SOPs for your own life — all inside SilaOS Personal where your operator can reference and use them. Your knowledge base, always accessible.</p>
+            </div>
+            <div class="feature-card fade-up">
+                <div class="feature-icon">🎯</div>
+                <h3>Goal Templates & Tracking</h3>
+                <p>Set your goals once. SilaOS tracks them, surfaces them in your daily briefing, and flags when you're drifting. Your operator keeps you accountable — without you having to ask.</p>
+            </div>
+            <div class="feature-card fade-up">
+                <div class="feature-icon">📅</div>
+                <h3>Calendar Integration</h3>
+                <p>Connects to your existing calendar or runs its own. Books, reschedules, protects focus time, and handles all scheduling back-and-forth in your voice — automatically.</p>
+            </div>
+            <div class="feature-card fade-up">
+                <div class="feature-icon">🌐</div>
+                <h3>AI Language Translation</h3>
+                <p>Working with partners, clients, or manufacturers in other countries? SilaOS translates communications in real time — in your voice and theirs. 100+ languages. No missed deals because of language.</p>
+            </div>
+            <div class="feature-card fade-up">
+                <div class="feature-icon">🎭</div>
+                <h3>AI Roleplay (Personal Studio)</h3>
+                <p>Practice before it's real. AI agents play the other side — the difficult negotiation, the high-stakes sales call, the uncomfortable conversation. You get sharp before it counts.</p>
+            </div>
+            <div class="feature-card fade-up">
+                <div class="feature-icon">📊</div>
+                <h3>Personal Dashboard</h3>
+                <p>Every morning: what was handled, what needs you, how your goals are tracking, which relationships need attention. Full visibility without being in the middle of everything.</p>
+            </div>
+            <div class="feature-card fade-up">
+                <div class="feature-icon">💬</div>
+                <h3>Interaction Feedback</h3>
+                <p>How are your communications landing? SilaOS surfaces feedback on outreach, follow-ups, and relationships — so you can see what's working and what needs adjusting.</p>
+            </div>
+            <div class="feature-card fade-up">
+                <div class="feature-icon">🤝</div>
+                <h3>Relationship Management</h3>
+                <p>Who matters, when you last connected, what the context is. SilaOS tracks your key relationships and flags when one needs attention — before it goes cold.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BLUEPRINT -->
+<section class="section blueprint">
+    <div class="section-inner-narrow">
+        <div class="section-label dark">Pillar 01 — Personal Blueprint</div>
+        <h2 class="fade-up">Your living knowledge base.<br>The foundation everything runs from.</h2>
+        <p class="fade-up" style="font-size:1.1rem;color:#555;max-width:640px;margin-bottom:3rem;line-height:1.7;">Your Blueprint is your single source of truth — goals, priorities, communication style, relationships, templates, documents, voice notes, and standards. All in one place. Your operator runs from it. Your Studio trains from it. Your Dashboard tracks against it. Write it once — it powers everything forever.</p>
+        <div class="blueprint-examples fade-up">
+            <div class="blueprint-row">
+                <div class="blueprint-icon">📅</div>
+                <div><div class="blueprint-row-title">Someone wants to book time with you</div><div class="blueprint-row-desc">SilaOS handles it from your Blueprint — your availability rules, your preferences, your protected time. No back and forth.</div></div>
+            </div>
+            <div class="blueprint-row">
+                <div class="blueprint-icon">💬</div>
+                <div><div class="blueprint-row-title">A follow-up is due</div><div class="blueprint-row-desc">SilaOS knows who it's for, what the context is, and how you'd reach out. It drafts or sends in your voice — from your Blueprint.</div></div>
+            </div>
+            <div class="blueprint-row">
+                <div class="blueprint-icon">🤝</div>
+                <div><div class="blueprint-row-title">A key relationship needs attention</div><div class="blueprint-row-desc">Your Blueprint tracks who matters and why. SilaOS flags it or acts — before the relationship goes cold.</div></div>
+            </div>
+            <div class="blueprint-row">
+                <div class="blueprint-icon">🚫</div>
+                <div><div class="blueprint-row-title">Something crosses your boundaries</div><div class="blueprint-row-desc">Your Blueprint defines what you never want handled without your input. SilaOS flags it and waits. Always.</div></div>
+            </div>
+        </div>
+        <div class="result-box fade-up">
+            <div class="result-box-label">The result</div>
+            <p>You stop being the answer to everything about your own life. Your Blueprint is. You write it once — it runs forever. And when life evolves, you update it. The operator adjusts. No retraining. No starting over.</p>
+        </div>
+    </div>
+</section>
+
+<!-- STUDIO -->
+<section class="section studio">
+    <div class="section-inner-narrow">
+        <div class="section-label">Pillar 03 — Personal Studio</div>
+        <h2 class="fade-up" style="color:var(--warm-white);">Personal Studio.<br>Practice before it's real.</h2>
+        <p class="fade-up" style="font-size:1.1rem;color:rgba(237,232,223,0.75);max-width:620px;margin-bottom:3rem;line-height:1.7;">Studio is your personal simulation environment. AI agents play the other side of any conversation — the hard negotiation, the high-stakes pitch, the difficult client, the uncomfortable ask. You practice until you're sharp. Then you show up to the real thing ready.</p>
+        <div class="studio-examples fade-up">
+            <div class="studio-row">
+                <div class="studio-icon">🎭</div>
+                <div><div class="studio-row-title">Build your operator's character</div><div class="studio-row-desc">Name it, define its personality, choose its voice. The people you communicate with aren't talking to "an AI" — they're hearing from someone who sounds like you, represents you, responds like you.</div></div>
+            </div>
+            <div class="studio-row">
+                <div class="studio-icon">🧪</div>
+                <div><div class="studio-row-title">Test every scenario</div><div class="studio-row-desc">Run your Blueprint against real situations before they're real. How does it handle a scheduling conflict? A cold outreach? A sensitive relationship? You see it. You fix it. Then it's right.</div></div>
+            </div>
+            <div class="studio-row">
+                <div class="studio-icon">💼</div>
+                <div><div class="studio-row-title">Practice the negotiation</div><div class="studio-row-desc">AI plays the other side of your most important deal. You run it until you know exactly how you'll handle every pushback — before you're in the room.</div></div>
+            </div>
+            <div class="studio-row">
+                <div class="studio-icon">📞</div>
+                <div><div class="studio-row-title">Sharpen the sales call</div><div class="studio-row-desc">Run your pitch against an AI that pushes back like a real prospect. Objections, price resistance, "I need to think about it" — you handle it all before it's live.</div></div>
+            </div>
+            <div class="studio-row">
+                <div class="studio-icon">🔄</div>
+                <div><div class="studio-row-title">Refine as life evolves</div><div class="studio-row-desc">New goals, new situations, new challenges — Studio is where you prepare before they're real. Your operator and your own skills keep getting better.</div></div>
+            </div>
+        </div>
+        <div class="fade-up" style="margin-top:2rem;background:rgba(212,201,184,0.1);border:1px solid var(--cream);border-radius:10px;padding:2rem 2.5rem;max-width:700px;">
+            <p style="color:var(--cream);font-size:1rem;font-weight:700;margin-bottom:0.5rem;">The result</p>
+            <p style="color:var(--warm-white);font-size:0.95rem;margin:0;line-height:1.75;">You don't hand the keys to a system you haven't tested. Studio exists because going live should feel like a decision, not a gamble. Build it. Test it. Then trust it.</p>
+        </div>
+    </div>
+</section>
+
+<!-- WHO ITS FOR -->
+<section class="section verticals" id="who-its-for">
+    <div class="section-inner">
+        <div class="section-label dark">Who it's for</div>
+        <h2 class="fade-up">For the people who run at full capacity — and need a real operator behind them.</h2>
+        <p class="fade-up" style="max-width:600px;">SilaOS Personal is for high-value individuals who are too good at what they do to be spending time on what SilaOS can handle.</p>
+        <div class="verticals-grid">
+            <div class="vertical-card fade-up">
+                <div class="vertical-icon">💼</div>
+                <h3>Executives & Entrepreneurs</h3>
+                <p>Running companies, managing teams, constantly context-switching. They need their life handled — scheduling, follow-ups, inbox triage, daily briefing — by something that knows them and acts without being asked.</p>
+            </div>
+            <div class="vertical-card fade-up">
+                <div class="vertical-icon">🎥</div>
+                <h3>Creators & Influencers</h3>
+                <p>Managing DMs, brand deals, content logistics, audience relationships. They need something that responds in their voice, protects their time, and handles the business of being them — so they can focus on the work.</p>
+            </div>
+            <div class="vertical-card fade-up">
+                <div class="vertical-icon">🏆</div>
+                <h3>High Performers at Any Level</h3>
+                <p>Anyone operating above capacity who has more going on than one person can reasonably track. If you're dropping balls not because you're careless but because there's too much — SilaOS Personal is built for you.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section how" id="how-it-works">
+    <div class="section-inner-narrow">
+        <div class="section-label dark">How it works</div>
+        <h2 class="fade-up">One session. Then it runs.</h2>
+        <p class="fade-up" style="font-size:1rem;color:#888;max-width:600px;margin-bottom:0.5rem;">You don't spend months setting this up. One focused onboarding session builds your Blueprint. After that, SilaOS Personal runs — and keeps running.</p>
+        <div class="steps-big">
+            <div class="step-big fade-up">
+                <div class="step-num-big">1</div>
+                <div class="step-content">
+                    <h3>Build your Blueprint</h3>
+                    <p>One onboarding session. We go deep — your goals, priorities, how you communicate, who matters, your standards, your boundaries. Everything gets captured in your Blueprint. This is the foundation everything else runs from.</p>
+                    <div class="step-detail">
+                        <p>Most people have never articulated their operating standards. This session makes them explicit — and then puts them to work.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="step-big fade-up">
+                <div class="step-num-big">2</div>
+                <div class="step-content">
+                    <h3>Test it in Studio</h3>
+                    <p>Before anything touches your real life, you run it through Studio. Every scenario. Every edge case. You see how your operator handles it — and you refine until it's right. Nothing goes live until you know it works.</p>
+                </div>
+            </div>
+            <div class="step-big fade-up">
+                <div class="step-num-big">3</div>
+                <div class="step-content">
+                    <h3>Let it run</h3>
+                    <p>Your Personal Operator goes live. Every morning: what was handled, what needs your attention, what's coming. You step in only when your judgment is actually needed. Everything else is handled.</p>
+                    <div class="step-detail">
+                        <p>You never lose visibility. You just stop being the person everything runs through.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRICING -->
+<section class="section pricing" id="pricing">
+    <div class="section-inner">
+        <div class="section-label">Pricing</div>
+        <h2 style="color:var(--white);" class="fade-up">Simple. Transparent. Built to last.</h2>
+        <p class="fade-up" style="color:var(--warm-white);max-width:560px;margin-bottom:0;">Founding spots are limited. The first 5 clients lock their rate forever.</p>
+        <div class="pricing-grid fade-up">
+            <div class="pricing-card featured">
+                <div class="pricing-tag">⭐ Founding Rate — 5 spots only</div>
+                <div class="pricing-price">$697</div>
+                <div class="pricing-period">per month — locked forever</div>
+                <ul class="pricing-features">
+                    <li>Full Personal Blueprint buildout</li>
+                    <li>Personal Operator running 24/7</li>
+                    <li>Daily morning briefing</li>
+                    <li>Personal Dashboard access</li>
+                    <li>Personal Studio — build, test, refine</li>
+                    <li>Rate locked for life</li>
+                    <li>After founding closes — price goes to $997/month</li>
+                </ul>
+                <a href="#offer" class="btn-primary" style="display:block;text-align:center;">Claim your founding spot</a>
+            </div>
+            <div class="pricing-card">
+                <div class="pricing-tag">Executive</div>
+                <div class="pricing-price" style="font-size:1.5rem;padding-top:0.5rem;">Let's talk</div>
+                <div class="pricing-period">custom pricing</div>
+                <ul class="pricing-features">
+                    <li>White-glove service</li>
+                    <li>Direct access for Blueprint sessions</li>
+                    <li>Custom integrations</li>
+                    <li>Maximum operator capacity</li>
+                </ul>
+                <a href="https://calendly.com/tatijanaz" target="_blank" class="btn" style="display:block;text-align:center;">Book a call</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FITS IF -->
+<section class="section fits">
+    <div class="section-inner-narrow">
+        <div class="section-label">You're the right fit if</div>
+        <h2 class="fade-up" style="color:var(--warm-white);">SilaOS Personal works when these are true.</h2>
+        <p class="fade-up" style="color:rgba(237,232,223,0.7);font-size:1.05rem;max-width:560px;margin-bottom:3rem;">We're selective about who we onboard. This works best for people who operate at a level where every dropped ball has a real cost.</p>
+        <div class="fits-list">
+            <div class="fits-item fade-up"><div class="fits-check">✓</div><p>You're operating above capacity — not because you're disorganized, but because there's genuinely too much</p></div>
+            <div class="fits-item fade-up"><div class="fits-check">✓</div><p>You're losing deals, relationships, or opportunities to follow-up failures — not skill failures</p></div>
+            <div class="fits-item fade-up"><div class="fits-check">✓</div><p>You have clear standards for how things should be done — you just need someone to execute them</p></div>
+            <div class="fits-item fade-up"><div class="fits-check">✓</div><p>You're ready to invest in infrastructure that runs your life the way you'd run it yourself</p></div>
+            <div class="fits-item fade-up"><div class="fits-check">✓</div><p>You'd rather have a system that acts than an assistant that waits</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- OFFER / FORM -->
+<section class="offer" id="offer">
+    <div class="offer-inner">
+        <div class="section-label" style="text-align:center;">Founding spots — 5 only</div>
+        <h2 class="fade-up">Claim your spot.<br>Lock your rate. Forever.</h2>
+        <p class="fade-up">5 founding spots. $697/month, locked for life. One onboarding session builds your Blueprint — voice capture, docs, calendar, translation, roleplay, dashboard, and a personal operator running 24/7 after that.</p>
+        <form class="offer-form fade-up" action="https://formspree.io/f/mvzjazge" method="POST">
+            <input type="hidden" name="product" value="SilaOS Personal">
+            <input type="text" name="name" placeholder="Your name" required>
+            <input type="email" name="email" placeholder="Your email" required>
+            <input type="text" name="role" placeholder="What you do (e.g. founder, creator, exec)">
+            <select name="tier">
+                <option value="" disabled selected>Which tier interests you?</option>
+                <option value="founding">Founding — $697/month</option>
+                <option value="standard">Standard — $997/month</option>
+                <option value="executive">Executive — $1,997/month</option>
+            </select>
+            <textarea name="message" placeholder="What's the biggest thing you need handled?" style="padding:0.875rem 1rem;background:rgba(255,255,255,0.06);border:1px solid #3a3a3e;border-radius:6px;color:var(--white);font-family:'Inter',sans-serif;font-size:0.95rem;resize:vertical;min-height:100px;"></textarea>
+            <button type="submit" class="offer-submit">Claim my founding spot →</button>
+            <p class="form-note">We'll follow up within 24 hours to schedule your Blueprint session.</p>
+        </form>
+        <div class="form-status" id="formStatus">You're in. We'll be in touch within 24 hours.</div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-logo">SilaOS</div>
+    <div class="footer-links">
+        <a href="/">For Business</a>
+        <a href="/personal">Personal</a>
+        <a href="/about">About</a>
+        <a href="https://instagram.com/silaos.ai" target="_blank">Instagram</a>
+        <a href="mailto:hello@silaos.ai">hello@silaos.ai</a>
+    </div>
+    <p>© 2026 SilaOS. You live it. SilaOS runs it.</p>
+</footer>
+
+<script>
+    // Nav scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Fade up animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Form
+    const form = document.querySelector('.offer-form');
+    const status = document.getElementById('formStatus');
+    if (form) {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const data = new FormData(form);
+            try {
+                const res = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+                if (res.ok) {
+                    form.style.display = 'none';
+                    status.classList.add('success');
+                }
+            } catch {}
+        });
+    }
+</script>
+</body>
+</html>

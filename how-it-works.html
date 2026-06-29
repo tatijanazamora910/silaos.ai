@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How It Works — SilaOS</title>
+    <meta name="description" content="Set it up once. Let it run. SilaOS connects to your phone, calendar, and booking system — and handles the rest automatically.">
+    <meta name="theme-color" content="#18181B">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --near-black: #18181B; --soft-black: #2C2C30; --cream: #D4C9B8; --warm-white: #EDE8DF; --background: #FAF8F4; --white: #FFFFFF; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.7; color: var(--near-black); background: var(--background); overflow-x: hidden; }
+        h1, h2, h3, h4 { font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
+        h1 { font-size: clamp(2.4rem, 5vw, 3.8rem); margin-bottom: 1.5rem; }
+        h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); margin-bottom: 1.25rem; }
+        h3 { font-size: 1.125rem; margin-bottom: 0.5rem; font-weight: 700; }
+        p { font-size: 1rem; margin-bottom: 1rem; color: #4a4a4a; }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease; }
+        nav.scrolled { background: var(--near-black); padding: 1rem 2rem; box-shadow: 0 2px 20px rgba(0,0,0,0.15); }
+        .nav-logo { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.03em; color: var(--near-black); text-decoration: none; transition: color 0.3s; }
+        nav.scrolled .nav-logo { color: var(--white); }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--near-black); font-size: 0.9rem; font-weight: 500; transition: opacity 0.2s; }
+        nav.scrolled .nav-links a { color: var(--warm-white); }
+        .nav-links a:hover { opacity: 0.65; }
+        .btn { background: var(--near-black); color: var(--cream); padding: 0.8rem 1.75rem; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 0.9rem; border: none; cursor: pointer; transition: all 0.25s; display: inline-block; }
+        .btn:hover { background: var(--soft-black); transform: translateY(-2px); }
+        nav.scrolled .btn { background: var(--cream); color: var(--near-black); }
+        section { padding: 6rem 2rem; }
+        .container { max-width: 900px; margin: 0 auto; }
+        .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream); background: var(--near-black); display: inline-block; padding: 0.3rem 0.75rem; border-radius: 4px; margin-bottom: 1.5rem; }
+        .section-label.light { background: transparent; color: #999; padding: 0; }
+        .hero { background: var(--near-black); padding: 10rem 2rem 7rem; }
+        .hero h1 { color: var(--warm-white); max-width: 760px; }
+        .hero h1 span { color: var(--cream); }
+        .hero-sub { color: rgba(237,232,223,0.8); font-size: 1.2rem; max-width: 580px; margin-top: 1.5rem; margin-bottom: 0; }
+        .steps-section { background: var(--background); }
+        .steps-big { display: flex; flex-direction: column; gap: 0; margin-top: 3rem; }
+        .step-big { display: grid; grid-template-columns: 80px 1fr; gap: 2.5rem; padding: 3rem 0; border-bottom: 1px solid rgba(0,0,0,0.08); align-items: start; }
+        .step-big:first-child { border-top: 1px solid rgba(0,0,0,0.08); }
+        .step-num-big { font-size: 3.5rem; font-weight: 800; color: var(--cream); line-height: 1; }
+        .step-content h3 { font-size: 1.3rem; font-weight: 800; color: var(--near-black); margin-bottom: 0.75rem; }
+        .step-content p { font-size: 1rem; color: #555; margin-bottom: 0.75rem; line-height: 1.7; }
+        .step-detail { background: var(--white); border-radius: 10px; padding: 1.25rem 1.5rem; margin-top: 1rem; border-left: 3px solid var(--cream); }
+        .step-detail p { font-size: 0.9rem; color: #666; margin: 0; }
+        .what-happens { background: var(--near-black); }
+        .what-happens h2 { color: var(--warm-white); max-width: 680px; }
+        .what-happens .sub { color: rgba(237,232,223,0.75); font-size: 1.05rem; max-width: 580px; margin-bottom: 3rem; }
+        .timeline { display: flex; flex-direction: column; gap: 0; max-width: 720px; }
+        .timeline-item { display: flex; gap: 2rem; align-items: flex-start; padding: 1.5rem 0; border-bottom: 1px solid #2C2C30; }
+        .timeline-item:last-child { border-bottom: none; }
+        .timeline-time { font-size: 0.8rem; font-weight: 700; color: var(--cream); white-space: nowrap; min-width: 70px; margin-top: 2px; }
+        .timeline-content h4 { color: var(--warm-white); font-size: 1rem; font-weight: 700; margin-bottom: 0.25rem; }
+        .timeline-content p { color: rgba(237,232,223,0.6); font-size: 0.9rem; margin: 0; line-height: 1.6; }
+        .tech-section { background: var(--background); }
+        .tech-section h2 { max-width: 600px; }
+        .tech-sub { font-size: 1.05rem; color: #666; max-width: 560px; margin-bottom: 3rem; }
+        .tech-stack { display: flex; flex-direction: column; gap: 0; max-width: 700px; }
+        .tech-item { display: flex; gap: 2rem; align-items: center; padding: 1.25rem 0; border-bottom: 1px solid rgba(0,0,0,0.07); }
+        .tech-item:last-child { border-bottom: none; }
+        .tech-arrow { color: var(--cream); font-weight: 700; font-size: 1.1rem; flex-shrink: 0; }
+        .tech-name { font-weight: 700; color: var(--near-black); font-size: 0.95rem; min-width: 120px; }
+        .tech-desc { color: #666; font-size: 0.9rem; }
+        .cta-section { background: var(--near-black); text-align: center; padding: 6rem 2rem; }
+        .cta-section h2 { color: var(--warm-white); max-width: 600px; margin: 0 auto 1.25rem; }
+        .cta-section p { color: rgba(237,232,223,0.7); max-width: 480px; margin: 0 auto 2.5rem; font-size: 1.05rem; }
+        .btn-primary { background: var(--cream); color: var(--near-black); padding: 1rem 2.5rem; border-radius: 8px; font-size: 1rem; font-weight: 700; text-decoration: none; display: inline-block; transition: all 0.2s; }
+        .btn-primary:hover { background: var(--warm-white); transform: translateY(-2px); }
+        footer { background: var(--near-black); padding: 3rem 2rem; text-align: center; border-top: 1px solid #2C2C30; }
+        .footer-logo { font-size: 1.1rem; font-weight: 800; color: var(--warm-white); letter-spacing: -0.03em; margin-bottom: 0.75rem; }
+        .footer-tagline { color: var(--cream); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.5rem; }
+        .footer-links { display: flex; gap: 2rem; justify-content: center; margin-bottom: 2rem; flex-wrap: wrap; }
+        .footer-links a { color: rgba(237,232,223,0.5); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--warm-white); }
+        .footer-copy { color: rgba(237,232,223,0.3); font-size: 0.8rem; margin-bottom: 0; }
+        .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            section { padding: 4rem 1.5rem; }
+            .hero { padding: 8rem 1.5rem 5rem; }
+            .step-big { grid-template-columns: 1fr; gap: 1rem; }
+            .step-num-big { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav id="navbar">
+    <a href="/" class="nav-logo">SilaOS</a>
+    <div class="nav-links">
+        <a href="/how-it-works">How it works</a>
+        <a href="/who-its-for">Who it's for</a>
+        <a href="/about">About</a>
+    </div>
+    <a href="/#offer" class="btn">Apply now</a>
+</nav>
+
+<section class="hero">
+    <div class="container">
+        <div class="section-label">How it works</div>
+        <h1 class="fade-up">Set it up once.<br><span>Let it run.</span></h1>
+        <p class="hero-sub fade-up">15 minutes to connect your business. Everything after that runs on its own — in any language your customers speak, at any hour they call.</p>
+    </div>
+</section>
+
+<section class="steps-section">
+    <div class="container">
+        <div class="section-label light">The setup</div>
+        <h2 class="fade-up">Three steps. Then it's done.</h2>
+        <div class="steps-big">
+            <div class="step-big fade-up">
+                <div class="step-num-big">1</div>
+                <div class="step-content">
+                    <h3>Connect your business</h3>
+                    <p>We connect SilaOS to your phone number, your calendar, and your booking system. You don't need to be technical — we handle the integration. Most businesses are fully connected in under 15 minutes.</p>
+                    <div class="step-detail">
+                        <p>Works with your existing CRM, scheduling software, and booking system — whatever you're already using. Your phone number stays the same. SilaOS works in the background when you can't answer.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="step-big fade-up">
+                <div class="step-num-big">2</div>
+                <div class="step-content">
+                    <h3>Build your Blueprint</h3>
+                    <p>Your pricing. Your protocols. Your communication standards. How you handle edge cases. What you take — and what you turn down. You write your rules once. SilaOS runs from them forever — and so does your team.</p>
+                    <div class="step-detail">
+                        <p>This is what makes SilaOS different. Not generic AI — your AI. A new hire joins? SilaOS answers their questions from your Blueprint. A customer asks about pricing? SilaOS responds your way. Write it once. It runs everything.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="step-big fade-up">
+                <div class="step-num-big">3</div>
+                <div class="step-content">
+                    <h3>Go back to your craft</h3>
+                    <p>Once everything is built, tested, and trained — SilaOS runs in the background. Every morning you get a daily briefing: calls handled, jobs booked, revenue recovered. You step in only when your judgment — and only your judgment — is actually needed.</p>
+                    <div class="step-detail">
+                        <p>You're always in control. SilaOS surfaces what matters and handles what doesn't. You never lose visibility — you just stop being the person everything runs through.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="what-happens">
+    <div class="container">
+        <div class="section-label">What happens when a call comes in</div>
+        <h2 class="fade-up">You miss a call. Here's the next 60 seconds.</h2>
+        <p class="sub fade-up">You're under a sink, in a session, with a patient. The phone rings. You can't answer. Here's what SilaOS does instead.</p>
+        <div class="timeline">
+            <div class="timeline-item fade-up">
+                <div class="timeline-time">0:00</div>
+                <div class="timeline-content">
+                    <h4>Call comes in</h4>
+                    <p>You don't answer. SilaOS detects the missed call instantly.</p>
+                </div>
+            </div>
+            <div class="timeline-item fade-up">
+                <div class="timeline-time">0:10</div>
+                <div class="timeline-content">
+                    <h4>Customer gets a text</h4>
+                    <p>In their language. Warm, professional, sounds like you. "Hey, sorry we missed you — what can we help you with?"</p>
+                </div>
+            </div>
+            <div class="timeline-item fade-up">
+                <div class="timeline-time">0:30</div>
+                <div class="timeline-content">
+                    <h4>SilaOS qualifies the lead</h4>
+                    <p>Understands what they need, confirms their location, asks the right follow-up questions — just like your best front desk person would.</p>
+                </div>
+            </div>
+            <div class="timeline-item fade-up">
+                <div class="timeline-time">0:50</div>
+                <div class="timeline-content">
+                    <h4>Appointment booked</h4>
+                    <p>SilaOS sends the booking link or confirms directly. The job is on your calendar before you finish the one you're on.</p>
+                </div>
+            </div>
+            <div class="timeline-item fade-up">
+                <div class="timeline-time">Next morning</div>
+                <div class="timeline-content">
+                    <h4>You see it in your briefing</h4>
+                    <p>Calls handled. Jobs booked. Revenue recovered. All while you were working.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="tech-section">
+    <div class="container">
+        <div class="section-label light">The tech stack</div>
+        <h2 class="fade-up">Built on the best infrastructure available.</h2>
+        <p class="tech-sub fade-up">Six systems working together so you don't have to. One missed call. One outcome: job booked.</p>
+        <div class="tech-stack">
+            <div class="tech-item fade-up">
+                <div class="tech-arrow">→</div>
+                <div class="tech-name">Twilio</div>
+                <div class="tech-desc">Handles all inbound and outbound call and SMS routing</div>
+            </div>
+            <div class="tech-item fade-up">
+                <div class="tech-arrow">→</div>
+                <div class="tech-name">VAPI</div>
+                <div class="tech-desc">Manages voice AI — the conversation layer between customer and system</div>
+            </div>
+            <div class="tech-item fade-up">
+                <div class="tech-arrow">→</div>
+                <div class="tech-name">Claude AI</div>
+                <div class="tech-desc">Processes intelligence — understands context, intent, and nuance</div>
+            </div>
+            <div class="tech-item fade-up">
+                <div class="tech-arrow">→</div>
+                <div class="tech-name">ElevenLabs</div>
+                <div class="tech-desc">Delivers natural, human-quality voice output in 100+ languages</div>
+            </div>
+            <div class="tech-item fade-up">
+                <div class="tech-arrow">→</div>
+                <div class="tech-name">n8n</div>
+                <div class="tech-desc">Automates the workflow — connects every system and triggers every action</div>
+            </div>
+            <div class="tech-item fade-up">
+                <div class="tech-arrow">→</div>
+                <div class="tech-name">Calendly</div>
+                <div class="tech-desc">Books the job directly into your calendar — confirmed and done</div>
+            </div>
+        </div>
+        <div class="fade-up" style="margin-top:2.5rem;background:var(--near-black);border-radius:10px;padding:2rem 2.5rem;max-width:700px;border-top:3px solid var(--cream);">
+            <p style="font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--cream);margin-bottom:0.75rem;">Powered by agentic AI</p>
+            <p style="color:var(--warm-white);font-size:0.95rem;margin:0;line-height:1.75;">Most AI tools wait to be asked. SilaOS acts. The moment a call goes unanswered, it doesn't send a template — it starts a conversation, qualifies the lead, makes a decision, and books the job. Agentic AI means the system takes initiative and completes the full workflow on its own. No waiting. Just results.</p>
+        </div>
+    </div>
+</section>
+
+<section style="background:var(--background);padding:6rem 2rem;">
+    <div class="container">
+        <div class="section-label light">SilaOS Blueprints</div>
+        <h2 class="fade-up">You wrote the Blueprint.<br>SilaOS runs it.</h2>
+        <p class="fade-up" style="font-size:1.1rem;color:#555;max-width:640px;margin-bottom:3rem;line-height:1.7;">Most AI runs on generic logic. SilaOS runs on yours. In Step 2, you build your Blueprint — your pricing, your protocols, your voice, your rules. From that moment on, SilaOS doesn't guess. It executes exactly the way you would.</p>
+        <div style="display:flex;flex-direction:column;gap:0;max-width:700px;border:1px solid rgba(0,0,0,0.08);border-radius:12px;overflow:hidden;">
+            <div class="fade-up" style="display:flex;gap:1.5rem;padding:1.5rem 2rem;border-bottom:1px solid rgba(0,0,0,0.06);background:var(--white);align-items:flex-start;">
+                <div style="font-size:1.25rem;flex-shrink:0;margin-top:2px;">💬</div>
+                <div>
+                    <div style="font-weight:700;color:var(--near-black);margin-bottom:0.25rem;">Customer asks about your rates</div>
+                    <div style="font-size:0.9rem;color:#666;">SilaOS answers from your Blueprint — your pricing, your way. Not a guess.</div>
+                </div>
+            </div>
+            <div class="fade-up" style="display:flex;gap:1.5rem;padding:1.5rem 2rem;border-bottom:1px solid rgba(0,0,0,0.06);background:var(--white);align-items:flex-start;">
+                <div style="font-size:1.25rem;flex-shrink:0;margin-top:2px;">🧑‍🔧</div>
+                <div>
+                    <div style="font-weight:700;color:var(--near-black);margin-bottom:0.25rem;">New hire joins the team</div>
+                    <div style="font-size:0.9rem;color:#666;">They ask SilaOS how to handle a cancellation. SilaOS tells them — from your Blueprint. No shadowing. No guessing.</div>
+                </div>
+            </div>
+            <div class="fade-up" style="display:flex;gap:1.5rem;padding:1.5rem 2rem;border-bottom:1px solid rgba(0,0,0,0.06);background:var(--white);align-items:flex-start;">
+                <div style="font-size:1.25rem;flex-shrink:0;margin-top:2px;">📍</div>
+                <div>
+                    <div style="font-weight:700;color:var(--near-black);margin-bottom:0.25rem;">Lead calls from outside your service area</div>
+                    <div style="font-size:0.9rem;color:#666;">SilaOS knows your rules. It handles it politely and correctly — the way you would.</div>
+                </div>
+            </div>
+            <div class="fade-up" style="display:flex;gap:1.5rem;padding:1.5rem 2rem;background:var(--white);align-items:flex-start;">
+                <div style="font-size:1.25rem;flex-shrink:0;margin-top:2px;">🛡</div>
+                <div>
+                    <div style="font-weight:700;color:var(--near-black);margin-bottom:0.25rem;">Customer pushes back on price</div>
+                    <div style="font-size:0.9rem;color:#666;">SilaOS responds using your voice and your answer — not generic AI language. Consistent. Every time.</div>
+                </div>
+            </div>
+        </div>
+        <div class="fade-up" style="margin-top:2rem;background:var(--near-black);border-radius:10px;padding:2rem 2.5rem;max-width:700px;">
+            <p style="color:var(--cream);font-size:1rem;font-weight:700;margin-bottom:0.5rem;">The result</p>
+            <p style="color:var(--warm-white);font-size:0.95rem;margin:0;line-height:1.75;">You stop being the answer to every question. Your Blueprint is. The owner becomes the architect. SilaOS becomes the operator. Write it once — it runs forever.</p>
+        </div>
+    </div>
+</section>
+
+<section style="background:var(--near-black);padding:6rem 2rem;">
+    <div class="container">
+        <div class="section-label">SilaOS Studio</div>
+        <h2 class="fade-up" style="color:var(--warm-white);">Nothing goes live unproven.</h2>
+        <p class="fade-up" style="font-size:1.1rem;color:rgba(237,232,223,0.75);max-width:620px;margin-bottom:3rem;line-height:1.7;">Before your first real call, you build in SilaOS Studio. You design your character — the voice and persona your customers actually interact with. You stress-test your Blueprint on every scenario you can think of. And your team practices on SilaOS before they ever touch a real customer.</p>
+        <div style="display:flex;flex-direction:column;gap:0;max-width:700px;border:1px solid #2C2C30;border-radius:12px;overflow:hidden;">
+            <div class="fade-up" style="display:flex;gap:1.5rem;padding:1.5rem 2rem;border-bottom:1px solid #2C2C30;background:#1E1E22;align-items:flex-start;">
+                <div style="font-size:1.25rem;flex-shrink:0;margin-top:2px;">🎭</div>
+                <div>
+                    <div style="font-weight:700;color:var(--warm-white);margin-bottom:0.25rem;">Build your character</div>
+                    <div style="font-size:0.9rem;color:rgba(237,232,223,0.6);">Name your AI persona, define their personality, select their voice. Customers don't talk to "an AI" — they talk to Maya from Garcia Plumbing. Same warmth, every time.</div>
+                </div>
+            </div>
+            <div class="fade-up" style="display:flex;gap:1.5rem;padding:1.5rem 2rem;border-bottom:1px solid #2C2C30;background:#1E1E22;align-items:flex-start;">
+                <div style="font-size:1.25rem;flex-shrink:0;margin-top:2px;">🧪</div>
+                <div>
+                    <div style="font-weight:700;color:var(--warm-white);margin-bottom:0.25rem;">Test your Blueprint</div>
+                    <div style="font-size:0.9rem;color:rgba(237,232,223,0.6);">Run every scenario before it's real — pricing, objections, after-hours emergencies, edge cases. SilaOS plays the customer. You watch how your Blueprint holds up. Fix what doesn't work.</div>
+                </div>
+            </div>
+            <div class="fade-up" style="display:flex;gap:1.5rem;padding:1.5rem 2rem;background:#1E1E22;align-items:flex-start;">
+                <div style="font-size:1.25rem;flex-shrink:0;margin-top:2px;">🎓</div>
+                <div>
+                    <div style="font-weight:700;color:var(--warm-white);margin-bottom:0.25rem;">Train your team</div>
+                    <div style="font-size:0.9rem;color:rgba(237,232,223,0.6);">Your team practices on SilaOS before they practice on your customers. SilaOS plays the difficult client — the price pusher, the angry caller, the cancellation. They get good before it's real.</div>
+                </div>
+            </div>
+        </div>
+        <div class="fade-up" style="margin-top:2rem;background:rgba(212,201,184,0.1);border:1px solid var(--cream);border-radius:10px;padding:2rem 2.5rem;max-width:700px;">
+            <p style="color:var(--cream);font-size:1rem;font-weight:700;margin-bottom:0.5rem;">The result</p>
+            <p style="color:var(--warm-white);font-size:0.95rem;margin:0;line-height:1.75;">Most businesses go live and hope. You go live and know. Build the character. Test the Blueprint. Train the team. Then go live.</p>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <div class="section-label">Ready?</div>
+        <h2 class="fade-up">See it work in your business.</h2>
+        <p class="fade-up">We'll walk you through exactly what SilaOS would do for your specific situation — before you commit to anything.</p>
+        <a href="/#offer" class="btn-primary fade-up">Apply now</a>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-logo">SilaOS</div>
+    <p class="footer-tagline">You own it. SilaOS runs it.</p>
+    <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/how-it-works">How it works</a>
+        <a href="/who-its-for">Who it's for</a>
+        <a href="/about">About</a>
+        <a href="/#offer">Apply now</a>
+        <a href="https://instagram.com/silaos.ai" target="_blank">Instagram</a>
+        <a href="mailto:hello@silaos.ai">Contact</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 SilaOS. All rights reserved.</p>
+</footer>
+
+<script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 50); });
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(el => { if (el.isIntersecting) { el.target.classList.add('visible'); observer.unobserve(el.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
